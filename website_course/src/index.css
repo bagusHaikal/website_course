@@ -104,7 +104,6 @@ body {
   position: relative;
   overflow: hidden;
   transition: transform 0.15s ease, box-shadow 0.3s ease;
-  active: scale-95;
 }
 
 .btn-premium:active {
