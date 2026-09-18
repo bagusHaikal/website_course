@@ -45,29 +45,27 @@ const features = [
 
 function Features() {
   return (
-    <section id="expectations" className="py-24 bg-brand-dark relative overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
-
+    <section id="expectations" className="py-24 bg-bg-section relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <span className="text-brand-accent font-semibold text-xs mb-2 block">
+          <span className="text-brand-accent font-semibold text-xs mb-2 block uppercase tracking-wider">
             why choose us
           </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mb-4 tracking-tight">
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary mb-4 tracking-tight">
             What to expect from a Infinite Learning Course?
           </h2>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div key={index} className="glass-card p-8 rounded-2xl">
+            <div key={index} className="rounded-2xl border border-border-default bg-bg-surface p-8 transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover">
               <div className="w-12 h-12 bg-brand-violet/20 rounded-lg flex items-center justify-center text-brand-accent mb-6">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   {feature.icon}
                 </svg>
               </div>
-              <h3 className="font-display font-bold text-xl text-white mb-3 tracking-tight">{feature.title}</h3>
-              <p className="text-[#D1D5DB] text-sm leading-[1.6]">{feature.desc}</p>
+              <h3 className="font-display font-bold text-xl text-text-primary mb-3 tracking-tight">{feature.title}</h3>
+              <p className="text-text-secondary text-sm leading-[1.6]">{feature.desc}</p>
             </div>
           ))}
         </div>

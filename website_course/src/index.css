@@ -1,20 +1,94 @@
 @import "tailwindcss";
 
-/* ─── Custom Theme Tokens ─── */
-@theme {
-  --color-brand-dark: #0B0F19;
+/* ─── Design Tokens ─── */
+:root {
+  /* Background */
+  --color-bg-base: #0B0F19;
+  --color-bg-section: #0E0A1A;
+  --color-bg-surface: rgba(30, 27, 75, 0.4);
+  --color-bg-subtle: rgba(255, 255, 255, 0.03);
+  --color-bg-footer: #08060F;
+  --color-bg-input: rgba(30, 27, 75, 0.5);
+
+  /* Brand Colors */
   --color-brand-purple: #4C1D95;
   --color-brand-violet: #7C3AED;
   --color-brand-light: #E9D5FF;
   --color-brand-accent: #A78BFA;
-  --color-brand-surface: #1E1B4B;
+
+  /* Text */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #D1D5DB;
+  --color-text-muted: #9CA3AF;
+  --color-text-inverse: #0B0F19;
+
+  /* Borders */
+  --color-border-default: rgba(255, 255, 255, 0.08);
+  --color-border-hover: rgba(167, 139, 250, 0.3);
+  --color-divider: rgba(255, 255, 255, 0.06);
+
+  /* Shadows & Effects */
+  --shadow-glow: 0 0 40px -10px rgba(124, 58, 237, 0.3);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --shadow-glow-hover: 0 20px 40px -10px rgba(124, 58, 237, 0.15);
+}
+
+[data-theme="light"] {
+  --color-bg-base: #FFFFFF;
+  --color-bg-section: #F8F7FF;
+  --color-bg-surface: rgba(248, 245, 255, 0.8);
+  --color-bg-subtle: rgba(0, 0, 0, 0.03);
+  --color-bg-footer: #F3F0FF;
+  --color-bg-input: rgba(248, 245, 255, 0.9);
+
+  --color-brand-purple: #4C1D95;
+  --color-brand-violet: #7C3AED;
+  --color-brand-light: #5B21B6;
+  --color-brand-accent: #7C3AED;
+
+  --color-text-primary: #0B0F19;
+  --color-text-secondary: #374151;
+  --color-text-muted: #6B7280;
+  --color-text-inverse: #FFFFFF;
+
+  --color-border-default: rgba(0, 0, 0, 0.08);
+  --color-border-hover: rgba(124, 58, 237, 0.3);
+  --color-divider: rgba(0, 0, 0, 0.06);
+
+  --shadow-glow: 0 0 40px -10px rgba(124, 58, 237, 0.2);
+  --shadow-glass: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+  --shadow-glow-hover: 0 20px 40px -10px rgba(124, 58, 237, 0.1);
+}
+
+/* ─── Tailwind Theme ─── */
+@theme {
+  --color-bg-base: var(--color-bg-base);
+  --color-bg-section: var(--color-bg-section);
+  --color-bg-surface: var(--color-bg-surface);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-bg-footer: var(--color-bg-footer);
+  --color-bg-input: var(--color-bg-input);
+
+  --color-brand-purple: var(--color-brand-purple);
+  --color-brand-violet: var(--color-brand-violet);
+  --color-brand-light: var(--color-brand-light);
+  --color-brand-accent: var(--color-brand-accent);
+
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
+
+  --color-border-default: var(--color-border-default);
+  --color-border-hover: var(--color-border-hover);
+  --color-divider: var(--color-divider);
 
   --font-display: "Plus Jakarta Sans", sans-serif;
   --font-sans: "DM Sans", sans-serif;
 
-  --shadow-glow: 0 0 40px -10px rgba(124, 58, 237, 0.3);
-  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-  --shadow-glow-hover: 0 20px 40px -10px rgba(124, 58, 237, 0.15);
+  --shadow-glow: var(--shadow-glow);
+  --shadow-glass: var(--shadow-glass);
+  --shadow-glow-hover: var(--shadow-glow-hover);
 
   --animate-float: float 10s infinite ease-in-out alternate;
   --animate-fade-slide-up: fadeSlideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -35,24 +109,25 @@
 
 /* ─── Base ─── */
 body {
-  background-color: #0B0F19;
-  color: #D1D5DB;
+  background-color: var(--color-bg-base);
+  color: var(--color-text-secondary);
   overflow-x: hidden;
   font-family: var(--font-sans);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #0B0F19; }
-::-webkit-scrollbar-thumb { background: #4C1D95; border-radius: 4px; }
+::-webkit-scrollbar-track { background: var(--color-bg-base); }
+::-webkit-scrollbar-thumb { background: var(--color-brand-purple); border-radius: 4px; }
 
-/* ─── Focus Ring (PRD 16.6) ─── */
+/* ─── Focus Ring ─── */
 *:focus-visible {
-  outline: 2px solid #E9D5FF;
+  outline: 2px solid var(--color-brand-accent);
   outline-offset: 2px;
 }
 
-/* ─── Glassmorphism (PRD 16.3.A) ─── */
+/* ─── Glassmorphism — navbar only ─── */
 .glass-panel {
   background: rgba(30, 27, 75, 0.4);
   backdrop-filter: blur(12px);
@@ -60,20 +135,11 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.glass-card {
-  background: rgba(30, 27, 75, 0.4);
+[data-theme="light"] .glass-panel {
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.glass-card:hover {
-  border-color: rgba(167, 139, 250, 0.3);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -10px rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* ─── Text Gradient ─── */
@@ -95,11 +161,11 @@ body {
 .blob {
   position: absolute;
   filter: blur(80px);
-  opacity: 0.4;
+  opacity: 0.2;
   animation: float 10s infinite ease-in-out alternate;
 }
 
-/* ─── Button Shine (PRD 16.3.B) ─── */
+/* ─── Button Shine ─── */
 .btn-premium {
   position: relative;
   overflow: hidden;
@@ -141,6 +207,15 @@ body {
   transform: scale(0.95);
 }
 
+[data-theme="light"] .btn-secondary {
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .btn-secondary:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
 /* ─── Animations ─── */
 @keyframes float {
   0% { transform: translate(0, 0) scale(1); }
@@ -160,4 +235,13 @@ body {
 
 .animate-fade-slide-up {
   animation: fadeSlideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

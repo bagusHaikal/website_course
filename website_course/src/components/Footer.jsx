@@ -41,8 +41,8 @@ function Footer() {
   ];
 
   return (
-    <footer className="bg-[#050810] text-gray-500 py-12 border-t border-white/5">
-      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
+    <footer className="bg-bg-footer text-text-muted py-12 border-t border-divider">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
         <div>
           <div className="mb-10">
             <img
@@ -59,7 +59,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-4">Program</h4>
+          <h4 className="text-text-primary font-bold mb-4">Program</h4>
           <ul className="space-y-2 text-sm">
             {programLinks.map((link) => (
               <li key={link.label}>
@@ -72,7 +72,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-4">Corporate</h4>
+          <h4 className="text-text-primary font-bold mb-4">Corporate</h4>
           <ul className="space-y-2 text-sm">
             {corporateLinks.map((link) => (
               <li key={link.label}>
@@ -85,7 +85,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-4">Program Mandiri</h4>
+          <h4 className="text-text-primary font-bold mb-4">Program Mandiri</h4>
           <ul className="space-y-2 text-sm">
             {mandiriLinks.map((link) => (
               <li key={link.label}>
@@ -98,10 +98,10 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className="text-white font-bold mb-4">Our Social Media</h4>
+          <h4 className="text-text-primary font-bold mb-4">Our Social Media</h4>
           <div className="flex gap-3 mb-6">
             {socialLinks.map((s) => (
-              <a key={s.label} href={s.href} className="text-gray-500 hover:text-brand-accent transition-colors" aria-label={s.label}>
+              <a key={s.label} href={s.href} className="text-text-muted hover:text-brand-accent transition-colors" aria-label={s.label}>
                 {s.icon}
               </a>
             ))}
@@ -124,7 +124,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-5 border-t border-white/5 text-center text-sm">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-5 border-t border-divider text-center text-sm text-text-muted">
         <p>&copy; 2026 Infinite Learning Indonesia. All rights reserved.</p>
       </div>
     </footer>

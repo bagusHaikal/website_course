@@ -3,7 +3,7 @@ import { alumniData } from '../data/courses';
 
 function AlumniCard({ alum }) {
   return (
-    <div className="rounded-2xl border border-white/5 bg-[rgba(30,27,75,0.4)] backdrop-blur-md p-6 flex flex-col justify-between h-full transition-all duration-300 hover:border-brand-accent/30">
+    <div className="rounded-2xl border border-border-default bg-bg-surface backdrop-blur-md p-6 flex flex-col justify-between h-full transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover">
       <div>
         <div className="flex items-center gap-4 mb-4">
           <img
@@ -12,18 +12,18 @@ function AlumniCard({ alum }) {
             className="w-12 h-12 rounded-full object-cover border-2 border-brand-violet/30"
           />
           <div>
-            <h4 className="font-bold text-white text-sm">{alum.name}</h4>
+            <h4 className="font-bold text-text-primary text-sm">{alum.name}</h4>
             <p className="text-xs text-brand-accent">{alum.program}</p>
           </div>
         </div>
-        <div className="border-t border-white/10 pt-4 mt-2">
-          <p className="text-xs text-gray-500 mb-1">now working at</p>
-          <p className="text-white font-bold">{alum.company}</p>
+        <div className="border-t border-divider pt-4 mt-2">
+          <p className="text-xs text-text-muted mb-1 uppercase tracking-wider">now working at</p>
+          <p className="text-text-primary font-bold">{alum.company}</p>
           <a
             href={alum.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 mt-3 text-gray-500 hover:text-brand-accent transition-colors"
+            className="inline-flex items-center gap-1.5 mt-3 text-text-muted hover:text-brand-accent transition-colors"
             aria-label={`LinkedIn profile of ${alum.name}`}
           >
             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -63,13 +63,13 @@ function Alumni() {
   }, []);
 
   return (
-    <section id="alumni" className="py-24 bg-gradient-to-b from-brand-dark to-[#15102C]">
+    <section id="alumni" className="py-24 bg-bg-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white mt-2 tracking-tight">
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary mt-2 tracking-tight">
             Connect with Our Alumni
           </h2>
-          <p className="text-[#D1D5DB] mt-4 leading-[1.6] max-w-2xl mx-auto">
+          <p className="text-text-secondary mt-4 leading-[1.6] max-w-2xl mx-auto">
             Mereka telah berhasil berkarir di perusahaan teknologi terkemuka setelah lulus dari Infinite Learning.
           </p>
         </div>
@@ -97,7 +97,7 @@ function Alumni() {
               <button
                 onClick={prev}
                 disabled={current === 0}
-                className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed"
+                className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
                 aria-label="Previous slide"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -111,7 +111,7 @@ function Alumni() {
                     key={i}
                     onClick={() => setCurrent(i)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      current === i ? 'w-6 bg-brand-accent' : 'bg-white/30 hover:bg-white/50'
+                      current === i ? 'w-6 bg-brand-accent' : 'bg-border-default hover:bg-brand-accent/50'
                     }`}
                     aria-label={`Go to slide ${i + 1}`}
                   />
@@ -121,7 +121,7 @@ function Alumni() {
               <button
                 onClick={next}
                 disabled={current === maxIndex}
-                className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-white disabled:opacity-30 disabled:cursor-not-allowed"
+                className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
                 aria-label="Next slide"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

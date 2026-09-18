@@ -1,19 +1,18 @@
 function CTA() {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-button-gradient opacity-90"></div>
+    <section className="py-24 relative overflow-hidden bg-hero-gradient">
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==")`,
+          backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnB=")`,
         }}
       ></div>
 
       <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
-        <h2 className="font-display font-extrabold text-4xl md:text-5xl text-white mb-6 tracking-tight">
+        <h2 className="font-display font-extrabold text-4xl md:text-5xl text-text-primary mb-6 tracking-tight">
           Siap Mengubah Karirmu?
         </h2>
-        <p className="text-brand-light/80 text-lg mb-10 leading-[1.6] max-w-2xl mx-auto">
+        <p className="text-text-secondary/80 text-lg mb-10 leading-[1.6] max-w-2xl mx-auto">
           Jangan tunda lagi. Bergabunglah dengan ribuan profesional lainnya yang telah meningkatkan skill mereka bersama Infinite Learning.
         </p>
 
@@ -21,7 +20,7 @@ function CTA() {
           <button className="btn-premium bg-white text-brand-purple px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-gray-100 transition-colors">
             Daftar Sekarang
           </button>
-          <button className="btn-secondary text-white px-8 py-4 rounded-full font-bold text-lg">
+          <button className="btn-secondary text-text-primary px-8 py-4 rounded-full font-bold text-lg">
             Konsultasi Gratis
           </button>
         </div>

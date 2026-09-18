@@ -3,7 +3,7 @@ import { courses } from '../data/courses';
 
 function SearchResultCard({ course }) {
   return (
-    <div className="border-l-2 border-transparent hover:border-brand-accent pl-4 py-2.5 transition-colors cursor-pointer">
+    <div className="border-l-2 border-transparent hover:border-brand-violet pl-4 py-2.5 transition-colors cursor-pointer">
       <div className="flex items-start gap-3">
         <img
           src={course.image}
@@ -11,10 +11,10 @@ function SearchResultCard({ course }) {
           className="w-16 h-12 object-cover rounded flex-shrink-0"
         />
         <div className="min-w-0 flex-1">
-          <p className="text-white text-sm font-medium line-clamp-1">{course.title}</p>
+          <p className="text-text-primary text-sm font-medium line-clamp-1">{course.title}</p>
           <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-[10px] text-gray-500 bg-white/10 px-1.5 py-0.5 rounded">{course.category}</span>
-            <span className="text-[10px] text-gray-500 bg-white/10 px-1.5 py-0.5 rounded">{course.type}</span>
+            <span className="text-[10px] text-text-muted bg-bg-subtle px-1.5 py-0.5 rounded">{course.category}</span>
+            <span className="text-[10px] text-text-muted bg-bg-subtle px-1.5 py-0.5 rounded">{course.type}</span>
           </div>
           <p className="text-brand-accent text-xs font-semibold mt-1">{course.priceDiscount}</p>
         </div>
@@ -46,12 +46,6 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (!navVisible) {
-      setOpen(false);
-    }
-  }, [navVisible]);
-
   const handleInputChange = (e) => {
     setQuery(e.target.value);
     if (e.target.value.length > 0 && !open && navVisible) {
@@ -76,7 +70,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   return (
     <div ref={wrapperRef} className={`relative flex items-center z-[1000] ${className}`}>
       <div className={`flex items-center border rounded-full overflow-hidden transition-colors ${
-        open ? 'border-brand-violet/50' : 'border-white/15'
+        open ? 'border-brand-violet/50' : 'border-border-default'
       } ${fullWidth ? 'w-full md:max-w-md' : 'w-48 sm:w-60'}`}>
         <input
           ref={inputRef}
@@ -87,19 +81,19 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
             if (query.length > 0 && navVisible) setOpen(true);
           }}
           placeholder="Cari program..."
-           className="bg-brand-surface text-white text-sm placeholder-gray-500 px-4 py-2 w-full outline-none"
+          className="bg-bg-input text-text-primary text-sm placeholder-text-muted px-4 py-2 w-full outline-none"
           onBlur={() => {
             if (query.length === 0) setOpen(false);
           }}
         />
         {query ? (
-          <button onClick={handleClear} className="px-2.5 text-gray-500 hover:text-white transition-colors flex-shrink-0" aria-label="Clear">
+          <button onClick={handleClear} className="px-2.5 text-text-muted hover:text-text-primary transition-colors flex-shrink-0" aria-label="Clear">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         ) : (
-          <span className="px-2.5 text-gray-500 flex-shrink-0">
+          <span className="px-2.5 text-text-muted flex-shrink-0">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -109,7 +103,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
 
       {open && (
         <div
-          className="absolute top-full left-0 mt-2 w-full bg-brand-dark border border-white/10 rounded-xl overflow-hidden shadow-glass z-[300]"
+          className="absolute top-full left-0 mt-2 w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-[300]"
         >
           {filtered.length > 0 ? (
             <div className="py-2 max-h-[360px] overflow-y-auto">
@@ -125,8 +119,8 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
             </div>
           ) : query.length > 0 ? (
             <div className="p-5 text-center">
-              <p className="text-gray-400 text-sm">
-                Tidak ada program yang cocok dengan "<span className="text-white font-semibold">{query}</span>"
+              <p className="text-text-muted text-sm">
+                Tidak ada program yang cocok dengan "<span className="text-text-primary font-semibold">{query}</span>"
               </p>
             </div>
           ) : null}

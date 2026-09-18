@@ -9,16 +9,16 @@ const programs = [
 
 function ProgramCard({ program }) {
   return (
-    <div className="rounded-2xl border border-white/5 bg-[rgba(30,27,75,0.4)] backdrop-blur-md flex w-full h-[340px] flex-shrink-0 transition-all duration-300 hover:border-brand-accent/30 overflow-hidden">
-      <div className="w-[45%] h-full flex-shrink-0 relative bg-brand-surface/50">
+    <div className="rounded-2xl border border-border-default bg-bg-surface backdrop-blur-md flex w-full h-[340px] flex-shrink-0 transition-all duration-300 hover:border-brand-accent/30 overflow-hidden">
+      <div className="w-[45%] h-full flex-shrink-0 relative bg-bg-section/50">
         <img src={program.image} alt={program.title} className="w-full h-full object-contain p-6" />
       </div>
       <div className="flex-1 p-6 flex flex-col justify-between">
         <div>
-          <span className="text-[10px] font-semibold text-brand-accent mb-1 block">{program.tag}</span>
-          <h3 className="font-display font-bold text-xl text-white mb-1 tracking-tight">{program.title}</h3>
+          <span className="text-[10px] font-semibold text-brand-accent mb-1 block uppercase tracking-wider">{program.tag}</span>
+          <h3 className="font-display font-bold text-xl text-text-primary mb-1 tracking-tight">{program.title}</h3>
           {program.tagline && (<p className="text-sm font-medium text-brand-light mb-2">{program.tagline}</p>)}
-          <p className="text-[#D1D5DB] text-sm leading-[1.6] line-clamp-3">{program.desc}</p>
+          <p className="text-text-secondary text-sm leading-[1.6] line-clamp-3">{program.desc}</p>
         </div>
         <a href={program.href} className="btn-premium bg-button-gradient text-white px-5 py-2.5 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2 self-start">
           Pelajari Selanjutnya
@@ -78,16 +78,16 @@ function ProgramSlider() {
   };
 
   return (
-    <section className="py-20 relative">
+    <section className="py-20 relative bg-bg-base">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-white tracking-tight">Temukan Program yang Sesuai dengan Kebutuhanmu</h2>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary tracking-tight">Temukan Program yang Sesuai dengan Kebutuhanmu</h2>
         </div>
         <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors" aria-label="Previous slide">
+          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default flex items-center justify-center text-text-primary hover:bg-bg-subtle transition-colors" aria-label="Previous slide">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
           </button>
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white hover:bg-white/10 transition-colors" aria-label="Next slide">
+          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default flex items-center justify-center text-text-primary hover:bg-bg-subtle transition-colors" aria-label="Next slide">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           </button>
           <div className="overflow-hidden rounded-2xl">
