@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
+import { useAuth } from '../contexts/AuthContext';
 
-function Navbar({ onResultClick, navVisible, scrolled }) {
+function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const { theme, toggleTheme } = useTheme();
+  const { user, logout } = useAuth();
 
   const menuItems = [
     { label: 'Home', href: '#' },
@@ -94,8 +96,23 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                 </svg>
               )}
             </button>
-            <button className={`font-semibold transition-colors text-sm ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
-            <button className="btn-premium bg-button-gradient text-white px-6 py-2.5 rounded-full font-semibold shadow-glow text-sm">Daftar Sekarang</button>
+            {user ? (
+              <div className="relative group">
+                <button className="flex items-center gap-2 font-semibold text-sm transition-colors hover:text-brand-accent">
+                  <span className="w-7 h-7 rounded-full bg-button-gradient flex items-center justify-center text-white text-xs font-bold">{user.name?.charAt(0).toUpperCase()}</span>
+                  <span className={isLight ? 'text-gray-600' : 'text-text-secondary'}>{user.name}</span>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                </button>
+                <div className={`absolute right-0 top-full mt-2 w-40 py-2 z-[200] shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'} hidden group-hover:block`}>
+                  <button onClick={() => logout()} className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors">Keluar</button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <button onClick={onLoginClick} className={`font-semibold transition-colors text-sm ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
+                <button onClick={onRegisterClick} className="btn-premium bg-button-gradient text-white px-6 py-2.5 rounded-full font-semibold shadow-glow text-sm">Daftar Sekarang</button>
+              </>
+            )}
           </div>
         </div>
         <div className="flex justify-between items-center h-20 md:hidden">
@@ -139,8 +156,20 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
               );
             })}
             <div className="pt-4 flex flex-col gap-3">
-              <button className={`w-full text-center py-3 border rounded-lg font-semibold transition-colors ${isLight ? 'border-border-default text-gray-600 hover:bg-bg-section' : 'border-border-default text-text-secondary hover:bg-bg-subtle'}`}>Masuk</button>
-              <button className="w-full text-center py-3 bg-button-gradient text-white rounded-lg font-semibold shadow-glow btn-premium">Daftar Sekarang</button>
+              {user ? (
+                <div className="flex items-center gap-3 px-3 py-3 rounded-lg">
+                  <span className="w-8 h-8 rounded-full bg-button-gradient flex items-center justify-center text-white text-sm font-bold">{user.name?.charAt(0).toUpperCase()}</span>
+                  <span className={`text-sm font-medium ${isLight ? 'text-gray-700' : 'text-text-primary'}`}>{user.name}</span>
+                </div>
+              ) : (
+                <>
+                  <button onClick={() => { onLoginClick && onLoginClick(); setMenuOpen(false); }} className={`w-full text-center py-3 border rounded-lg font-semibold transition-colors ${isLight ? 'border-border-default text-gray-600 hover:bg-bg-section' : 'border-border-default text-text-secondary hover:bg-bg-subtle'}`}>Masuk</button>
+                  <button onClick={() => { onRegisterClick && onRegisterClick(); setMenuOpen(false); }} className="w-full text-center py-3 bg-button-gradient text-white rounded-lg font-semibold shadow-glow btn-premium">Daftar Sekarang</button>
+                </>
+              )}
+              {user && (
+                <button onClick={() => { logout(); setMenuOpen(false); }} className="w-full text-center py-3 text-sm text-red-400 hover:text-red-300 transition-colors">Keluar</button>
+              )}
             </div>
           </div>
         </div>

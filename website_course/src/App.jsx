@@ -7,15 +7,26 @@ import Alumni from './components/Alumni';
 import FAQ from './components/FAQ';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import AuthModal from './components/AuthModal';
 import { ThemeProvider, useTheme } from './contexts/ThemeContext';
+import { AuthProvider } from './contexts/AuthContext';
 
 function AppContent() {
   const [searchQuery, setSearchQuery] = useState('');
   const [navVisible, setNavVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalTab, setModalTab] = useState('login');
   const lastScrollY = useRef(0);
   const courseSectionRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
+
+  const openAuthModal = (tab = 'login') => {
+    setModalTab(tab);
+    setModalOpen(true);
+  };
+
+  const closeAuthModal = () => setModalOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,6 +68,8 @@ function AppContent() {
         onResultClick={handleSearchResultClick}
         navVisible={navVisible}
         scrolled={scrolled}
+        onLoginClick={() => openAuthModal('login')}
+        onRegisterClick={() => openAuthModal('register')}
       />
       <button
         onClick={toggleTheme}
@@ -65,7 +78,7 @@ function AppContent() {
       >
         {theme === 'dark' ? (
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
           </svg>
         ) : (
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -84,6 +97,12 @@ function AppContent() {
         <CTA />
       </main>
       <Footer />
+      <AuthModal
+        isOpen={modalOpen}
+        onClose={closeAuthModal}
+        defaultTab={modalTab}
+        onSwitchTab={setModalTab}
+      />
     </div>
   );
 }
@@ -91,7 +110,9 @@ function AppContent() {
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </ThemeProvider>
   );
 }

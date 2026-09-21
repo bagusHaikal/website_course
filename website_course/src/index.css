@@ -237,6 +237,42 @@ body {
   animation: fadeSlideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+/* ─── Auth Modal ─── */
+.auth-modal-card {
+  background: rgba(30, 27, 75, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.6), 0 0 50px -10px rgba(124, 58, 237, 0.2);
+}
+
+[data-theme="light"] .auth-modal-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.15);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pop-in {
+  animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ─── Hidden Scrollbar (Auth Modal) ─── */
+.auth-modal-card {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.auth-modal-card::-webkit-scrollbar {
+  display: none;
+}
+
 /* ─── Reduced Motion ─── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
