@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/useAuth';
+import logoLight from '../assets/logo-black.png';
 
 function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -53,7 +54,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
               <svg className="w-4 h-4 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </button>
             {isOpen && (
-              <div className={`absolute top-full left-0 mt-2 w-52 py-2 z-[200] shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'}`}>
+              <div className={`absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'}`}>
                 {item.dropdown.map((sub) => (
                   <a key={sub.label} href={sub.href} onClick={() => setOpenDropdown(null)} className={`block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{sub.label}</a>
                 ))}
@@ -68,12 +69,12 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
   };
 
   return (
-    <nav id="navbar" className={`fixed w-full z-[100] border-b border-border-default transition-all duration-300 ${navClass} ${translateClass}`}>
+    <nav id="navbar" className={`fixed w-full z-100 border-b border-border-default transition-all duration-300 ${navClass} ${translateClass}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="hidden md:flex justify-between items-stretch h-[88px]">
-          <div className="flex-shrink-0 flex items-center px-6">
+        <div className="hidden md:flex justify-between items-stretch h-22">
+          <div className="shrink-0 flex items-center px-6">
             <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <img src="https://lms-v2.infinitelearningstudent.id/logo-white.png" alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+              <img src={isLight ? logoLight : "https://lms-v2.infinitelearningstudent.id/logo-white.png"} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
             </div>
           </div>
           <div className="flex flex-col items-center justify-center flex-1 px-4">
@@ -84,7 +85,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
               </div>
             </div>
           </div>
-          <div className="flex-shrink-0 flex items-center px-6 space-x-4">
+          <div className="shrink-0 flex items-center px-6 space-x-4">
             <button onClick={toggleTheme} className={`transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
               {isLight ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -103,7 +104,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
                   <span className={isLight ? 'text-gray-600' : 'text-text-secondary'}>{user.name}</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
-                <div className={`absolute right-0 top-full mt-2 w-40 py-2 z-[200] shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'} hidden group-hover:block`}>
+                <div className={`absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'} hidden group-hover:block`}>
                   <button onClick={() => logout()} className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors">Keluar</button>
                 </div>
               </div>
@@ -116,8 +117,8 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
           </div>
         </div>
         <div className="flex justify-between items-center h-20 md:hidden">
-          <div className="flex-shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <img src="https://lms-v2.infinitelearningstudent.id/logo-white.png" alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+          <div className="shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+            <img src={isLight ? logoLight : "https://lms-v2.infinitelearningstudent.id/logo-white.png"} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
           </div>
           <div className="md:hidden flex items-center gap-2">
             <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">

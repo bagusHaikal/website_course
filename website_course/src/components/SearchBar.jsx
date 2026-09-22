@@ -8,7 +8,7 @@ function SearchResultCard({ course }) {
         <img
           src={course.image}
           alt={course.title}
-          className="w-16 h-12 object-cover rounded flex-shrink-0"
+          className="w-16 h-12 object-cover rounded shrink-0"
         />
         <div className="min-w-0 flex-1">
           <p className="text-text-primary text-sm font-medium line-clamp-1">{course.title}</p>
@@ -68,7 +68,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   if (!navVisible) return null;
 
   return (
-    <div ref={wrapperRef} className={`relative flex items-center z-[1000] ${className}`}>
+    <div ref={wrapperRef} className={`relative flex items-center z-1000 ${className}`}>
       <div className={`flex items-center border rounded-full overflow-hidden transition-colors ${
         open ? 'border-brand-violet/50' : 'border-border-default'
       } ${fullWidth ? 'w-full md:max-w-md' : 'w-48 sm:w-60'}`}>
@@ -87,13 +87,13 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
           }}
         />
         {query ? (
-          <button onClick={handleClear} className="px-2.5 text-text-muted hover:text-text-primary transition-colors flex-shrink-0" aria-label="Clear">
+          <button onClick={handleClear} className="px-2.5 text-text-muted hover:text-text-primary transition-colors shrink-0" aria-label="Clear">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         ) : (
-          <span className="px-2.5 text-text-muted flex-shrink-0">
+          <span className="px-2.5 text-text-muted shrink-0">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -103,10 +103,10 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
 
       {open && (
         <div
-          className="absolute top-full left-0 mt-2 w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-[300]"
+          className="absolute top-full left-0 mt-2 w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-300"
         >
           {filtered.length > 0 ? (
-            <div className="py-2 max-h-[360px] overflow-y-auto">
+            <div className="py-2 max-h-90 overflow-y-auto">
               {filtered.map(course => (
                 <button
                   key={course.id}

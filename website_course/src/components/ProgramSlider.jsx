@@ -9,8 +9,8 @@ const programs = [
 
 function ProgramCard({ program }) {
   return (
-    <div className="rounded-2xl border border-border-default bg-bg-surface backdrop-blur-md flex w-full h-[340px] flex-shrink-0 transition-all duration-300 hover:border-brand-accent/30 overflow-hidden">
-      <div className="w-[45%] h-full flex-shrink-0 relative bg-bg-section/50">
+    <div className="rounded-2xl border border-border-default bg-bg-surface backdrop-blur-md flex w-full h-85 shrink-0 transition-all duration-300 hover:border-brand-accent/30 overflow-hidden">
+      <div className="w-[45%] h-full shrink-0 relative bg-bg-section/50">
         <img src={program.image} alt={program.title} className="w-full h-full object-contain p-6" />
       </div>
       <div className="flex-1 p-6 flex flex-col justify-between">
@@ -93,7 +93,7 @@ function ProgramSlider() {
           <div className="overflow-hidden rounded-2xl">
             <div ref={trackRef} className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
               {slides.map((program, index) => (
-                <div key={index} className="w-full flex-shrink-0 px-4">
+                <div key={index} className="w-full shrink-0 px-4">
                   <ProgramCard program={program} />
                 </div>
               ))}
