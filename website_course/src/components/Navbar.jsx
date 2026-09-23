@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
-import { useAuth } from '../contexts/useAuth';
-import logoLight from '../assets/logo-black.png';
+import { useAuth } from '../contexts/AuthContext';
+import logoLight from '../assets/icon-IL-untuk-theme-putih.svg';
 
 function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterClick }) {
   const [menuOpen, setMenuOpen] = useState(false);

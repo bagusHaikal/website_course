@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { useAuth } from '../contexts/useAuth';
+import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import logoDark from '../assets/logo-black.png';
+import logoDark from '../assets/icon-IL-untuk-theme-hitam.svg';
 
 const ICONS = {
   email: (
