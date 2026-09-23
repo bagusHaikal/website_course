@@ -17,12 +17,15 @@ function AppContent() {
   const [scrolled, setScrolled] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTab, setModalTab] = useState('login');
+  const [modalMountKey, setModalMountKey] = useState(0);
   const lastScrollY = useRef(0);
   const courseSectionRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
+  const isLight = theme === 'light';
 
   const openAuthModal = (tab = 'login') => {
     setModalTab(tab);
+    setModalMountKey(k => k + 1);
     setModalOpen(true);
   };
 
@@ -73,7 +76,7 @@ function AppContent() {
       />
       <button
         onClick={toggleTheme}
-        className="fixed bottom-6 right-6 z-[200] w-12 h-12 rounded-full glass-panel flex items-center justify-center text-text-primary hover:border-border-hover transition-colors"
+        className="fixed bottom-6 right-6 z-200 w-12 h-12 rounded-full glass-panel flex items-center justify-center text-text-primary hover:border-border-hover transition-colors"
         aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
       >
         {theme === 'dark' ? (
@@ -86,8 +89,8 @@ function AppContent() {
           </svg>
         )}
       </button>
-      <main className="pt-[88px]">
-        <Hero />
+      <main className="pt-22">
+        <Hero isLight={isLight} />
         <div ref={courseSectionRef}>
           <CourseGrid searchQuery={searchQuery} />
         </div>
@@ -102,6 +105,7 @@ function AppContent() {
         onClose={closeAuthModal}
         defaultTab={modalTab}
         onSwitchTab={setModalTab}
+        mountKey={modalMountKey}
       />
     </div>
   );

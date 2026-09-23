@@ -1,13 +1,15 @@
-function Hero() {
+function Hero({ isLight }) {
+
   return (
-    <section className="relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden bg-hero-gradient">
+    <section className={`relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
       <div className="mesh-bg">
-        <div className="blob bg-brand-violet w-[600px] h-[600px] rounded-full top-[-100px] right-[-100px]"></div>
-        <div className="blob bg-brand-purple w-[400px] h-[400px] rounded-full bottom-[-100px] left-[-100px]"></div>
+        <div className="blob bg-brand-violet w-150 h-150 rounded-full -top-25 -right-25"></div>
+        <div className="blob bg-brand-purple w-100 h-100 rounded-full -bottom-25 -left-25"></div>
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0"
           style={{
-            backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=")`,
+            opacity: isLight ? 0.08 : 0.2,
+            backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgYnk9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==")`,
           }}
         ></div>
       </div>
@@ -18,7 +20,7 @@ function Hero() {
 
             <h1 className="font-display font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-[1.1] mb-8 tracking-tight text-text-primary">
               Belajar Tanpa Batas,<br />
-              <span className="text-gradient-gold">
+              <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>
                 Kapan Pun & Dimana Pun
               </span>
             </h1>

@@ -83,7 +83,7 @@ function Alumni() {
               {alumniData.map((alum, index) => (
                 <div
                   key={index}
-                  className="w-full flex-shrink-0 px-2"
+                  className="w-full shrink-0 px-2"
                   style={{ width: `${100 / perView}%` }}
                 >
                   <AlumniCard alum={alum} />

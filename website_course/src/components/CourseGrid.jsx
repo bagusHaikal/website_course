@@ -12,11 +12,11 @@ function CourseCard({ course }) {
         <div className="absolute top-3 left-3 bg-bg-base/80 backdrop-blur-md text-text-primary text-[10px] font-semibold px-2 py-1 rounded border border-border-default">
           {course.tag}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-base via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-transparent"></div>
       </div>
 
       <div className="p-5 flex-1 flex flex-col relative z-10">
-        <h3 className="font-display font-bold text-base text-text-primary mb-2 leading-snug line-clamp-3 min-h-[3rem] tracking-tight">
+        <h3 className="font-display font-bold text-base text-text-primary mb-2 leading-snug line-clamp-3 min-h-12 tracking-tight">
           {course.title}
         </h3>
 
