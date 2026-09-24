@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/useAuth';
-import logoLight from '../assets/logo-black.png';
+import logoLight from '../assets/icon-IL-untuk-theme-putih.svg';
+import logoDark from '../assets/icon-IL-untuk-theme-hitam.svg';
 
 function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -74,7 +75,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
         <div className="hidden md:flex justify-between items-stretch h-22">
           <div className="shrink-0 flex items-center px-6">
             <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <img src={isLight ? logoLight : "https://lms-v2.infinitelearningstudent.id/logo-white.png"} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+              <img src={isLight ? logoLight : logoDark} alt="Infinite Learning Logo" className={`h-10 w-auto object-contain ${!isLight ? 'brightness-0 invert' : ''}`} />
             </div>
           </div>
           <div className="flex flex-col items-center justify-center flex-1 px-4">
@@ -118,7 +119,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
         </div>
         <div className="flex justify-between items-center h-20 md:hidden">
           <div className="shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <img src={isLight ? logoLight : "https://lms-v2.infinitelearningstudent.id/logo-white.png"} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+            <img src={isLight ? logoLight : logoDark} alt="Infinite Learning Logo" className={`h-10 w-auto object-contain ${!isLight ? 'brightness-0 invert' : ''}`} />
           </div>
           <div className="md:hidden flex items-center gap-2">
             <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">

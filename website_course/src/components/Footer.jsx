@@ -1,4 +1,6 @@
 
+import logoFooter from '../assets/icon-IL-untuk-theme-putih.svg';
+
 function Footer() {
   const programLinks = [
     { label: 'Bootcamp', href: '#' },
@@ -47,9 +49,9 @@ function Footer() {
         <div>
           <div className="mb-10">
             <img
-              src="https://lms-v2.infinitelearningstudent.id/logo-white.png"
+              src={logoFooter}
               alt="logoIL"
-              className="h-9 w-auto object-left"
+              className="h-9 w-auto object-left brightness-0 invert"
             />
           </div>
           <p className="text-sm leading-[1.6]">
