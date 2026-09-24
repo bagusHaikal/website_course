@@ -29,7 +29,7 @@ function ProgramCard({ program }) {
   );
 }
 
-function ProgramSlider() {
+function ProgramSliderSection() {
   const [current, setCurrent] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const trackRef = useRef(null);
@@ -105,4 +105,4 @@ function ProgramSlider() {
   );
 }
 
-export default ProgramSlider;
+export default ProgramSliderSection;

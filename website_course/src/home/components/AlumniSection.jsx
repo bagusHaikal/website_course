@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { alumniData } from '../data/courses';
+import { alumniData } from '../../data/courses';
 
 function AlumniCard({ alum }) {
   return (
@@ -37,7 +37,7 @@ function AlumniCard({ alum }) {
   );
 }
 
-function Alumni() {
+function AlumniSection() {
   const [current, setCurrent] = useState(0);
   const [perView, setPerView] = useState(4);
 
@@ -136,4 +136,4 @@ function Alumni() {
   );
 }
 
-export default Alumni;
+export default AlumniSection;

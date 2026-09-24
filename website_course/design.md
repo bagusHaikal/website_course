@@ -60,7 +60,11 @@
 
 ---
 
-## 2. Theme Modes
+## 2. Theme 
+
+## LOGO
+- theme light : https://lms-v2.infinitelearningstudent.id/logo-black.png
+- theme dark : https://lms-v2.infinitelearningstudent.id/logo-white.png
 
 ### Dark Mode (Default)
 - `data-theme="dark"` atau tanpa attribute
