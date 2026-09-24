@@ -1,4 +1,4 @@
-import { courses } from '../data/courses';
+import { courses } from '../../data/courses';
 
 function CourseCard({ course }) {
   return (
@@ -12,7 +12,7 @@ function CourseCard({ course }) {
         <div className="absolute top-3 left-3 bg-bg-base/80 backdrop-blur-md text-text-primary text-[10px] font-semibold px-2 py-1 rounded border border-border-default">
           {course.tag}
         </div>
-        <div className="absolute inset-0 bg-linear-to-t from-bg-base via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-t via-transparent to-transparent from-white/60 dark:from-bg-base"></div>
       </div>
 
       <div className="p-5 flex-1 flex flex-col relative z-10">
@@ -56,7 +56,7 @@ function CourseCard({ course }) {
   );
 }
 
-function CourseGrid({ searchQuery = '' }) {
+function CourseGridSection({ searchQuery = '' }) {
   const hasSearch = searchQuery.length > 0;
   const filtered = hasSearch
     ? courses.filter(c =>
@@ -68,7 +68,7 @@ function CourseGrid({ searchQuery = '' }) {
     : courses;
 
   return (
-    <section id="programs" className="py-24 relative bg-bg-base">
+    <section id="programs" className="py-24 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="font-display font-extrabold text-4xl md:text-5xl text-text-primary mb-6 tracking-tight">
@@ -121,4 +121,4 @@ function CourseGrid({ searchQuery = '' }) {
   );
 }
 
-export default CourseGrid;
+export default CourseGridSection;

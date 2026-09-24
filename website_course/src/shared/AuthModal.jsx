@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import logoDark from '../assets/icon-IL-untuk-theme-hitam.svg';
+
+const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
+const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
 const ICONS = {
   email: (
@@ -236,7 +238,7 @@ function AuthModalContent({ defaultTab, onClose, onSwitchTab }) {
 
         {/* Logo */}
         <div className="flex justify-center mb-6 pt-2">
-          <img src={isLight ? logoDark : "https://lms-v2.infinitelearningstudent.id/logo-white.png"} alt="Infinite Learning" className="h-8 w-auto object-contain" />
+          <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning" className="h-8 w-auto object-contain" />
         </div>
 
         {/* Title */}

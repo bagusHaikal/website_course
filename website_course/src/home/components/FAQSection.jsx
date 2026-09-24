@@ -1,7 +1,7 @@
-import { faqs } from '../data/courses';
+import { faqs } from '../../data/courses';
 import { useState } from 'react';
 
-function FAQ() {
+function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -50,4 +50,4 @@ function FAQ() {
   );
 }
 
-export default FAQ;
+export default FAQSection;
