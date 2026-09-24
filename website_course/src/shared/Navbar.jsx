@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
-import { useAuth } from '../contexts/useAuth';
-import logoLight from '../assets/icon-IL-untuk-theme-putih.svg';
-import logoDark from '../assets/icon-IL-untuk-theme-hitam.svg';
+import { useAuth } from '../contexts/AuthContext';
+
+const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
+const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
 function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterClick }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +14,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
   const { user, logout } = useAuth();
 
   const menuItems = [
-    { label: 'Home', href: '#' },
+    { label: 'Home', href: '/' },
     { label: 'Program', dropdown: [
       { label: 'Bootcamp', href: '#' }, { label: 'Workshop', href: '#' },
       { label: 'Belajar Mandiri', href: '#' }, { label: 'Lihat Semua Program', href: '#' }
@@ -21,7 +23,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
       { label: 'Corporate Training', href: '#' }, { label: 'Partnership', href: '#' },
       { label: 'Hire Our Graduates', href: '#' }
     ]},
-    { label: 'Program Mandiri', href: '#' }
+    { label: 'Program Mandiri', href: '/program-mandiri' }
   ];
 
   const toggleDropdown = (label) => setOpenDropdown(prev => prev === label ? null : label);
@@ -63,7 +65,11 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
             )}
           </>
         ) : (
-          <a href={item.href} className={`font-medium transition-colors text-sm tracking-wide ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>{item.label}</a>
+          item.href === '#' ? (
+            <a href={item.href} className={`font-medium transition-colors text-sm tracking-wide ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>{item.label}</a>
+          ) : (
+            <Link to={item.href} className={`font-medium transition-colors text-sm tracking-wide ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>{item.label}</Link>
+          )
         )}
       </div>
     );
@@ -75,7 +81,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
         <div className="hidden md:flex justify-between items-stretch h-22">
           <div className="shrink-0 flex items-center px-6">
             <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <img src={isLight ? logoLight : logoDark} alt="Infinite Learning Logo" className={`h-10 w-auto object-contain ${!isLight ? 'brightness-0 invert' : ''}`} />
+              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
             </div>
           </div>
           <div className="flex flex-col items-center justify-center flex-1 px-4">
@@ -119,7 +125,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
         </div>
         <div className="flex justify-between items-center h-20 md:hidden">
           <div className="shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <img src={isLight ? logoLight : logoDark} alt="Infinite Learning Logo" className={`h-10 w-auto object-contain ${!isLight ? 'brightness-0 invert' : ''}`} />
+            <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
           </div>
           <div className="md:hidden flex items-center gap-2">
             <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">

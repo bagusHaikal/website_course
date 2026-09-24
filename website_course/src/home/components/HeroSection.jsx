@@ -1,5 +1,4 @@
-function Hero({ isLight }) {
-
+function HeroSection({ isLight }) {
   return (
     <section className={`relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
       <div className="mesh-bg">
@@ -9,7 +8,7 @@ function Hero({ isLight }) {
           className="absolute inset-0"
           style={{
             opacity: isLight ? 0.08 : 0.2,
-            backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgYnk9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==")`,
+            backgroundImage: `url("data:image/svg+xml;base64,${btoa(`<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg"><circle cx="1" cy="1" r="1" fill="${isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.1)'}"/></svg>`)}")`,
           }}
         ></div>
       </div>
@@ -65,4 +64,4 @@ function Hero({ isLight }) {
   );
 }
 
-export default Hero;
+export default HeroSection;

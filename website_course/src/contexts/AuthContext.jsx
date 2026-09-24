@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { AuthContext } from './AuthContextContext';
+/* eslint-disable react-refresh/only-export-components */
+import { useState, createContext, useContext } from 'react';
+
+const AuthContext = createContext({ user: null, login: () => {}, register: () => {}, logout: () => {} });
 
 function getStoredUser() {
   try {
@@ -39,3 +41,9 @@ export function AuthProvider({ children }) {
     </AuthContext.Provider>
   );
 }
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
+
+export { AuthContext };
