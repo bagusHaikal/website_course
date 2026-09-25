@@ -16,7 +16,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
   const menuItems = [
     { label: 'Home', href: '/' },
     { label: 'Program', dropdown: [
-      { label: 'Bootcamp', href: '#' }, { label: 'Workshop', href: '#' },
+      { label: 'Bootcamp', href: '/bootcamp' }, { label: 'Workshop', href: '#' },
       { label: 'Belajar Mandiri', href: '#' }, { label: 'Lihat Semua Program', href: '#' }
     ]},
     { label: 'Corporate', dropdown: [
@@ -58,9 +58,14 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
             </button>
             {isOpen && (
               <div className={`absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'}`}>
-                {item.dropdown.map((sub) => (
-                  <a key={sub.label} href={sub.href} onClick={() => setOpenDropdown(null)} className={`block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{sub.label}</a>
-                ))}
+                {item.dropdown.map((sub) => {
+                  const subClass = `block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`;
+                  return sub.href.startsWith('/') ? (
+                    <Link key={sub.label} to={sub.href} onClick={() => setOpenDropdown(null)} className={subClass}>{sub.label}</Link>
+                  ) : (
+                    <a key={sub.label} href={sub.href} onClick={() => setOpenDropdown(null)} className={subClass}>{sub.label}</a>
+                  );
+                })}
               </div>
             )}
           </>
@@ -155,13 +160,23 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
                     {item.label}
                     <svg className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  {isOpen && item.dropdown.map((sub) => (
-                    <a key={sub.label} href={sub.href} onClick={() => { setMenuOpen(false); setOpenDropdown(null); }} className={`block px-6 py-2 text-sm transition-colors ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-text-muted hover:text-text-primary'}`}>{sub.label}</a>
-                  ))}
+                  {isOpen && item.dropdown.map((sub) => {
+                    const subClass = `block px-6 py-2 text-sm transition-colors ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-text-muted hover:text-text-primary'}`;
+                    const onClick = () => { setMenuOpen(false); setOpenDropdown(null); };
+                    return sub.href.startsWith('/') ? (
+                      <Link key={sub.label} to={sub.href} onClick={onClick} className={subClass}>{sub.label}</Link>
+                    ) : (
+                      <a key={sub.label} href={sub.href} onClick={onClick} className={subClass}>{sub.label}</a>
+                    );
+                  })}
                 </div>
-              ) : (
-                <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className={`block px-3 py-3 text-base font-medium rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{item.label}</a>
-              );
+                ) : (
+                  item.href === '#' ? (
+                    <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className={`block px-3 py-3 text-base font-medium rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{item.label}</a>
+                  ) : (
+                    <Link key={item.label} to={item.href} onClick={() => setMenuOpen(false)} className={`block px-3 py-3 text-base font-medium rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{item.label}</Link>
+                  )
+                );
             })}
             <div className="pt-4 flex flex-col gap-3">
               {user ? (

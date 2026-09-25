@@ -1,6 +1,7 @@
 
 const verifiedSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>;
 const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
+import heroProgramMandiriImg from '../../assets/hero-program-mandiri.webp';
 
 function HeroSection({ isLight }) {
   return (
@@ -50,7 +51,7 @@ function HeroSection({ isLight }) {
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
             <div className="relative z-10 w-full aspect-square rounded-3xl overflow-hidden border border-border-default shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
               <img
-                src="/hero-program-mandiri.webp"
+                src={heroProgramMandiriImg}
                 alt="Students collaborating on real projects"
                 className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-500"
               />
