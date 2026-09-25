@@ -1,13 +1,8 @@
 
-import { useTheme } from '../contexts/ThemeContext';
 
-const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
 function Footer() {
-  const { theme } = useTheme();
-  const isLight = theme === 'light';
-
   const programLinks = [
     { label: 'Bootcamp', href: '#' },
     { label: 'Workshop', href: '#' },
@@ -50,12 +45,12 @@ function Footer() {
   ];
 
   return (
-    <footer className={`py-12 border-t transition-colors ${isLight ? 'bg-bg-footer text-text-muted' : 'bg-[#08060F] text-text-muted'}`} style={{ borderColor: 'var(--color-divider)' }}>
+    <footer className="py-12 border-t bg-[#08060F] text-text-muted" style={{ borderColor: 'var(--color-divider)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
         <div>
           <div className="mb-10">
             <img
-              src={isLight ? LOGO_LIGHT : LOGO_DARK}
+              src={LOGO_DARK}
               alt="logoIL"
               className="h-9 w-auto object-left"
             />
@@ -68,7 +63,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className={`font-bold mb-4 ${isLight ? 'text-text-primary' : 'text-white'}`}>Program</h4>
+          <h4 className="font-bold mb-4 text-white">Program</h4>
           <ul className="space-y-2 text-sm">
             {programLinks.map((link) => (
               <li key={link.label}>
@@ -81,7 +76,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className={`font-bold mb-4 ${isLight ? 'text-text-primary' : 'text-white'}`}>Corporate</h4>
+          <h4 className="font-bold mb-4 text-white">Corporate</h4>
           <ul className="space-y-2 text-sm">
             {corporateLinks.map((link) => (
               <li key={link.label}>
@@ -94,7 +89,7 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className={`font-bold mb-4 ${isLight ? 'text-text-primary' : 'text-white'}`}>Program Mandiri</h4>
+          <h4 className="font-bold mb-4 text-white">Program Mandiri</h4>
           <ul className="space-y-2 text-sm">
             {mandiriLinks.map((link) => (
               <li key={link.label}>
@@ -107,10 +102,10 @@ function Footer() {
         </div>
 
         <div>
-          <h4 className={`font-bold mb-4 ${isLight ? 'text-text-primary' : 'text-white'}`}>Our Social Media</h4>
+          <h4 className="font-bold mb-4 text-white">Our Social Media</h4>
           <div className="flex gap-3 mb-6">
             {socialLinks.map((s) => (
-                <a key={s.label} href={s.href} className={`hover:text-brand-accent transition-colors ${isLight ? 'text-text-muted' : 'text-gray-400'}`} aria-label={s.label}>
+                <a key={s.label} href={s.href} className="hover:text-brand-accent transition-colors text-gray-400" aria-label={s.label}>
                 {s.icon}
               </a>
             ))}
@@ -133,7 +128,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className={`max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-5 border-t text-center text-sm ${isLight ? 'border-divider text-text-muted' : 'border-white/10 text-gray-400'}`}>
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-5 border-t border-white/10 text-center text-sm text-gray-400">
         <p>&copy; 2026 Infinite Learning Indonesia. All rights reserved.</p>
       </div>
     </footer>
