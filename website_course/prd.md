@@ -44,14 +44,15 @@ Platform pembelajaran online yang berfokus pada pelatihan vokasi dan *upskilling
 
 #### Section: Navigation Bar
 
-- **Layout:** Fixed top, full-width, glass-panel dark theme
-- **Left:** Logo Infinite Learning (klik -> scroll to top)
-- **Center:** Menu navigation dengan dropdown
-  - Home
-  - Program (dropdown: Bootcamp, Workshop, Belajar Mandiri, Lihat Semua Program)
-  - Corporate (dropdown: Corporate Training, Partnership, Hire Our Graduates)
-  - Program Mandiri
-- **Right:** Search bar + Masuk / Daftar Sekarang buttons
+- **Layout:** Fixed top, full-width (edge-to-edge dengan gutter ~40px di desktop), glass-panel dark theme, 1 baris
+- **Height:** 64px
+- **Left:** Logo Infinite Learning (klik -> scroll to top), berjarak dari tepi kiri
+- **Menu (split 3-1):**
+  - Kiri search: Home, Program (dropdown: Bootcamp, Workshop, Belajar Mandiri, Lihat Semua Program), Corporate (dropdown: Corporate Training, Partnership, Hire Our Graduates)
+  - Search bar (flex-1, dominan — mengisi seluruh sisa lebar navbar)
+  - Kanan search: Program Mandiri
+- **Right:** Theme toggle + Masuk / Daftar Sekarang buttons, berjarak dari tepi kanan
+- **Search dropdown:** Min-width 500px, melebar ke bawah dari input
 - **Mobile:** Hamburger menu dengan sub-menu bertingkat
 - **Auto-hide:** Navbar tersembunyi saat scroll ke bawah, muncul saat scroll ke atas
 - **Dropdown behavior:** Click untuk buka/tutup, klik di luar untuk tutup

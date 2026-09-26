@@ -310,6 +310,7 @@ right: 0;
 z-index: 100;
 height: 64px;
 ```
+**Layout (1 baris):** Logo di ujung kiri → menu split 3-1 (Home, Program, Corporate | Search bar `flex-1` dominan | Program Mandiri) → theme toggle + auth di ujung kanan. Navbar full-width (edge-to-edge) dengan gutter `px-4 / sm:px-6 / lg:px-10`.
 **Auto-hide:** `.nav-hidden` class → `transform: translateY(-100%)`
 
 ### 7.6. Accordion (FAQ)
