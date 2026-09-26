@@ -82,22 +82,23 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
 
   return (
     <nav id="navbar" className={`fixed w-full z-100 border-b border-border-default transition-all duration-300 ${navClass} ${translateClass}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="hidden md:flex justify-between items-stretch h-22">
-          <div className="shrink-0 flex items-center px-6">
+      <div className="w-full px-4 sm:px-6 lg:px-10">
+        <div className="hidden md:flex items-center h-16 gap-6">
+          <div className="shrink-0 flex items-center">
             <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-8 w-auto object-contain" />
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center flex-1 px-4">
-            <div className="flex flex-col items-center w-110 max-w-lg">
-              <SearchBar onResultClick={onResultClick} navVisible={navVisible} fullWidth={true} />
-              <div className="flex items-center space-x-8 mt-3 w-full">
-                {menuItems.map(renderMenuItem)}
-              </div>
-            </div>
+          <div className="shrink-0 flex items-center gap-6">
+            {menuItems.slice(0, 3).map(renderMenuItem)}
           </div>
-          <div className="shrink-0 flex items-center px-6 space-x-4">
+          <div className="flex-1 min-w-0">
+            <SearchBar onResultClick={onResultClick} navVisible={navVisible} fullWidth={true} />
+          </div>
+          <div className="shrink-0 flex items-center">
+            {renderMenuItem(menuItems[3])}
+          </div>
+          <div className="shrink-0 flex items-center gap-3">
             <button onClick={toggleTheme} className={`transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
               {isLight ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,8 +123,8 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
               </div>
             ) : (
               <>
-                <button onClick={onLoginClick} className={`font-semibold transition-colors text-sm ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
-                <button onClick={onRegisterClick} className="btn-premium bg-button-gradient text-white px-6 py-2.5 rounded-full font-semibold shadow-glow text-sm">Daftar Sekarang</button>
+                <button onClick={onLoginClick} className={`font-semibold transition-colors text-sm whitespace-nowrap ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
+                <button onClick={onRegisterClick} className="btn-premium bg-button-gradient text-white px-5 py-2 rounded-full font-semibold shadow-glow text-sm whitespace-nowrap">Daftar Sekarang</button>
               </>
             )}
           </div>
