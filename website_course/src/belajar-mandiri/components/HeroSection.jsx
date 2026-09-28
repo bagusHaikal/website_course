@@ -1,11 +1,9 @@
-import { hero, waLink } from '../data';
-import bootcampImg from '../../assets/bootcamp.png';
+import { hero } from '../data';
 
 const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
-const waSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.664l1.497 2.99a1 1 0 01-.532 1.33l-2.121 1.061a10.01 10.01 0 005.572 5.572l1.061-2.121a1 1 0 011.33-.532l2.99 1.497A1 1 0 0121 18.72V21a2 2 0 01-2 2h-1.28a1 1 0 01-.948-.664l-1.497-2.99a1 1 0 01-1.33.532l-2.121 1.061A10.01 10.01 0 014 18.604V5z" /></svg>;
 
-function scrollToDetail() {
-  document.getElementById('detail-bootcamp')?.scrollIntoView({ behavior: 'smooth' });
+function scrollToCourses() {
+  document.getElementById('list-course')?.scrollIntoView({ behavior: 'smooth' });
 }
 
 function HeroSection({ isLight }) {
@@ -36,27 +34,16 @@ function HeroSection({ isLight }) {
             <p className="text-text-secondary text-base lg:text-lg mb-4 leading-relaxed max-w-lg">{hero.desc}</p>
             <p className="text-text-secondary text-base lg:text-lg mb-8 leading-relaxed max-w-lg border-l-2 border-brand-violet pl-5">{hero.descDetail}</p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button onClick={scrollToDetail} className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
-                {hero.ctaDetail}
-                {arrowSVG}
-              </button>
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-text-primary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-3 w-full sm:w-auto"
-              >
-                {hero.ctaConsult}
-                {waSVG}
-              </a>
-            </div>
+            <button onClick={scrollToCourses} className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
+              {hero.cta}
+              {arrowSVG}
+            </button>
           </div>
 
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
             <img
-              src={bootcampImg}
-              alt="Peserta bootcamp belajar bersama mentor"
+              src={hero.image}
+              alt="Belajar Mandiri Infinite Learning"
               className="w-full h-auto object-cover rounded-3xl opacity-90 hover:opacity-100 transition-opacity duration-500"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>

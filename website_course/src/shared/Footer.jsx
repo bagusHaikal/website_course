@@ -1,12 +1,13 @@
 
+import { Link } from 'react-router-dom';
 
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
 function Footer() {
   const programLinks = [
     { label: 'Bootcamp', href: '#' },
-    { label: 'Workshop', href: '#' },
-    { label: 'Belajar Mandiri', href: '#' }
+    { label: 'Workshop', href: '/workshop' },
+    { label: 'Belajar Mandiri', href: '/belajar-mandiri' }
   ];
 
   const corporateLinks = [
@@ -65,13 +66,21 @@ function Footer() {
         <div>
           <h4 className="font-bold mb-4 text-white">Program</h4>
           <ul className="space-y-2 text-sm">
-            {programLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="hover:text-brand-accent transition-colors">
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {programLinks.map((link) =>
+              link.href.startsWith('/') ? (
+                <li key={link.label}>
+                  <Link to={link.href} className="hover:text-brand-accent transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ) : (
+                <li key={link.label}>
+                  <a href={link.href} className="hover:text-brand-accent transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              )
+            )}
           </ul>
         </div>
 
