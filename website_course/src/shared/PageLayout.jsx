@@ -40,7 +40,7 @@ function PageLayout({ children }) {
         onLoginClick={() => openAuthModal('login')}
         onRegisterClick={() => openAuthModal('register')}
       />
-      <main className="pt-16">
+      <main className="pt-20 md:pt-16">
         {children}
       </main>
       <Footer />

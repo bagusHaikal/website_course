@@ -48,7 +48,7 @@ function CorporateTrainingPage() {
         onLoginClick={() => openAuthModal('login')}
         onRegisterClick={() => openAuthModal('register')}
       />
-      <main className="pt-22">
+      <main>
         <CorporateTraining />
       </main>
       <Footer />
