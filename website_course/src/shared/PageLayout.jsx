@@ -1,17 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ThemeProvider } from './contexts/ThemeContext';
-import { AuthProvider } from './contexts/AuthContext';
-import Home from './home';
-import ProgramMandiri from './program-mandiri';
-import Bootcamp from './bootcamp';
-import PageLayout from './shared/PageLayout';
-import CorporateTraining from './corporate-training';
-import SharedNavbar from './shared/Navbar';
-import Footer from './shared/Footer';
-import AuthModal from './shared/AuthModal';
+import SharedNavbar from './Navbar';
+import Footer from './Footer';
+import AuthModal from './AuthModal';
 
-function CorporateTrainingPage() {
+function PageLayout({ children }) {
   const [navVisible, setNavVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
@@ -48,8 +40,8 @@ function CorporateTrainingPage() {
         onLoginClick={() => openAuthModal('login')}
         onRegisterClick={() => openAuthModal('register')}
       />
-      <main className="pt-22">
-        <CorporateTraining />
+      <main className="pt-16">
+        {children}
       </main>
       <Footer />
       <AuthModal
@@ -62,27 +54,4 @@ function CorporateTrainingPage() {
   );
 }
 
-function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<PageLayout><Home /></PageLayout>} />
-        <Route path="/program-mandiri" element={<PageLayout><ProgramMandiri /></PageLayout>} />
-        <Route path="/bootcamp" element={<PageLayout><Bootcamp /></PageLayout>} />
-        <Route path="/corporate-training" element={<CorporateTrainingPage />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-function App() {
-  return (
-    <AuthProvider>
-      <ThemeProvider>
-        <AppRoutes />
-      </ThemeProvider>
-    </AuthProvider>
-  );
-}
-
-export default App;
+export default PageLayout;

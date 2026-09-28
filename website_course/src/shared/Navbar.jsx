@@ -16,7 +16,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
   const menuItems = [
     { label: 'Home', href: '/' },
     { label: 'Program', dropdown: [
-      { label: 'Bootcamp', href: '#' }, { label: 'Workshop', href: '#' },
+      { label: 'Bootcamp', href: '/bootcamp' }, { label: 'Workshop', href: '#' },
       { label: 'Belajar Mandiri', href: '#' }, { label: 'Lihat Semua Program', href: '#' }
     ]},
     { label: 'Corporate', dropdown: [
@@ -58,9 +58,14 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
             </button>
             {isOpen && (
               <div className={`absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'}`}>
-                {item.dropdown.map((sub) => (
-                  <a key={sub.label} href={sub.href} onClick={() => setOpenDropdown(null)} className={`block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{sub.label}</a>
-                ))}
+                {item.dropdown.map((sub) => {
+                  const subClass = `block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`;
+                  return sub.href.startsWith('/') ? (
+                    <Link key={sub.label} to={sub.href} onClick={() => setOpenDropdown(null)} className={subClass}>{sub.label}</Link>
+                  ) : (
+                    <a key={sub.label} href={sub.href} onClick={() => setOpenDropdown(null)} className={subClass}>{sub.label}</a>
+                  );
+                })}
               </div>
             )}
           </>
@@ -77,22 +82,23 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
 
   return (
     <nav id="navbar" className={`fixed w-full z-100 border-b border-border-default transition-all duration-300 ${navClass} ${translateClass}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="hidden md:flex justify-between items-stretch h-22">
-          <div className="shrink-0 flex items-center px-6">
+      <div className="w-full px-4 sm:px-6 lg:px-10">
+        <div className="hidden md:flex items-center h-16 gap-6">
+          <div className="shrink-0 flex items-center">
             <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-8 w-auto object-contain" />
             </div>
           </div>
-          <div className="flex flex-col items-center justify-center flex-1 px-4">
-            <div className="flex flex-col items-center w-110 max-w-lg">
-              <SearchBar onResultClick={onResultClick} navVisible={navVisible} fullWidth={true} />
-              <div className="flex items-center space-x-8 mt-3 w-full">
-                {menuItems.map(renderMenuItem)}
-              </div>
-            </div>
+          <div className="shrink-0 flex items-center gap-6">
+            {menuItems.slice(0, 3).map(renderMenuItem)}
           </div>
-          <div className="shrink-0 flex items-center px-6 space-x-4">
+          <div className="flex-1 min-w-0">
+            <SearchBar onResultClick={onResultClick} navVisible={navVisible} fullWidth={true} />
+          </div>
+          <div className="shrink-0 flex items-center">
+            {renderMenuItem(menuItems[3])}
+          </div>
+          <div className="shrink-0 flex items-center gap-3">
             <button onClick={toggleTheme} className={`transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
               {isLight ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -117,8 +123,8 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
               </div>
             ) : (
               <>
-                <button onClick={onLoginClick} className={`font-semibold transition-colors text-sm ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
-                <button onClick={onRegisterClick} className="btn-premium bg-button-gradient text-white px-6 py-2.5 rounded-full font-semibold shadow-glow text-sm">Daftar Sekarang</button>
+                <button onClick={onLoginClick} className={`font-semibold transition-colors text-sm whitespace-nowrap ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
+                <button onClick={onRegisterClick} className="btn-premium bg-button-gradient text-white px-5 py-2 rounded-full font-semibold shadow-glow text-sm whitespace-nowrap">Daftar Sekarang</button>
               </>
             )}
           </div>
@@ -155,13 +161,23 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
                     {item.label}
                     <svg className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                   </button>
-                  {isOpen && item.dropdown.map((sub) => (
-                    <a key={sub.label} href={sub.href} onClick={() => { setMenuOpen(false); setOpenDropdown(null); }} className={`block px-6 py-2 text-sm transition-colors ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-text-muted hover:text-text-primary'}`}>{sub.label}</a>
-                  ))}
+                  {isOpen && item.dropdown.map((sub) => {
+                    const subClass = `block px-6 py-2 text-sm transition-colors ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-text-muted hover:text-text-primary'}`;
+                    const onClick = () => { setMenuOpen(false); setOpenDropdown(null); };
+                    return sub.href.startsWith('/') ? (
+                      <Link key={sub.label} to={sub.href} onClick={onClick} className={subClass}>{sub.label}</Link>
+                    ) : (
+                      <a key={sub.label} href={sub.href} onClick={onClick} className={subClass}>{sub.label}</a>
+                    );
+                  })}
                 </div>
-              ) : (
-                <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className={`block px-3 py-3 text-base font-medium rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{item.label}</a>
-              );
+                ) : (
+                  item.href === '#' ? (
+                    <a key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className={`block px-3 py-3 text-base font-medium rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{item.label}</a>
+                  ) : (
+                    <Link key={item.label} to={item.href} onClick={() => setMenuOpen(false)} className={`block px-3 py-3 text-base font-medium rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>{item.label}</Link>
+                  )
+                );
             })}
             <div className="pt-4 flex flex-col gap-3">
               {user ? (

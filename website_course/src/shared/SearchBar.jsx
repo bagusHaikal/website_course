@@ -71,7 +71,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
     <div ref={wrapperRef} className={`relative flex items-center z-1000 ${className}`}>
       <div className={`flex items-center border rounded-full overflow-hidden transition-colors ${
         open ? 'border-brand-violet/50' : 'border-border-default'
-      } ${fullWidth ? 'w-full md:max-w-md' : 'w-48 sm:w-60'}`}>
+      } ${fullWidth ? 'w-full' : 'w-48 sm:w-60'}`}>
         <input
           ref={inputRef}
           type="text"
@@ -103,7 +103,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
 
       {open && (
         <div
-          className="absolute top-full left-0 mt-2 w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-300"
+          className="absolute top-full left-0 mt-2 min-w-[500px] w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-300"
         >
           {filtered.length > 0 ? (
             <div className="py-2 max-h-90 overflow-y-auto">
