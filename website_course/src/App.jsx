@@ -5,11 +5,14 @@ import { AuthProvider } from './contexts/AuthContext';
 import Home from './home';
 import ProgramMandiri from './program-mandiri';
 import Bootcamp from './bootcamp';
+import Workshop from './workshop';
 import PageLayout from './shared/PageLayout';
 import CorporateTraining from './corporate-training';
+import BelajarMandiri from './belajar-mandiri';
 import SharedNavbar from './shared/Navbar';
 import Footer from './shared/Footer';
 import AuthModal from './shared/AuthModal';
+import ScrollToTop from './shared/ScrollToTop';
 
 function CorporateTrainingPage() {
   const [navVisible, setNavVisible] = useState(true);
@@ -64,11 +67,14 @@ function CorporateTrainingPage() {
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Routes>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Routes>
         <Route path="/" element={<PageLayout><Home /></PageLayout>} />
         <Route path="/program-mandiri" element={<PageLayout><ProgramMandiri /></PageLayout>} />
         <Route path="/bootcamp" element={<PageLayout><Bootcamp /></PageLayout>} />
+        <Route path="/workshop" element={<PageLayout><Workshop /></PageLayout>} />
+        <Route path="/belajar-mandiri" element={<PageLayout><BelajarMandiri /></PageLayout>} />
         <Route path="/corporate-training" element={<CorporateTrainingPage />} />
       </Routes>
     </BrowserRouter>
