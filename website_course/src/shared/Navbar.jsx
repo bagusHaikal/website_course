@@ -17,7 +17,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
     { label: 'Home', href: '/' },
     { label: 'Program', dropdown: [
       { label: 'Bootcamp', href: '/bootcamp' }, { label: 'Workshop', href: '/workshop' },
-      { label: 'Belajar Mandiri', href: '/belajar-mandiri' }, { label: 'Lihat Semua Program', href: '#' }
+      { label: 'Belajar Mandiri', href: '/belajar-mandiri' }, { label: 'Lihat Semua Program', href: '/all-programs' }
     ]},
     { label: 'Corporate', dropdown: [
        { label: 'Corporate Training', href: '/corporate-training' }, { label: 'Partnership', href: '#' },

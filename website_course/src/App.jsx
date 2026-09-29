@@ -9,6 +9,7 @@ import Workshop from './workshop';
 import PageLayout from './shared/PageLayout';
 import CorporateTraining from './corporate-training';
 import BelajarMandiri from './belajar-mandiri';
+import AllPrograms from './all-programs';
 import SharedNavbar from './shared/Navbar';
 import Footer from './shared/Footer';
 import AuthModal from './shared/AuthModal';
@@ -75,6 +76,7 @@ function AppRoutes() {
         <Route path="/bootcamp" element={<PageLayout><Bootcamp /></PageLayout>} />
         <Route path="/workshop" element={<PageLayout><Workshop /></PageLayout>} />
         <Route path="/belajar-mandiri" element={<PageLayout><BelajarMandiri /></PageLayout>} />
+        <Route path="/all-programs" element={<PageLayout><AllPrograms /></PageLayout>} />
         <Route path="/corporate-training" element={<CorporateTrainingPage />} />
       </Routes>
     </BrowserRouter>
