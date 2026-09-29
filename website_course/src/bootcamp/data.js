@@ -84,8 +84,8 @@ const mentor = {
   name: 'Arifian',
   role: 'Senior Praktisi & Career Mentor',
   image: mentorImg,
-  bio: 'Praktisi senior yang telah mendampingi ratusan peserta bootcamp, dari skill teknis, membangun portofolio profesional, hingga persiapan menghadapi dunia kerja.',
-  points: ['Pendampingan intensif selama program', 'Review portofolio & CV satu per satu', 'Simulasi interview bersama'],
+  bio: 'Seorang profesional di bidang Data & AI dengan pengalaman sebagai technical mentor. Saat ini, ia menjabat sebagai Head of AI Development Program di Infinite Learning.',
+  details: 'Arifian memiliki keahlian dalam Data dan Artificial Intelligence, dan telah membimbing banyak mentee dalam pengembangan machine learning, data science, AI governance, hingga model deployment. Selain itu, Arifian merupakan RHCSA Certified (Red Hat Certified System Administrator) dan pernah menjadi Certified Instructor di IBM Academy.',
 };
 
 const installment = {

@@ -1,3 +1,8 @@
+import portfolioImg from '../assets/bootcamp-portfolio.webp';
+import dataDrivenImg from '../assets/bootcamp-datadriven.webp';
+import englishImg from '../assets/bootcamp-english.webp';
+import excelImg from '../assets/bootcamp-excel.webp';
+
 export const courses = [
   {
     id: 1,
@@ -7,19 +12,21 @@ export const courses = [
     priceOriginal: "Rp 249.000",
     priceDiscount: "Rp 59.000",
     lessons: 4,
-    image: "https://course.infinitelearning.id/wp-content/uploads/2025/10/Portfolio-760x424.webp",
-    tag: "Kelas Mandiri"
+    image: portfolioImg,
+    tag: "Kelas Mandiri",
+    slug: "professional-portfolio"
   },
   {
     id: 2,
     title: "Data Driven Decision Making With AI Assistance",
-    category: "Data Analysts",
+    category: "Technical",
     type: "Satuan",
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
     lessons: 2,
-    image: "https://course.infinitelearning.id/wp-content/uploads/2025/09/DataDriven-760x424.webp",
-    tag: "Kelas Mandiri"
+    image: dataDrivenImg,
+    tag: "Kelas Mandiri",
+    slug: "data-driven"
   },
   {
     id: 3,
@@ -29,20 +36,22 @@ export const courses = [
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
     lessons: 6,
-    image: "https://course.infinitelearning.id/wp-content/uploads/2025/09/English-768x413.webp",
-    tag: "Kelas Mandiri"
+    image: englishImg,
+    tag: "Kelas Mandiri",
+    slug: "english-for-industrial"
   },
   {
     id: 4,
     title: "Excel Made Easy",
     desc: "Pernah nggak sih, dapet data mentah yang berantakan...",
-    category: "Data Analysts",
+    category: "Technical",
     type: "Satuan",
     priceOriginal: "Rp 199.000",
     priceDiscount: "Rp 49.000",
     lessons: 3,
-    image: "https://course.infinitelearning.id/wp-content/uploads/2025/10/Excel-768x413.webp",
-    tag: "Kelas Mandiri"
+    image: excelImg,
+    tag: "Kelas Mandiri",
+    slug: "excel-made-easy"
   }
 ];
 
