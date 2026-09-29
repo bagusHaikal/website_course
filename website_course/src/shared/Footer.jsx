@@ -11,8 +11,8 @@ function Footer() {
 
   const corporateLinks = [
     { label: 'Corporate Training', href: '#' },
-    { label: 'Partnership', href: '#' },
-    { label: 'Hire Our Graduates', href: '#' }
+    { label: 'Partnership', href: '/partnership' },
+    { label: 'Hire Our Graduates', href: '/hire-our-graduates' }
   ];
 
   const mandiriLinks = [

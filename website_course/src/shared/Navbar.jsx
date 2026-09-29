@@ -20,8 +20,8 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
       { label: 'Belajar Mandiri', href: '#' }, { label: 'Lihat Semua Program', href: '#' }
     ]},
     { label: 'Corporate', dropdown: [
-       { label: 'Corporate Training', href: '/corporate-training' }, { label: 'Partnership', href: '#' },
-       { label: 'Hire Our Graduates', href: '#' }
+       { label: 'Corporate Training', href: '/corporate-training' }, { label: 'Partnership', href: '/partnership' },
+       { label: 'Hire Our Graduates', href: '/hire-our-graduates' }
      ]},
     { label: 'Program Mandiri', href: '/program-mandiri' }
   ];
