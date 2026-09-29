@@ -10,6 +10,8 @@ import PageLayout from './shared/PageLayout';
 import CorporateTraining from './corporate-training';
 import BelajarMandiri from './belajar-mandiri';
 import AllPrograms from './all-programs';
+import Partnership from './partnership';
+import HireOurGraduates from './hire-graduates';
 import SharedNavbar from './shared/Navbar';
 import Footer from './shared/Footer';
 import AuthModal from './shared/AuthModal';
@@ -68,9 +70,9 @@ function CorporateTrainingPage() {
 
 function AppRoutes() {
   return (
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
+    <BrowserRouter>
+      <ScrollToTop />
+      <Routes>
         <Route path="/" element={<PageLayout><Home /></PageLayout>} />
         <Route path="/program-mandiri" element={<PageLayout><ProgramMandiri /></PageLayout>} />
         <Route path="/bootcamp" element={<PageLayout><Bootcamp /></PageLayout>} />
@@ -78,6 +80,8 @@ function AppRoutes() {
         <Route path="/belajar-mandiri" element={<PageLayout><BelajarMandiri /></PageLayout>} />
         <Route path="/all-programs" element={<PageLayout><AllPrograms /></PageLayout>} />
         <Route path="/corporate-training" element={<CorporateTrainingPage />} />
+        <Route path="/partnership" element={<PageLayout><Partnership /></PageLayout>} />
+        <Route path="/hire-our-graduates" element={<PageLayout><HireOurGraduates /></PageLayout>} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,19 +1,19 @@
-
 import { Link } from 'react-router-dom';
 
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
 function Footer() {
   const programLinks = [
-    { label: 'Bootcamp', href: '#' },
+    { label: 'Bootcamp', href: '/bootcamp' },
     { label: 'Workshop', href: '/workshop' },
-    { label: 'Belajar Mandiri', href: '/belajar-mandiri' }
+    { label: 'Belajar Mandiri', href: '/belajar-mandiri' },
+    { label: 'Lihat Semua Program', href: '/all-programs' }
   ];
 
   const corporateLinks = [
-    { label: 'Corporate Training', href: '#' },
-    { label: 'Partnership', href: '#' },
-    { label: 'Hire Our Graduates', href: '#' }
+    { label: 'Corporate Training', href: '/corporate-training' },
+    { label: 'Partnership', href: '/partnership' },
+    { label: 'Hire Our Graduates', href: '/hire-our-graduates' }
   ];
 
   const mandiriLinks = [
@@ -87,13 +87,21 @@ function Footer() {
         <div>
           <h4 className="font-bold mb-4 text-white">Corporate</h4>
           <ul className="space-y-2 text-sm">
-            {corporateLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="hover:text-brand-accent transition-colors">
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {corporateLinks.map((link) =>
+              link.href.startsWith('/') ? (
+                <li key={link.label}>
+                  <Link to={link.href} className="hover:text-brand-accent transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ) : (
+                <li key={link.label}>
+                  <a href={link.href} className="hover:text-brand-accent transition-colors">
+                    {link.label}
+                  </a>
+                </li>
+              )
+            )}
           </ul>
         </div>
 
