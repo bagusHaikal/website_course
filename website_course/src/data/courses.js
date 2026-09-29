@@ -19,7 +19,7 @@ export const courses = [
   {
     id: 2,
     title: "Data Driven Decision Making With AI Assistance",
-    category: "Data Analysts",
+    category: "Technical",
     type: "Satuan",
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
@@ -44,7 +44,7 @@ export const courses = [
     id: 4,
     title: "Excel Made Easy",
     desc: "Pernah nggak sih, dapet data mentah yang berantakan...",
-    category: "Data Analysts",
+    category: "Technical",
     type: "Satuan",
     priceOriginal: "Rp 199.000",
     priceDiscount: "Rp 49.000",
