@@ -1,5 +1,4 @@
 
-const verifiedSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>;
 const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
 import heroProgramMandiriImg from '../../assets/hero-program-mandiri.webp';
 
@@ -49,22 +48,11 @@ function HeroSection({ isLight }) {
 
           {/* Right – Image */}
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
-            <div className="relative z-10 w-full aspect-square rounded-3xl overflow-hidden border border-border-default shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
-              <img
-                src={heroProgramMandiriImg}
-                alt="Students collaborating on real projects"
-                className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-500"
-              />
-              <div className="absolute bottom-8 left-8 right-8 glass-panel p-5 rounded-2xl flex items-center gap-4">
-                <div className="bg-green-500/20 p-3 rounded-full text-green-400 shrink-0">
-                  {verifiedSVG}
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-text-primary">Konversi hingga 20 SKS</p>
-                  <p className="text-xs text-text-secondary">Sertifikat Resmi & Magang Industri</p>
-                </div>
-              </div>
-            </div>
+            <img
+              src={heroProgramMandiriImg}
+              alt="Students collaborating on real projects"
+              className="w-full h-auto object-cover rounded-3xl opacity-90 hover:opacity-100 transition-opacity duration-500"
+            />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>
           </div>
 
