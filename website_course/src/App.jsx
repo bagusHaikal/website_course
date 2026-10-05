@@ -12,6 +12,7 @@ import BelajarMandiri from './belajar-mandiri';
 import AllPrograms from './all-programs';
 import Partnership from './partnership';
 import HireOurGraduates from './hire-graduates';
+import CourseDetail from './courses/CourseDetail';
 import SharedNavbar from './shared/Navbar';
 import Footer from './shared/Footer';
 import AuthModal from './shared/AuthModal';
@@ -78,6 +79,7 @@ function AppRoutes() {
         <Route path="/bootcamp" element={<PageLayout><Bootcamp /></PageLayout>} />
         <Route path="/workshop" element={<PageLayout><Workshop /></PageLayout>} />
         <Route path="/belajar-mandiri" element={<PageLayout><BelajarMandiri /></PageLayout>} />
+        <Route path="/courses/:slug" element={<PageLayout><CourseDetail /></PageLayout>} />
         <Route path="/all-programs" element={<PageLayout><AllPrograms /></PageLayout>} />
         <Route path="/corporate-training" element={<CorporateTrainingPage />} />
         <Route path="/partnership" element={<PageLayout><Partnership /></PageLayout>} />

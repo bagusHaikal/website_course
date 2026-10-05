@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { courses, kelasMandiri } from '../data';
 
 const arrowSVG = <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
@@ -14,9 +15,6 @@ function CourseCard({ course }) {
           alt={course.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-3 left-3 bg-bg-base/80 backdrop-blur-md text-text-primary text-[10px] font-semibold px-2 py-1 rounded border border-border-default">
-          {course.tag}
-        </div>
         <div className="absolute inset-0 bg-linear-to-t via-transparent to-transparent from-white/60 dark:from-bg-base"></div>
       </div>
 
@@ -51,13 +49,13 @@ function CourseCard({ course }) {
             <span className="text-text-muted line-through text-xs">{course.priceOriginal}</span>
             <span className="text-brand-accent font-bold text-lg">{course.priceDiscount}</span>
           </div>
-          <a
-            href="#"
+          <Link
+            to={`/courses/${course.slug}`}
             className="btn-premium bg-button-gradient text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-glow inline-flex items-center justify-center gap-2 w-full"
           >
             Lihat Detail
             {arrowSVG}
-          </a>
+          </Link>
         </div>
       </div>
     </div>
