@@ -1,27 +1,27 @@
 import { Link } from 'react-router-dom';
+import { footerLinks, contactLinks } from '../data/siteLinks';
 
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
+function renderLinkList(links) {
+  return links.map((link) =>
+    link.href.startsWith('/') ? (
+      <li key={link.label}>
+        <Link to={link.href} className="hover:text-brand-accent transition-colors">
+          {link.label}
+        </Link>
+      </li>
+    ) : (
+      <li key={link.label}>
+        <a href={link.href} className="hover:text-brand-accent transition-colors">
+          {link.label}
+        </a>
+      </li>
+    )
+  );
+}
+
 function Footer() {
-  const programLinks = [
-    { label: 'Bootcamp', href: '/bootcamp' },
-    { label: 'Workshop', href: '/workshop' },
-    { label: 'Belajar Mandiri', href: '/belajar-mandiri' },
-    { label: 'Lihat Semua Program', href: '/all-programs' }
-  ];
-
-  const corporateLinks = [
-    { label: 'Corporate Training', href: '/corporate-training' },
-    { label: 'Partnership', href: '/partnership' },
-    { label: 'Hire Our Graduates', href: '/hire-our-graduates' }
-  ];
-
-  const mandiriLinks = [
-    { label: 'Website Development', href: '#' },
-    { label: 'Mobile Development', href: '#' },
-    { label: 'Artificial Intelligence', href: '#' }
-  ];
-
   const socialLinks = [
     { label: 'Instagram', href: '#', icon: (
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -44,7 +44,6 @@ function Footer() {
       </svg>
     )}
   ];
-
   return (
     <footer className="py-12 border-t bg-[#08060F] text-text-muted" style={{ borderColor: 'var(--color-divider)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
@@ -66,55 +65,21 @@ function Footer() {
         <div>
           <h4 className="font-bold mb-4 text-white">Program</h4>
           <ul className="space-y-2 text-sm">
-            {programLinks.map((link) =>
-              link.href.startsWith('/') ? (
-                <li key={link.label}>
-                  <Link to={link.href} className="hover:text-brand-accent transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ) : (
-                <li key={link.label}>
-                  <a href={link.href} className="hover:text-brand-accent transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              )
-            )}
+            {renderLinkList(footerLinks.program)}
           </ul>
         </div>
 
         <div>
           <h4 className="font-bold mb-4 text-white">Corporate</h4>
           <ul className="space-y-2 text-sm">
-            {corporateLinks.map((link) =>
-              link.href.startsWith('/') ? (
-                <li key={link.label}>
-                  <Link to={link.href} className="hover:text-brand-accent transition-colors">
-                    {link.label}
-                  </Link>
-                </li>
-              ) : (
-                <li key={link.label}>
-                  <a href={link.href} className="hover:text-brand-accent transition-colors">
-                    {link.label}
-                  </a>
-                </li>
-              )
-            )}
+            {renderLinkList(footerLinks.corporate)}
           </ul>
         </div>
 
         <div>
           <h4 className="font-bold mb-4 text-white">Program Mandiri</h4>
           <ul className="space-y-2 text-sm">
-            {mandiriLinks.map((link) => (
-              <li key={link.label}>
-                <a href={link.href} className="hover:text-brand-accent transition-colors">
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {renderLinkList(footerLinks.mandiri)}
           </ul>
         </div>
 
@@ -128,13 +93,13 @@ function Footer() {
             ))}
           </div>
           <div className="space-y-2 text-sm">
-            <a href="tel:+6282387597266" className="flex items-center gap-2 hover:text-brand-accent transition-colors">
+            <a href={contactLinks.phone.href} className="flex items-center gap-2 hover:text-brand-accent transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0">
                 <path fillRule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 5.25V4.5z" clipRule="evenodd" />
               </svg>
               <span>+62 823 8759 7266</span>
             </a>
-            <a href="mailto:info@infinitelearning.id" className="flex items-center gap-2 hover:text-brand-accent transition-colors">
+            <a href={contactLinks.email.href} className="flex items-center gap-2 hover:text-brand-accent transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 shrink-0">
                 <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
                 <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
