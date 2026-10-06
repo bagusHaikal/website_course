@@ -98,24 +98,6 @@ function AlumniCard({ alum }) {
   );
 }
 
-function CtaAlumniCard() {
-  return (
-    <div className="flex flex-col items-center justify-center p-6 rounded-2xl border-2 border-dashed border-brand-accent/30 bg-brand-violet/5 transition-all duration-300 hover:border-brand-accent/60 hover:bg-brand-violet/10 text-center min-h-[280px]">
-      <div className="w-16 h-16 rounded-full bg-button-gradient/20 flex items-center justify-center mb-4 shadow-glow">
-        <svg className="w-8 h-8 text-brand-accent" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6"/></svg>
-      </div>
-      <p className="font-display font-extrabold text-3xl text-text-primary mb-1">+5.000</p>
-      <p className="text-sm text-text-muted mb-6">Talent Siap Kerja</p>
-      <a
-        href="#konsultasi"
-        className="btn-premium bg-button-gradient text-white px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap shadow-glow"
-      >
-        Lihat Semua Kandidat
-      </a>
-    </div>
-  );
-}
-
 function AlumniGridSection() {
   return (
     <section className="py-20 lg:py-28 bg-bg-base">
@@ -127,7 +109,6 @@ function AlumniGridSection() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {alumniHires.map((a) => (<AlumniCard key={a.id} alum={a} />))}
-          <CtaAlumniCard />
         </div>
       </div>
     </section>
