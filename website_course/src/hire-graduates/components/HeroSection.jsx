@@ -7,7 +7,7 @@ const downSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewB
 
 function HeroSection({ isLight }) {
   return (
-    <section className={`relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
+    <section className={`relative pt-16 pb-20 lg:pt-20 lg:pb-28 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
       <div className="mesh-bg">
         <div className="blob bg-brand-purple w-[600px] h-[600px] rounded-full -top-24 -left-24 opacity-20"></div>
         <div className="blob bg-brand-violet w-[500px] h-[500px] rounded-full -bottom-24 -right-24 opacity-20" style={{ animationDelay: '2s' }}></div>
