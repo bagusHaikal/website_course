@@ -14,11 +14,11 @@ function MentorsSection() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5">
           {mentors.map((m, i) => (
             <div key={i} className="flex flex-col items-center text-center">
-              <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden border border-border-default bg-bg-surface mb-3">
+              <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden border border-border-default bg-brand-violet/20 mb-3 flex items-center justify-center">
                 <img
                   src={m.image}
                   alt={m.name}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <h4 className="font-display font-bold text-text-primary text-sm leading-tight">{m.name}</h4>

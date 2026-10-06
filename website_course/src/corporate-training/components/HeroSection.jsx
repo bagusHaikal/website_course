@@ -2,7 +2,7 @@ const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" view
 
 function HeroSection({ isLight }) {
   return (
-    <section className={`relative pt-28 pb-20 lg:pt-40 lg:pb-28 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
+    <section className={`relative pt-12 pb-20 lg:pt-16 lg:pb-28 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
       <div className="mesh-bg">
         <div className="blob bg-brand-purple w-[600px] h-[600px] rounded-full -top-24 -right-24 opacity-20"></div>
         <div className="blob bg-brand-violet w-[500px] h-[500px] rounded-full -bottom-24 -left-24 opacity-20" style={{ animationDelay: '2s' }}></div>
@@ -19,11 +19,6 @@ function HeroSection({ isLight }) {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           <div className="max-w-xl animate-fade-slide-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-light text-xs font-bold mb-6 backdrop-blur-md uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
-              Corporate Training Program
-            </div>
-
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
               Tingkatkan Performa<br />
               <span className="text-gradient-gold">Bisnis Anda</span><br />
