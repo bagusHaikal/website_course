@@ -12,14 +12,14 @@ const programs = [
     desc: 'Kuasai front-end, back-end, dan desain UI/UX dalam satu program. Bangun aplikasi web modern dari nol hingga deploy.',
   },
   {
-    href: '/full-stack-web',
+    href: '/mobile-dev',
     icon: (
       <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
       </svg>
     ),
     title: 'Mobile Development with Flutter & UI/UX',
-    desc: 'Bangun aplikasi mobile cross-platform untuk Android dan iOS dengan Flutter. Desain antarmuka memikat hingga published.',
+    desc: 'Bikin aplikasi Android & iOS dari nol bareng mentor industri. Pakai Flutter & Dart plus desain UI/UX biar aplikasimu keren, gampang dipakai, dan siap rilis ke store.',
   },
   {
     href: '/full-stack-web',
