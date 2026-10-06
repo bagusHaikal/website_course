@@ -18,11 +18,6 @@ function HeroSection({ isLight }) {
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-12 items-center">
 
           <div className="max-w-xl animate-fade-slide-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-light text-xs font-bold mb-6 backdrop-blur-md uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
-              Hiring Partner
-            </div>
-
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
               Temukan Digital Talent yang Ideal untuk <span className="text-gradient-gold">Perusahaan Anda</span>
             </h1>
