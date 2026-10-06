@@ -12,7 +12,7 @@ function CaseStudiesSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {caseStudies.map((cs) => (
             <article key={cs.id} className="flex flex-col border border-border-default bg-bg-surface rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:border-border-hover hover:shadow-glow-hover">
-              <div className="bg-button-gradient p-8 relative overflow-hidden min-h-[140px] flex items-end">
+              <div className="bg-button-gradient p-8 relative overflow-hidden min-h-35 flex items-end">
                 <span className="font-display font-extrabold text-4xl tracking-tight text-white/95 select-none">{cs.monogram}</span>
                 <span className="absolute -right-2 -bottom-3 text-7xl font-display font-extrabold text-white/15 select-none pointer-events-none">{cs.monogram}</span>
               </div>

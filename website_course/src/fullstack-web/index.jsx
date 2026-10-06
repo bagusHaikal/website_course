@@ -1,14 +1,14 @@
 import { useTheme } from '../contexts/ThemeContext';
 import HeroSection from './components/HeroSection';
 import BenefitsSection from './components/BenefitsSection';
-import AudienceSection from './components/AudienceSection';
-import ProgramChoiceSection from './components/ProgramChoiceSection';
-import StepsTimelineSection from './components/StepsTimelineSection';
+import CurriculumSection from './components/CurriculumSection';
+import RequirementsSection from './components/RequirementsSection';
+import MentorsSection from './components/MentorsSection';
+import StepsSection from './components/StepsSection';
 import PricingSection from './components/PricingSection';
 import FAQSection from './components/FAQSection';
-import CTASection from './components/CTASection';
 
-function ProgramMandiri() {
+function FullStackWebPage() {
   const { theme } = useTheme();
   const isLight = theme === 'light';
 
@@ -16,14 +16,14 @@ function ProgramMandiri() {
     <div className="min-h-screen bg-bg-base text-text-primary antialiased overflow-x-hidden">
       <HeroSection isLight={isLight} />
       <BenefitsSection />
-      <AudienceSection />
-      <ProgramChoiceSection />
-      <StepsTimelineSection />
+      <CurriculumSection />
+      <RequirementsSection />
+      <MentorsSection />
+      <StepsSection />
       <PricingSection />
       <FAQSection />
-      <CTASection />
     </div>
   );
 }
 
-export default ProgramMandiri;
+export default FullStackWebPage;

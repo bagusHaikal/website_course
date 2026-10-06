@@ -1,13 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import SharedNavbar from './Navbar';
 import Footer from './Footer';
-import AuthModal from './AuthModal';
 
 function PageLayout({ children }) {
   const [navVisible, setNavVisible] = useState(true);
   const [scrolled, setScrolled] = useState(false);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [modalTab, setModalTab] = useState('login');
   const lastScrollY = useRef(0);
 
   useEffect(() => {
@@ -25,31 +22,13 @@ function PageLayout({ children }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const openAuthModal = (tab = 'login') => {
-    setModalTab(tab);
-    setModalOpen(true);
-  };
-
-  const closeAuthModal = () => setModalOpen(false);
-
   return (
     <>
-      <SharedNavbar
-        navVisible={navVisible}
-        scrolled={scrolled}
-        onLoginClick={() => openAuthModal('login')}
-        onRegisterClick={() => openAuthModal('register')}
-      />
+      <SharedNavbar navVisible={navVisible} scrolled={scrolled} />
       <main className="pt-20 md:pt-16">
         {children}
       </main>
       <Footer />
-      <AuthModal
-        isOpen={modalOpen}
-        onClose={closeAuthModal}
-        defaultTab={modalTab}
-        onSwitchTab={setModalTab}
-      />
     </>
   );
 }

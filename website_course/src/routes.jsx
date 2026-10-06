@@ -9,6 +9,9 @@ import HireOurGraduates from './hire-graduates';
 import CourseDetail from './courses/CourseDetail';
 import PageLayout from './shared/PageLayout';
 import CorporateTrainingLayout from './corporate-training/Layout';
+import Login from './login';
+import Register from './register';
+import FullStackWeb from './fullstack-web';
 
 export const routes = [
   { path: '/', element: <PageLayout><Home /></PageLayout> },
@@ -21,4 +24,7 @@ export const routes = [
   { path: '/corporate-training', element: <CorporateTrainingLayout /> },
   { path: '/partnership', element: <PageLayout><Partnership /></PageLayout> },
   { path: '/hire-our-graduates', element: <PageLayout><HireOurGraduates /></PageLayout> },
+  { path: '/login', element: <Login /> },
+  { path: '/register', element: <Register /> },
+  { path: '/full-stack-web', element: <PageLayout><FullStackWeb /></PageLayout> },
 ];

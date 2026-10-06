@@ -24,7 +24,7 @@ export const footerLinks = {
     { label: 'Hire Our Graduates', href: '/hire-our-graduates' }
   ],
   mandiri: [
-    { label: 'Website Development', href: '#' },
+    { label: 'Website Development', href: '/full-stack-web' },
     { label: 'Mobile Development', href: '#' },
     { label: 'Artificial Intelligence', href: '#' }
   ]

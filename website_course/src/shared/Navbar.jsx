@@ -8,7 +8,7 @@ import { navMenu } from '../data/siteLinks';
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 
-function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterClick }) {
+function Navbar({ onResultClick, navVisible, scrolled }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const { theme, toggleTheme } = useTheme();
@@ -114,10 +114,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
                 </div>
               </div>
             ) : (
-              <>
-                <button onClick={onLoginClick} className={`font-semibold transition-colors text-sm whitespace-nowrap ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}>Masuk</button>
-                <button onClick={onRegisterClick} className="btn-premium bg-button-gradient text-white px-5 py-2 rounded-full font-semibold shadow-glow text-sm whitespace-nowrap">Daftar Sekarang</button>
-              </>
+              <Link to="/login" className="btn-premium bg-button-gradient text-white px-5 py-2 rounded-full font-semibold shadow-glow text-sm whitespace-nowrap">Masuk</Link>
             )}
           </div>
         </div>
@@ -178,10 +175,7 @@ function Navbar({ onResultClick, navVisible, scrolled, onLoginClick, onRegisterC
                   <span className={`text-sm font-medium ${isLight ? 'text-gray-700' : 'text-text-primary'}`}>{user.name}</span>
                 </div>
               ) : (
-                <>
-                  <button onClick={() => { onLoginClick && onLoginClick(); setMenuOpen(false); }} className={`w-full text-center py-3 border rounded-lg font-semibold transition-colors ${isLight ? 'border-border-default text-gray-600 hover:bg-bg-section' : 'border-border-default text-text-secondary hover:bg-bg-subtle'}`}>Masuk</button>
-                  <button onClick={() => { onRegisterClick && onRegisterClick(); setMenuOpen(false); }} className="w-full text-center py-3 bg-button-gradient text-white rounded-lg font-semibold shadow-glow btn-premium">Daftar Sekarang</button>
-                </>
+                <Link to="/login" className="w-full text-center py-3 bg-button-gradient text-white rounded-lg font-semibold shadow-glow btn-premium">Masuk</Link>
               )}
               {user && (
                 <button onClick={() => { logout(); setMenuOpen(false); }} className="w-full text-center py-3 text-sm text-red-400 hover:text-red-300 transition-colors">Keluar</button>
