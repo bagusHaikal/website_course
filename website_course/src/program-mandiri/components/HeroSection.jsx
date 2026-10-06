@@ -22,11 +22,6 @@ function HeroSection({ isLight }) {
 
           {/* Left – Text */}
           <div className="max-w-xl animate-fade-slide-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-light text-xs font-bold mb-6 backdrop-blur-md uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
-              Kuota Terbatas Batch 10
-            </div>
-
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
               Mulai dari nol,<br />
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>
