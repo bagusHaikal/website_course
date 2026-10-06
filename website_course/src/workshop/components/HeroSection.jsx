@@ -11,11 +11,6 @@ function HeroSection({ isLight }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="max-w-xl animate-fade-slide-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-light text-xs font-bold mb-6 backdrop-blur-md uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-              {hero.badge}
-            </div>
-
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl leading-[1.1] mb-6 tracking-tight text-text-primary">
               {hero.titlePre}<br />
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>{hero.titleHighlight}</span>
