@@ -107,7 +107,7 @@ function AlumniGridSection() {
           <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-text-primary tracking-tight mb-5">Talent Infinite Learning Sudah Diserap oleh</h2>
           <p className="text-text-secondary text-base md:text-lg">Lulusan program kami telah berkarir di berbagai perusahaan terkemuka di Indonesia dan Asia Tenggara.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
           {alumniHires.map((a) => (<AlumniCard key={a.id} alum={a} />))}
         </div>
       </div>
