@@ -32,7 +32,6 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   const filtered = courses.filter(c =>
     c.title.toLowerCase().includes(query.toLowerCase()) ||
     c.category.toLowerCase().includes(query.toLowerCase()) ||
-    c.tag.toLowerCase().includes(query.toLowerCase()) ||
     (c.type && c.type.toLowerCase().includes(query.toLowerCase()))
   ).slice(0, 6);
 

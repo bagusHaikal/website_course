@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
+import { navMenu } from '../data/siteLinks';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
@@ -13,18 +14,9 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
 
-  const menuItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Program', dropdown: [
-      { label: 'Bootcamp', href: '/bootcamp' }, { label: 'Workshop', href: '/workshop' },
-      { label: 'Belajar Mandiri', href: '/belajar-mandiri' }, { label: 'Lihat Semua Program', href: '/all-programs' }
-    ]},
-    { label: 'Corporate', dropdown: [
-       { label: 'Corporate Training', href: '/corporate-training' }, { label: 'Partnership', href: '/partnership' },
-       { label: 'Hire Our Graduates', href: '/hire-our-graduates' }
-     ]},
-    { label: 'Program Mandiri', href: '/program-mandiri' }
-  ];
+  const leftMenuItems = navMenu.filter((item) => !item.sideRight);
+  const rightMenuItem = navMenu.find((item) => item.sideRight);
+
 
   const toggleDropdown = (label) => setOpenDropdown(prev => prev === label ? null : label);
   const toggleMenu = () => setMenuOpen(prev => !prev);
@@ -90,13 +82,13 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             </div>
           </div>
           <div className="shrink-0 flex items-center gap-6">
-            {menuItems.slice(0, 3).map(renderMenuItem)}
+            {leftMenuItems.map(renderMenuItem)}
           </div>
           <div className="flex-1 min-w-0">
             <SearchBar onResultClick={onResultClick} navVisible={navVisible} fullWidth={true} />
           </div>
           <div className="shrink-0 flex items-center">
-            {renderMenuItem(menuItems[3])}
+            {rightMenuItem && renderMenuItem(rightMenuItem)}
           </div>
           <div className="shrink-0 flex items-center gap-3">
             <button onClick={toggleTheme} className={`transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
@@ -149,7 +141,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
         </div>
         <div id="mobile-menu" className={`md:hidden absolute w-full border-t ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'} backdrop-blur-xl ${menuOpen ? "" : "hidden"}`}>
           <div className="px-4 pt-2 pb-6 space-y-2">
-            {menuItems.map((item) => {
+            {navMenu.map((item) => {
               const hasDropdown = item.dropdown && item.dropdown.length > 0;
               const isOpen = openDropdown === item.label;
               return hasDropdown ? (

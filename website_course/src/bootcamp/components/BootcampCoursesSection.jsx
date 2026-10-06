@@ -10,9 +10,6 @@ function CourseCard({ course }) {
           alt={course.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute top-3 left-3 bg-bg-base/80 backdrop-blur-md text-text-primary text-[10px] font-semibold px-2 py-1 rounded border border-border-default">
-          {course.tag}
-        </div>
       </div>
 
       <div className="p-5 flex-1 flex flex-col relative z-10">

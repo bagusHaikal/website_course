@@ -1,17 +1,14 @@
-function CourseCard({ course, showDetails = false, showTag = true }) {
+import { Link } from 'react-router-dom';
+
+function CourseCard({ course, showDetails = false, baseSurface = false }) {
   return (
-    <div className="rounded-2xl border border-border-default bg-bg-surface overflow-hidden transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover flex flex-col">
+    <div className={`rounded-2xl border border-border-default ${baseSurface ? 'bg-bg-base' : 'bg-bg-surface'} overflow-hidden transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover flex flex-col`}>
       <div className="relative h-48 overflow-hidden">
         <img
           src={course.image}
           alt={course.title}
           className="w-full h-full object-cover"
         />
-        {showTag && (
-          <div className="absolute top-3 left-3 bg-bg-base/80 backdrop-blur-md text-text-primary text-[10px] font-semibold px-2 py-1 rounded border border-border-default">
-            {course.tag}
-          </div>
-        )}
         <div className="absolute inset-0 bg-linear-to-t via-transparent to-transparent from-white/60 dark:from-bg-base"></div>
       </div>
 
@@ -53,15 +50,13 @@ function CourseCard({ course, showDetails = false, showTag = true }) {
         </div>
 
         {showDetails && (
-          <a
-            href="#"
-            className="mt-4 flex items-center justify-center gap-2 w-full py-2.5 rounded-full border border-border-default text-brand-accent text-xs font-bold hover:bg-button-gradient hover:text-white hover:border-transparent transition-all duration-300"
+          <Link
+            to={course.slug ? `/courses/${course.slug}` : '#'}
+            className="btn-premium bg-button-gradient text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-glow inline-flex items-center justify-center gap-2 w-full mt-4"
           >
-            Program Details
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </a>
+            Lihat Detail
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+          </Link>
         )}
       </div>
     </div>

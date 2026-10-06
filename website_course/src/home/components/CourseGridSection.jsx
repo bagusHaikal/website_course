@@ -8,7 +8,6 @@ function CourseGridSection({ searchQuery = '' }) {
     ? courses.filter(c =>
         c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        c.tag.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (c.type && c.type.toLowerCase().includes(searchQuery.toLowerCase()))
       )
     : courses;
