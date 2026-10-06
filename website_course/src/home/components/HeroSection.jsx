@@ -1,6 +1,6 @@
 function HeroSection({ isLight }) {
   return (
-    <section className={`relative pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
+    <section className={`relative pt-20 pb-24 lg:pt-32 lg:pb-32 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
       <div className="mesh-bg">
         <div className="blob bg-brand-violet w-150 h-150 rounded-full -top-25 -right-25"></div>
         <div className="blob bg-brand-purple w-100 h-100 rounded-full -bottom-25 -left-25"></div>

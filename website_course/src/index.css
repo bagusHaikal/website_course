@@ -61,7 +61,7 @@
 }
 
 /* â”€â”€â”€ Tailwind Theme â”€â”€â”€ */
-/* css-languageserver-disable unknownAtRules */
+/* css-languageserver-disable */
 @theme {
   --color-bg-base: var(--color-bg-base);
   --color-bg-section: var(--color-bg-section);
@@ -94,6 +94,7 @@
   --animate-float: float 10s infinite ease-in-out alternate;
   --animate-fade-slide-up: fadeSlideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+/* css-languageserver-enable */
 
 /* â”€â”€â”€ Custom Utility Classes â”€â”€â”€ */
 .bg-button-gradient {
