@@ -6,6 +6,7 @@ import BelajarMandiri from './belajar-mandiri';
 import AllPrograms from './all-programs';
 import Partnership from './partnership';
 import HireOurGraduates from './hire-graduates';
+import CourseDetail from './courses/CourseDetail';
 import PageLayout from './shared/PageLayout';
 import CorporateTrainingLayout from './corporate-training/Layout';
 
@@ -15,6 +16,7 @@ export const routes = [
   { path: '/bootcamp', element: <PageLayout><Bootcamp /></PageLayout> },
   { path: '/workshop', element: <PageLayout><Workshop /></PageLayout> },
   { path: '/belajar-mandiri', element: <PageLayout><BelajarMandiri /></PageLayout> },
+  { path: '/courses/:slug', element: <PageLayout><CourseDetail /></PageLayout> },
   { path: '/all-programs', element: <PageLayout><AllPrograms /></PageLayout> },
   { path: '/corporate-training', element: <CorporateTrainingLayout /> },
   { path: '/partnership', element: <PageLayout><Partnership /></PageLayout> },

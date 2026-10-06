@@ -7,37 +7,37 @@ export const courses = [
   {
     id: 1,
     title: "Build Your First Professional Portfolio (Even If You Have 0 Experience)",
+    desc: "Banyak orang merasa minder bikin portofolio karena belum...",
     category: "Non Technical",
     type: "Satuan",
     priceOriginal: "Rp 249.000",
     priceDiscount: "Rp 59.000",
     lessons: 4,
     image: portfolioImg,
-    tag: "Kelas Mandiri",
     slug: "professional-portfolio"
   },
   {
     id: 2,
     title: "Data Driven Decision Making With AI Assistance",
+    desc: "Untuk mengasah keahlian kita, modul ini tidak hanya...",
     category: "Technical",
     type: "Satuan",
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
     lessons: 2,
     image: dataDrivenImg,
-    tag: "Kelas Mandiri",
     slug: "data-driven"
   },
   {
     id: 3,
     title: "English For Industrial Job Applications : Stand Out & Get Hired",
+    desc: "This class focuses on the English required for...",
     category: "Non Technical",
     type: "Paketan",
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
     lessons: 6,
     image: englishImg,
-    tag: "Kelas Mandiri",
     slug: "english-for-industrial"
   },
   {
@@ -50,7 +50,6 @@ export const courses = [
     priceDiscount: "Rp 49.000",
     lessons: 3,
     image: excelImg,
-    tag: "Kelas Mandiri",
     slug: "excel-made-easy"
   }
 ];
