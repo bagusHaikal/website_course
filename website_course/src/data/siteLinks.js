@@ -25,8 +25,8 @@ export const footerLinks = {
   ],
   mandiri: [
     { label: 'Website Development', href: '/full-stack-web' },
-    { label: 'Mobile Development', href: '#' },
-    { label: 'Artificial Intelligence', href: '#' }
+    { label: 'Mobile Development', href: '/mobile-dev' },
+    { label: 'Artificial Intelligence', href: '/ai-dev' }
   ]
 };
 
