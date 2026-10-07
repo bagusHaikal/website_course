@@ -13,6 +13,7 @@ import Login from './login';
 import Register from './register';
 import FullStackWeb from './fullstack-web';
 import MobileDev from './mobile-dev';
+import AIDev from './ai-dev';
 
 export const routes = [
   { path: '/', element: <PageLayout><Home /></PageLayout> },
@@ -29,4 +30,5 @@ export const routes = [
   { path: '/register', element: <Register /> },
   { path: '/full-stack-web', element: <PageLayout><FullStackWeb /></PageLayout> },
   { path: '/mobile-dev', element: <PageLayout><MobileDev /></PageLayout> },
+  { path: '/ai-dev', element: <PageLayout><AIDev /></PageLayout> },
 ];
