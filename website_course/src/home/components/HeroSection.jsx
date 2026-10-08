@@ -39,7 +39,7 @@ function HeroSection({ isLight }) {
           </div>
 
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
-            <div className="relative z-10 w-full aspect-square rounded-3xl overflow-hidden border border-border-default shadow-2xl">
+            <div className="relative z-10 w-full aspect-square rounded-3xl overflow-hidden border border-border-default">
               <img
                 src="https://lms.infinitelearningstudent.id/pluginfile.php/1/theme_trema/loginbackgroundimage/1768987444/Mentors%20and%20students3.JPG"
                 alt="Students collaborating"

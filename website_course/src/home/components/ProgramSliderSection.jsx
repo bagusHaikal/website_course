@@ -8,9 +8,14 @@ const programs = [
   { title: 'Belajar Mandiri', tagline: 'Belajar Mandiri? Kami Punya Solusinya!', desc: 'Lebih senang belajar mandiri tanpa tekanan, mengikuti pace dan timeline diri sendiri.', icon: (<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>), image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/d4efac1d-4618-46a4-cfb3-fecce046f000/public', href: '/belajar-mandiri' }
 ];
 
+const navIcons = {
+  prev: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>,
+  next: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+};
+
 function ProgramCard({ program }) {
   return (
-    <div className="rounded-2xl border border-border-default bg-bg-surface backdrop-blur-md flex w-full h-85 shrink-0 transition-all duration-300 hover:border-brand-accent/30 overflow-hidden">
+    <div className="rounded-2xl border border-border-default bg-bg-surface flex w-full h-85 shrink-0 transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover hover:-translate-y-1 overflow-hidden relative">
       <div className="w-[45%] h-full shrink-0 relative bg-bg-section/50">
         <img src={program.image} alt={program.title} className="w-full h-full object-contain p-6" />
       </div>
@@ -78,19 +83,54 @@ function ProgramSliderSection() {
     } else { setIsPaused(true); setCurrent(prev => prev - 1); setTimeout(() => setIsPaused(false), 500); }
   };
 
+  // Show only real programs for dots (ignore cloned slides)
+  const visibleIndices = Array.from({ length: total }, (_, i) => i + 1);
+  const dotIndex = visibleIndices.indexOf(current);
+
   return (
-    <section className="py-20 relative bg-bg-base">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary tracking-tight">Temukan Program yang Sesuai dengan Kebutuhanmu</h2>
+    <section className="py-24 relative bg-bg-base overflow-hidden">
+      {/* Subtle glow blob decoration - left side */}
+      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-brand-purple/8 blur-3xl pointer-events-none" aria-hidden="true" />
+      {/* Subtle glow blob decoration - right side */}
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-violet/6 blur-3xl pointer-events-none" aria-hidden="true" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Heading with eyebrow + subtitle */}
+        <div className="text-center mb-14">
+          <span className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-accent" style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)', borderColor: 'rgba(124, 58, 237, 0.2)' }}>
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            Program Kami
+          </span>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary tracking-tight mb-4">
+            Temukan Program yang Sesuai<br className="hidden md:block" /> dengan Kebutuhanmu
+          </h2>
+          <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+            Pilih jalur belajar yang paling cocok \u2014 dari intensif bootcamp hingga fleksibel mandiri \u2014 dan mulai wujudkan potensimu hari ini.
+          </p>
         </div>
+
+        {/* Slider */}
         <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-          <button onClick={prev} className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default flex items-center justify-center text-text-primary hover:bg-bg-subtle transition-colors" aria-label="Previous slide">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+          {/* Prev button */}
+          <button
+            onClick={prev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default bg-bg-surface/80 flex items-center justify-center text-text-primary hover:border-brand-accent/40 hover:text-brand-accent hover:bg-bg-subtle transition-all duration-200"
+            style={{ boxShadow: 'var(--shadow-glass)' }}
+            aria-label="Previous slide"
+          >
+            {navIcons.prev}
           </button>
-          <button onClick={next} className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default flex items-center justify-center text-text-primary hover:bg-bg-subtle transition-colors" aria-label="Next slide">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+          {/* Next button */}
+          <button
+            onClick={next}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default bg-bg-surface/80 flex items-center justify-center text-text-primary hover:border-brand-accent/40 hover:text-brand-accent hover:bg-bg-subtle transition-all duration-200"
+            style={{ boxShadow: 'var(--shadow-glass)' }}
+            aria-label="Next slide"
+          >
+            {navIcons.next}
           </button>
+
+          {/* Slider track */}
           <div className="overflow-hidden rounded-2xl">
             <div ref={trackRef} className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
               {slides.map((program, index) => (
@@ -99,6 +139,20 @@ function ProgramSliderSection() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center gap-2 mt-8" role="tablist" aria-label="Program slides">
+            {visibleIndices.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => { setIsPaused(true); setCurrent(i + 1); setTimeout(() => setIsPaused(false), 500); }}
+                className={`h-2 rounded-full transition-all duration-300 ${i === dotIndex ? 'w-8 bg-brand-violet' : 'w-2 bg-border-default hover:bg-brand-accent/40'}`}
+                role="tab"
+                aria-selected={i === dotIndex}
+                aria-label={`Go to slide ${i + 1}`}
+              />
+            ))}
           </div>
         </div>
       </div>

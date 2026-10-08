@@ -1,37 +1,94 @@
 import { useState, useEffect, useCallback } from 'react';
 import { alumniData } from '../../data/courses';
+import { LinkedInIcon } from '../../hire-graduates/components/icons';
+
+const companyColors = {
+  'AIA Singapore': 'from-blue-500 to-cyan-500',
+  'PT Berca Hardayaperkasa': 'from-emerald-500 to-teal-500',
+  'Elabram Group': 'from-orange-500 to-amber-500',
+  "Kartini's Label": 'from-pink-500 to-rose-500',
+  'MS Glow Beauty': 'from-purple-500 to-violet-500',
+  'Seiko Epson Corporation': 'from-sky-500 to-blue-500',
+  'Constellar': 'from-indigo-500 to-purple-500',
+};
+
+function CompanyBadge({ company }) {
+  const color = companyColors[company] || 'from-brand-violet to-brand-purple';
+  return (
+    <span className={`inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r ${color} bg-opacity-15 text-white text-[11px] font-semibold tracking-wide`}>
+      {company}
+    </span>
+  );
+}
+
+function useImageTint(src) {
+  const [tint, setTint] = useState(null);
+  useEffect(() => {
+    let alive = true;
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      if (!alive) return;
+      const size = 24;
+      const c = document.createElement('canvas');
+      c.width = c.height = size;
+      const ctx = c.getContext('2d', { willReadFrequently: true });
+      if (!ctx) return;
+      ctx.drawImage(img, 0, 0, size, size);
+      let d;
+      try { d = ctx.getImageData(0, 0, size, size).data; } catch { return; }
+      let r = 0, g = 0, b = 0, n = 0;
+      for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+          const cx = Math.abs(x - (size - 1) / 2) / (size / 2);
+          const cy = Math.abs(y - (size - 1) / 2) / (size / 2);
+          const w = 1 - Math.max(cx, cy) * 0.55;
+          const i = (y * size + x) * 4;
+          r += d[i] * w; g += d[i + 1] * w; b += d[i + 2] * w; n += w;
+        }
+      }
+      if (n > 0) setTint(`rgb(${Math.round(r / n)}, ${Math.round(g / n)}, ${Math.round(b / n)})`);
+    };
+    img.src = src;
+    return () => { alive = false; };
+  }, [src]);
+  return tint;
+}
 
 function AlumniCard({ alum }) {
+  const tint = useImageTint(alum.image);
   return (
-    <div className="rounded-2xl border border-border-default bg-bg-surface backdrop-blur-md p-6 flex flex-col justify-between h-full transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover">
-      <div>
-        <div className="flex items-center gap-4 mb-4">
-          <img
-            src={alum.image}
-            alt={alum.name}
-            className="w-12 h-12 rounded-full object-cover border-2 border-brand-violet/30"
-          />
-          <div>
-            <h4 className="font-bold text-text-primary text-sm">{alum.name}</h4>
-            <p className="text-xs text-brand-accent">{alum.program}</p>
-          </div>
+    <div className="group relative flex flex-col items-center p-3 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center min-h-[260px]">
+      <div className="relative mb-2">
+        <div
+          className={`absolute inset-0 rounded-full blur-sm opacity-50 group-hover:opacity-80 transition-opacity duration-300 ${tint ? '' : 'bg-button-gradient'}`}
+          style={tint ? { backgroundColor: tint } : undefined}
+        ></div>
+        <img
+          src={alum.image}
+          alt={alum.name}
+          className="relative w-20 h-20 rounded-full object-cover border-[3px] border-bg-section shadow-md"
+        />
+        <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-brand-violet/90 flex items-center justify-center border-2 border-bg-section opacity-90" title="Verified Hire">
+          <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/></svg>
         </div>
-        <div className="border-t border-divider pt-4 mt-2">
-          <p className="text-xs text-text-muted mb-1 uppercase tracking-wider">now working at</p>
-          <p className="text-text-primary font-bold">{alum.company}</p>
-          <a
-            href={alum.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 mt-3 text-text-muted hover:text-brand-accent transition-colors"
-            aria-label={`LinkedIn profile of ${alum.name}`}
-          >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-            LinkedIn
-          </a>
-        </div>
+      </div>
+
+      <h3 className="font-display font-bold text-text-primary text-base mb-1">{alum.name}</h3>
+      <p className="text-xs text-brand-accent font-medium mb-2">{alum.program}</p>
+
+      <div className="mt-auto w-full flex flex-col items-center gap-2">
+        <CompanyBadge company={alum.company} />
+        <a
+          href={alum.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-default text-xs font-semibold text-text-muted hover:text-brand-accent hover:border-border-hover transition-all duration-200"
+          aria-label={`LinkedIn profile of ${alum.name}`}
+        >
+          <LinkedInIcon className="w-4 h-4" />
+          LinkedIn
+        </a>
       </div>
     </div>
   );

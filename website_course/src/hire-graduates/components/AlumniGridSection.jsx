@@ -49,8 +49,7 @@ const companyColors = {
 function CompanyBadge({ company }) {
   const color = companyColors[company] || 'from-brand-violet to-brand-purple';
   return (
-    <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-gradient-to-r ${color} bg-opacity-15 text-white text-[11px] font-semibold tracking-wide`}>
-      <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
+    <span className={`inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r ${color} bg-opacity-15 text-white text-[11px] font-semibold tracking-wide`}>
       {company}
     </span>
   );
@@ -59,9 +58,9 @@ function CompanyBadge({ company }) {
 function AlumniCard({ alum }) {
   const tint = useImageTint(alum.image);
   return (
-    <div className="group relative flex flex-col items-center p-6 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center">
+    <div className="group relative flex flex-col items-center p-3 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center min-h-[260px]">
       {/* Avatar ring */}
-      <div className="relative mb-4">
+      <div className="relative mb-2">
         <div
           className={`absolute inset-0 rounded-full blur-sm opacity-50 group-hover:opacity-80 transition-opacity duration-300 ${tint ? '' : 'bg-button-gradient'}`}
           style={tint ? { backgroundColor: tint } : undefined}
@@ -77,7 +76,7 @@ function AlumniCard({ alum }) {
       </div>
 
       <h3 className="font-display font-bold text-text-primary text-base mb-1">{alum.name}</h3>
-      <p className="text-xs text-brand-accent font-medium mb-4">{alum.program}</p>
+      <p className="text-xs text-brand-accent font-medium mb-2">{alum.program}</p>
 
       <div className="mt-auto w-full">
         <CompanyBadge company={alum.company} />
