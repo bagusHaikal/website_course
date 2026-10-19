@@ -13,6 +13,9 @@ function HeroSection({ isLight }) {
         ></div>
       </div>
 
+      {/* Gradient fade at bottom to blend with next section */}
+      <div className={`absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t ${isLight ? 'from-bg-section/80' : 'from-bg-base/90'} to-transparent pointer-events-none`}></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl animate-fade-slide-up">

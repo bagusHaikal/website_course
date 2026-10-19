@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
-import mentorImage from '../assets/Mentors and students3.JPG';
+import mentorImage from '../assets/mentors-and-students.jpg';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
@@ -48,8 +48,8 @@ function Field({ label, iconType, inputType, name, value, onChange, placeholder,
     return isLight ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.08)';
   };
   const getInputBgStyle = () => isLight
-    ? { backgroundColor: 'rgba(248,245,255,0.9)', color: '#111827', borderColor: getBorderColor() }
-    : { backgroundColor: 'rgba(30,27,75,0.5)', color: '#ffffff', borderColor: getBorderColor() };
+    ? { backgroundColor: 'rgba(248,245,255,0.9)', color: '#111827', borderColor: getBorderColor(), fontSize: '16px' }
+    : { backgroundColor: 'rgba(30,27,75,0.5)', color: '#ffffff', borderColor: getBorderColor(), fontSize: '16px' };
 
   return (
     <div>

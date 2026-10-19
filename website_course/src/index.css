@@ -297,6 +297,27 @@ body {
   display: none;
 }
 
+/* â”€â”€â”€ Prevent mobile auto-zoom on input focus â”€â”€â”€ */
+/* iOS Safari & Android Chrome zoom in when a focused input has font-size < 16px. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+@media screen and (max-width: 767px) {
+  input,
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="number"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
 /* â”€â”€â”€ Reduced Motion â”€â”€â”€ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

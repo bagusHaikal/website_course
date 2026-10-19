@@ -9,7 +9,9 @@ function CourseCard({ course, showDetails = false, baseSurface = false }) {
           alt={course.title}
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-linear-to-t via-transparent to-transparent from-white/60 dark:from-bg-base"></div>
+        <span className="absolute top-3 left-3 bg-purple-500/90 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full backdrop-blur-sm">
+          Kelas mandiri
+        </span>
       </div>
 
       <div className="p-5 flex-1 flex flex-col relative z-10">
