@@ -41,7 +41,7 @@ export default function CorporateTrainingLayout() {
         onLoginClick={() => openAuthModal('login')}
         onRegisterClick={() => openAuthModal('register')}
       />
-      <main>
+      <main className="pt-20 md:pt-16">
         <CorporateTraining />
       </main>
       <Footer />

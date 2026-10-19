@@ -31,9 +31,10 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
 
   const isLight = theme === 'light';
 
+  /* Navbar background follows the active theme tokens (design.md §7.5, §15) */
   const navClass = scrolled
-    ? `${isLight ? 'bg-white/90' : 'bg-bg-base/80'} backdrop-blur-xl shadow-glass`
-    : `${isLight ? 'bg-white/90' : 'bg-bg-base/90'} backdrop-blur-md`;
+    ? 'bg-bg-base/80 backdrop-blur-xl shadow-glass'
+    : 'bg-bg-base/90 backdrop-blur-md';
 
   const translateClass = navVisible ? "translate-y-0" : "-translate-y-full";
 
@@ -49,7 +50,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
               <svg className="w-4 h-4 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
             </button>
             {isOpen && (
-              <div className={`absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'}`}>
+              <div className="absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default">
                 {item.dropdown.map((sub) => {
                   const subClass = `block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`;
                   return sub.href.startsWith('/') ? (
@@ -97,8 +98,8 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg className="w-5 h-5" style={{ color: '#FACC15' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               )}
             </button>
@@ -109,7 +110,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                   <span className={isLight ? 'text-gray-600' : 'text-text-secondary'}>{user.name}</span>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
-                <div className={`absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'} hidden group-hover:block`}>
+                <div className="absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default hidden group-hover:block">
                   <button onClick={() => logout()} className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors">Keluar</button>
                 </div>
               </div>
@@ -129,8 +130,8 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                <svg className="w-5 h-5" style={{ color: '#FACC15' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               )}
             </button>
@@ -139,7 +140,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             </button>
           </div>
         </div>
-        <div id="mobile-menu" className={`md:hidden absolute w-full border-t ${isLight ? 'bg-white border-border-default' : 'bg-bg-base/95 border-border-default'} backdrop-blur-xl ${menuOpen ? "" : "hidden"}`}>
+        <div id="mobile-menu" className={`md:hidden absolute w-full border-t bg-bg-base/95 border-border-default backdrop-blur-xl ${menuOpen ? "" : "hidden"}`}>
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navMenu.map((item) => {
               const hasDropdown = item.dropdown && item.dropdown.length > 0;

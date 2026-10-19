@@ -2,6 +2,13 @@ import portfolioImg from '../assets/bootcamp-portfolio.webp';
 import dataDrivenImg from '../assets/bootcamp-datadriven.webp';
 import englishImg from '../assets/bootcamp-english.webp';
 import excelImg from '../assets/bootcamp-excel.webp';
+import agistiraImg from '../assets/testi-agistira.png';
+import apridoImg from '../assets/testi-aprido.png';
+import attaImg from '../assets/testi-atta.webp';
+import pupuImg from '../assets/testi-pupu.webp';
+import sariImg from '../assets/testi-sari.webp';
+import budiImg from '../assets/testi-budi.webp';
+import kielImg from '../assets/testi-kiel.webp';
 
 export const courses = [
   {
@@ -65,52 +72,59 @@ export const faqs = [
 
 export const alumniData = [
   {
-    name: 'Sari Rahmawati',
-    program: 'Android Development 2022',
-    company: 'MS Glow Beauty',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/sari.webp',
-    linkedin: '#'
-  },
-  {
-    name: 'Budi Prayoga',
-    program: 'Website Development 2022',
-    company: 'Seiko Epson Corporation',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/budi.webp',
-    linkedin: '#'
-  },
-  {
-    name: 'Kiel Tampubolon',
-    program: 'Hybrid Cloud and AI 2023',
-    company: 'Constellar',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/kiel.webp',
-    linkedin: '#'
-  },
-  {
+    id: 'agistira',
     name: 'Agistira Lamunde',
     program: 'Android Development 2020',
     company: 'AIA Singapore',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/agistira.png',
-    linkedin: '#'
+    image: agistiraImg,
+    linkedin: 'https://www.linkedin.com/in/agistira-lamunde/'
   },
   {
+    id: 'aprido',
     name: 'Aprido Syawindra',
     program: 'Hybrid Cloud and AI 2023',
-    company: 'PT. Berca Hardayaperkasa',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/aprido.png',
-    linkedin: '#'
+    company: 'PT Berca Hardayaperkasa',
+    image: apridoImg,
+    linkedin: 'https://www.linkedin.com/in/aprido-syawindra-32a406207/'
   },
   {
+    id: 'atta',
     name: 'Atta Pratiwa',
     program: 'Android Development 2021',
     company: 'Elabram Group',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/atta.webp',
-    linkedin: '#'
+    image: attaImg,
+    linkedin: 'https://www.linkedin.com/in/attar-pratiwa-b9b960bb/'
   },
   {
+    id: 'pupu',
     name: 'Siti Maharani Putri',
     program: 'Android Development 2023',
-    company: 'Kartini\'s Label',
-    image: 'https://course.infinitelearning.id/wp-content/uploads/2025/06/pupu.webp',
-    linkedin: '#'
+    company: "Kartini's Label",
+    image: pupuImg,
+    linkedin: 'https://www.linkedin.com/in/siti-maharani-putri-0247a3258/'
+  },
+  {
+    id: 'sari',
+    name: 'Sari Rahmawati',
+    program: 'Android Development 2022',
+    company: 'MS Glow Beauty',
+    image: sariImg,
+    linkedin: 'https://www.linkedin.com/in/sarirahm/'
+  },
+  {
+    id: 'budi',
+    name: 'Budi Prayoga',
+    program: 'Website Development 2022',
+    company: 'Seiko Epson Corporation',
+    image: budiImg,
+    linkedin: 'https://www.linkedin.com/in/budiprayoga/'
+  },
+  {
+    id: 'kiel',
+    name: 'Kiel Tampubolon',
+    program: 'Hybrid Cloud and AI 2023',
+    company: 'Constellar',
+    image: kielImg,
+    linkedin: 'https://www.linkedin.com/in/kiel-tampubolon-6b6a25121/'
   }
 ];

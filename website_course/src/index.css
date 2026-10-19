@@ -297,6 +297,103 @@ body {
   display: none;
 }
 
+/* ─── Program Tabs (Home) ─── */
+.program-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.program-tabs__heading {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 48px;
+  padding-top: 16px;
+}
+
+.program-tabs__title {
+  position: relative;
+  padding: 16px 36px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: capitalize;
+  text-align: center;
+  white-space: nowrap;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms ease-out;
+}
+
+/* Active tab: accent underline indicator */
+.program-tabs__title--active::after {
+  content: '';
+  position: absolute;
+  left: 36px;
+  right: 36px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 9999px;
+  background-color: var(--color-brand-accent);
+}
+
+/* Stacked grid: all panels share one cell so section height stays constant */
+.program-tabs__content {
+  display: grid;
+}
+
+.program-tabs__panel {
+  grid-area: 1 / 1;
+  transition: opacity 200ms ease-out;
+}
+
+/* Inactive panels still reserve space (height never shifts) but are inert */
+.program-tabs__panel[data-active="false"] {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  /* Accordion behaviour: each panel renders directly beneath its own tab */
+  .program-tabs__heading,
+  .program-tabs__content {
+    display: contents;
+  }
+
+  .program-tabs__title {
+    order: var(--tab-order);
+    width: 100%;
+  }
+
+  .program-tabs__title:not(:first-child) {
+    margin-top: 48px;
+  }
+
+  /* Mobile keeps the accordion: only the active panel is laid out */
+  .program-tabs__panel {
+    grid-area: auto;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .program-tabs__panel[data-active="false"] {
+    display: none;
+  }
+
+  .program-tabs__panel[data-active="true"] {
+    display: block;
+    order: var(--tab-order);
+  }
+}
+
 /* â”€â”€â”€ Reduced Motion â”€â”€â”€ */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

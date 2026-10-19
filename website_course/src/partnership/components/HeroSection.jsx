@@ -7,7 +7,7 @@ const downSVG = <svg className="w-5 h-5 rotate-90" fill="none" stroke="currentCo
 
 function HeroSection({ isLight }) {
   return (
-    <section className={`relative pt-28 pb-20 lg:pt-40 lg:pb-28 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
+    <section className={`relative pt-16 pb-20 lg:pt-20 lg:pb-28 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
       <div className="mesh-bg">
         <div className="blob bg-brand-purple w-150 h-150 rounded-full -top-24 -right-24 opacity-20"></div>
         <div className="blob bg-brand-violet w-125 h-125 rounded-full -bottom-24 -left-24 opacity-20" style={{ animationDelay: '2s' }}></div>
@@ -18,11 +18,6 @@ function HeroSection({ isLight }) {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           <div className="max-w-xl animate-fade-slide-up">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-brand-light text-xs font-bold mb-6 backdrop-blur-md uppercase tracking-wider">
-              <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
-              Program Kemitraan
-            </div>
-
             <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
               Kolaborasi untuk Masa Depan,<br/>Menciptakan <span className="text-gradient-gold">Dampak Positif</span>
             </h1>
