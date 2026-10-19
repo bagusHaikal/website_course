@@ -88,12 +88,12 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
 
   return (
     <nav id="navbar" className={`fixed w-full z-100 border-b border-border-default transition-all duration-300 ${navClass} ${translateClass}`}>
-      <div className="w-full px-4 sm:px-6 lg:px-10">
-        <div className="hidden md:flex items-center h-16 gap-6">
-          <div className="shrink-0 flex items-center">
-            <div className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+      <div className="w-full px-4 sm:px-6 lg:px-8">
+        <div className="hidden md:flex items-center h-16 gap-8">
+          <div className="shrink-0 flex items-center -ml-2 sm:-ml-3 lg:-ml-1">
+            <Link to="/" className="cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
               <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-8 w-auto object-contain" />
-            </div>
+            </Link>
           </div>
           <div className="shrink-0 flex items-center gap-6">
             {leftMenuItems.map(renderMenuItem)}
@@ -146,8 +146,10 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
           </div>
         </div>
         <div className="flex justify-between items-center h-20 md:hidden">
-          <div className="shrink-0 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-            <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+          <div className="shrink-0 cursor-pointer -ml-2">
+            <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
+              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+            </Link>
           </div>
           <div className="md:hidden flex items-center gap-2">
             <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
