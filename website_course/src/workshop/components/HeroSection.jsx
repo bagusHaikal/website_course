@@ -1,4 +1,5 @@
 import { hero } from '../data';
+import { Check, ArrowRight } from 'lucide-react';
 
 function HeroSection({ isLight }) {
   return (
@@ -34,7 +35,7 @@ function HeroSection({ isLight }) {
             <ul className="space-y-2.5 mb-8">
               {hero.highlights.map((item, i) => (
                 <li key={i} className="flex items-center gap-2 text-sm text-text-secondary">
-                  <svg className="w-4 h-4 text-brand-accent shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                  <Check className="w-4 h-4 text-brand-accent shrink-0" />
                   {item}
                 </li>
               ))}
@@ -43,7 +44,7 @@ function HeroSection({ isLight }) {
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <a href="#" className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 {hero.ctaRegister}
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
+                <ArrowRight className="w-5 h-5" />
               </a>
               <div className="flex items-center gap-3">
                 <span className="text-xs text-text-muted hidden sm:block">atau</span>

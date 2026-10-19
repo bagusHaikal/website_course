@@ -1,3 +1,5 @@
+import { ChevronRight } from 'lucide-react';
+
 const partners = [
   {
     name: 'PLN',
@@ -56,9 +58,7 @@ function PartnersSection() {
                 <p className="text-text-secondary text-sm leading-relaxed mb-4">{partner.description}</p>
                 <button className="text-sm font-semibold text-text-muted hover:text-brand-accent transition-colors inline-flex items-center gap-1.5 group">
                   Read More
-                  <svg className="w-4 h-4 transition-transform group-hover:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
+                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
                 </button>
               </div>
             </div>

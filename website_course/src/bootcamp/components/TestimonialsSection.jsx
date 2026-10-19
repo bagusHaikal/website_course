@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { testimonials } from '../data';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 function TestimonialCard({ person }) {
   return (
@@ -99,9 +100,7 @@ function TestimonialsSection() {
                 className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
                 aria-label="Previous slide"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
               <div className="flex gap-2">
@@ -123,9 +122,7 @@ function TestimonialsSection() {
                 className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
                 aria-label="Next slide"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           )}

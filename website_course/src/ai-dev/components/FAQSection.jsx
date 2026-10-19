@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { faqs } from '../data';
+import { ChevronDown } from 'lucide-react';
 
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -27,14 +28,9 @@ function FAQSection() {
                 aria-expanded={openIndex === index}
               >
                 <span className="font-semibold text-text-primary text-sm leading-snug">{item.q}</span>
-                <svg
+                <ChevronDown
                   className={`w-5 h-5 text-brand-accent shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
+                />
               </button>
               <div
                 className={`overflow-hidden transition-all duration-300 ${

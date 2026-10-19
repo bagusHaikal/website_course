@@ -8,6 +8,7 @@ import kartinisLogo from '../../assets/KARTINIS-LABEL.png';
 import msGlowLogo from '../../assets/MS Glow.png';
 import epsonLogo from '../../assets/epson_logo.png';
 import constellarLogo from '../../assets/Constellar.png';
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const companyColors = {
   'AIA Singapore': 'from-blue-500 to-cyan-500',
@@ -139,7 +140,7 @@ function AlumniCard({ alum }) {
           className="relative w-20 h-20 rounded-full object-cover border-[3px] border-bg-section shadow-md"
         />
         <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-brand-violet/90 flex items-center justify-center border-2 border-bg-section opacity-90" title="Verified Hire">
-          <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7"/></svg>
+          <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
         </div>
       </div>
 
@@ -226,9 +227,7 @@ function AlumniSection() {
                 className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
                 aria-label="Previous slide"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft className="w-5 h-5" />
               </button>
 
               <div className="flex gap-2">
@@ -250,9 +249,7 @@ function AlumniSection() {
                 className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
                 aria-label="Next slide"
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight className="w-5 h-5" />
               </button>
             </div>
           )}

@@ -1,3 +1,5 @@
+import { ArrowRight, CheckCircle } from 'lucide-react';
+
 function HeroSection({ isLight }) {
   return (
     <section className={`relative pt-20 pb-24 lg:pt-32 lg:pb-32 overflow-hidden ${isLight ? 'bg-hero-gradient-light' : 'bg-hero-gradient'}`}>
@@ -31,9 +33,7 @@ function HeroSection({ isLight }) {
             <div className="flex flex-col sm:flex-row gap-5">
               <button className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-lg shadow-glow flex items-center justify-center gap-3">
                 Temukan Programmu
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+                <ArrowRight className="h-5 w-5" />
               </button>
             </div>
           </div>
@@ -47,9 +47,7 @@ function HeroSection({ isLight }) {
               />
               <div className="absolute bottom-8 left-8 right-8 glass-panel p-5 rounded-2xl flex items-center gap-4">
                 <div className="bg-green-500/20 p-3 rounded-full text-green-400">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                  <CheckCircle className="h-6 w-6" />
                 </div>
                 <div>
                   <p className="text-sm font-bold text-text-primary">Sertifikat Resmi Terakreditasi</p>

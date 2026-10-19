@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { faqs } from '../data';
-
-const chevronSVG = <svg className="w-5 h-5 shrink-0 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7"/></svg>;
+import { ChevronDown } from 'lucide-react';
 
 function FAQSection() {
   const [openIndex, setOpenIndex] = useState(0);
@@ -21,7 +20,7 @@ function FAQSection() {
               <div key={i} className={`border border-border-default bg-bg-surface rounded-xl overflow-hidden transition-all duration-200 ${open ? 'border-border-hover' : ''}`}>
                 <button onClick={() => toggle(i)} className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left hover:bg-bg-subtle transition-colors focus:outline-none" aria-expanded={open}>
                   <span className="font-display font-bold text-text-primary text-sm md:text-base pr-4">{faq.q}</span>
-                  <span className={`shrink-0 text-brand-accent transition-transform duration-200 ${open ? 'rotate-180' : ''}`}>{chevronSVG}</span>
+                  <span className={`shrink-0 text-brand-accent transition-transform duration-200 ${open ? 'rotate-180' : ''}`}><ChevronDown className="w-5 h-5 shrink-0" /></span>
                 </button>
                 {open && (
                   <div className="px-6 pb-5 animate-fade-slide-up">

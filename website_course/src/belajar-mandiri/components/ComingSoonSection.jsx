@@ -1,6 +1,5 @@
 import { comingSoon, waLink } from '../data';
-
-const waSVG = <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.664l1.497 2.99a1 1 0 01-.532 1.33l-2.121 1.061a10.01 10.01 0 005.572 5.572l1.061-2.121a1 1 0 011.33-.532l2.99 1.497A1 1 0 0121 18.72V21a2 2 0 01-2 2h-1.28a1 1 0 01-.948-.664l-1.497-2.99a1 1 0 01-1.33-.532l-2.121 1.061A10.01 10.01 0 014 18.604V5z" /></svg>;
+import { MessageCircle } from 'lucide-react';
 
 function ComingSoonSection() {
   return (
@@ -28,7 +27,7 @@ function ComingSoonSection() {
                   className="btn-premium bg-button-gradient text-white px-6 py-3 rounded-full font-semibold text-sm shadow-glow inline-flex items-center justify-center gap-2 self-start mt-auto"
                 >
                   {item.cta}
-                  {waSVG}
+                  <MessageCircle className="w-4 h-4" />
                 </a>
               </div>
             </div>

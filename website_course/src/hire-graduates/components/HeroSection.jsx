@@ -1,9 +1,7 @@
 import { WA_LINK } from '../data';
 import partnershipImg from '../../assets/partnership.webp';
 import { DotMesh } from './icons';
-
-const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
-const downSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>;
+import { ArrowRight, ArrowDown, CheckCircle2 } from 'lucide-react';
 
 function HeroSection({ isLight }) {
   return (
@@ -29,14 +27,14 @@ function HeroSection({ isLight }) {
             <div className="flex flex-col sm:flex-row gap-4">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 Hubungi Kami
-                {arrowSVG}
+                <ArrowRight className="w-5 h-5" />
               </a>
               <button
                 onClick={() => document.getElementById('konsultasi')?.scrollIntoView({ behavior: 'smooth' })}
                 className={`btn-secondary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2 transition-colors w-full sm:w-auto ${isLight ? 'border border-border-default text-gray-600 hover:bg-bg-section' : 'border border-white/20 text-text-secondary hover:bg-white/5'}`}
               >
                 Lihat Proses Rekrutmen
-                {downSVG}
+                <ArrowDown className="w-5 h-5" />
               </button>
             </div>
           </div>
@@ -49,7 +47,7 @@ function HeroSection({ isLight }) {
             </div>
             <div className="absolute bottom-6 left-6 rounded-2xl px-4 py-3 flex items-center gap-3 animate-float z-20" style={{ background: isLight ? 'rgba(255,255,255,0.9)' : 'rgba(30,27,75,0.8)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.15)'}`, animationDelay: '4s' }}>
               <div className="w-10 h-10 rounded-xl bg-button-gradient text-white flex items-center justify-center shadow-glow shrink-0">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25L15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <CheckCircle2 className="w-5 h-5" strokeWidth={1.5} />
               </div>
               <div>
                 <p className="text-sm font-display font-bold" style={{ color: isLight ? '#1a1a2e' : '#f0f0f0' }}>Diserap Perusahaan Global</p>

@@ -1,4 +1,5 @@
 ﻿import { caseStudies } from '../data';
+import { ChevronRight } from 'lucide-react';
 
 function CaseCard({ cs }) {
   return (
@@ -18,7 +19,7 @@ function CaseCard({ cs }) {
           <p className="text-sm text-text-muted leading-relaxed">{cs.description}</p>
           <button className="self-start mt-auto text-sm font-semibold text-text-muted hover:text-brand-accent transition-colors inline-flex items-center gap-1.5 group-btn">
             Read More
-            <svg className="w-4 h-4 transition-transform group-hover-btn:translate-x-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+            <ChevronRight className="w-4 h-4 transition-transform group-hover-btn:translate-x-0.5" />
           </button>
         </div>
       </div>

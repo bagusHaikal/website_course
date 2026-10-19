@@ -1,10 +1,6 @@
 import { Link } from 'react-router-dom';
 import { courses, kelasMandiri } from '../data';
-
-const arrowSVG = <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>;
-const checkSVG = <svg className="w-3.5 h-3.5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-const typeSVG = <svg className="w-3.5 h-3.5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>;
-const lessonsSVG = <svg className="w-3.5 h-3.5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>;
+import { ArrowRight, CheckCircle2, LayoutGrid, BookOpen } from 'lucide-react';
 
 function CourseCard({ course }) {
   return (
@@ -31,15 +27,15 @@ function CourseCard({ course }) {
 
         <div className="flex items-center justify-between text-text-muted text-[10px] font-medium mb-4 border-b border-divider pb-3">
           <div className="flex items-center gap-1.5">
-            {checkSVG}
+            <CheckCircle2 className="w-3.5 h-3.5 text-brand-accent" />
             {course.category}
           </div>
           <div className="flex items-center gap-1.5">
-            {typeSVG}
+            <LayoutGrid className="w-3.5 h-3.5 text-brand-accent" />
             {course.type}
           </div>
           <div className="flex items-center gap-1.5 text-text-secondary">
-            {lessonsSVG}
+            <BookOpen className="w-3.5 h-3.5 text-brand-accent" />
             {course.lessons} lessons
           </div>
         </div>
@@ -54,7 +50,7 @@ function CourseCard({ course }) {
             className="btn-premium bg-button-gradient text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-glow inline-flex items-center justify-center gap-2 w-full"
           >
             Lihat Detail
-            {arrowSVG}
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </div>
@@ -81,13 +77,13 @@ function KelasMandiriSection() {
         </div>
 
         <div className="text-center">
-          <a
-            href="#"
+          <Link
+            to="/all-programs"
             className="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-text-primary transition-colors border-b border-transparent hover:border-brand-accent pb-1"
           >
             {kelasMandiri.seeAllLabel}
-            {arrowSVG}
-          </a>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>
