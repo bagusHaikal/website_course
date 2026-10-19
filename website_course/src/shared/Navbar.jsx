@@ -11,6 +11,7 @@ const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
 function Navbar({ onResultClick, navVisible, scrolled }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [accountOpen, setAccountOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
 
@@ -24,9 +25,20 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (!e.target.closest('.dropdown-trigger')) setOpenDropdown(null);
+      if (!e.target.closest('.account-trigger')) setAccountOpen(false);
+    };
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setAccountOpen(false);
+        setOpenDropdown(null);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleEscape);
+    };
   }, []);
 
   const isLight = theme === 'light';
@@ -104,15 +116,30 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
               )}
             </button>
             {user ? (
-              <div className="relative group">
-                <button className="flex items-center gap-2 font-semibold text-sm transition-colors hover:text-brand-accent">
+              <div className="relative account-trigger">
+                <button
+                  type="button"
+                  onClick={() => setAccountOpen(prev => !prev)}
+                  className="flex items-center gap-1.5 font-semibold text-sm transition-colors hover:text-brand-accent"
+                  aria-label={`Menu akun ${user.name}`}
+                  aria-haspopup="menu"
+                  aria-expanded={accountOpen}
+                >
                   <span className="w-7 h-7 rounded-full bg-button-gradient flex items-center justify-center text-white text-xs font-bold">{user.name?.charAt(0).toUpperCase()}</span>
-                  <span className={isLight ? 'text-gray-600' : 'text-text-secondary'}>{user.name}</span>
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                  <svg className={`w-4 h-4 transition-transform duration-200 ${accountOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
                 </button>
-                <div className="absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default hidden group-hover:block">
-                  <button onClick={() => logout()} className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors">Keluar</button>
-                </div>
+                {accountOpen && (
+                  <div role="menu" className="absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default">
+                    <button
+                      type="button"
+                      role="menuitem"
+                      onClick={() => { setAccountOpen(false); logout(); }}
+                      className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
+                    >
+                      Keluar
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <Link to="/login" className="btn-premium bg-button-gradient text-white px-5 py-2 rounded-full font-semibold shadow-glow text-sm whitespace-nowrap">Masuk</Link>
@@ -172,8 +199,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             <div className="pt-4 flex flex-col gap-3">
               {user ? (
                 <div className="flex items-center gap-3 px-3 py-3 rounded-lg">
-                  <span className="w-8 h-8 rounded-full bg-button-gradient flex items-center justify-center text-white text-sm font-bold">{user.name?.charAt(0).toUpperCase()}</span>
-                  <span className={`text-sm font-medium ${isLight ? 'text-gray-700' : 'text-text-primary'}`}>{user.name}</span>
+                  <span className="w-8 h-8 rounded-full bg-button-gradient flex items-center justify-center text-white text-sm font-bold" aria-label={`Menu akun ${user.name}`}>{user.name?.charAt(0).toUpperCase()}</span>
                 </div>
               ) : (
                 <Link to="/login" className="w-full text-center py-3 bg-button-gradient text-white rounded-lg font-semibold shadow-glow btn-premium">Masuk</Link>
