@@ -1,4 +1,4 @@
-const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
+import { ArrowRight } from 'lucide-react';
 
 function HeroSection({ isLight }) {
   return (
@@ -32,7 +32,7 @@ function HeroSection({ isLight }) {
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 Konsultasi Gratis
-                {arrowSVG}
+                <ArrowRight className="w-5 h-5" />
               </button>
             </div>
           </div>

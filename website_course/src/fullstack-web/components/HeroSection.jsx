@@ -1,8 +1,4 @@
-const arrowSVG = (
-  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-  </svg>
-);
+import { ArrowRight, FileText } from 'lucide-react';
 
 function HeroSection({ isLight }) {
   return (
@@ -37,7 +33,7 @@ function HeroSection({ isLight }) {
                 className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto"
               >
                 Daftar Sekarang
-                {arrowSVG}
+                <ArrowRight className="w-5 h-5" />
               </a>
               <a
                 href="https://docs.google.com/document/d/1Cp7UYULYGn5uSZIsdqn6gs-EJw0vD0W8cTh9RkPe6LU/edit?usp=sharing"
@@ -49,9 +45,7 @@ function HeroSection({ isLight }) {
                     : 'border border-white/20 text-white hover:bg-white/10 hover:border-white/40'
                 }`}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
+                <FileText className="w-5 h-5" />
                 Lihat Syllabus
               </a>
             </div>

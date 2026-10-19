@@ -1,8 +1,6 @@
 import { hero, waLink } from '../data';
 import bootcampImg from '../../assets/bootcamp.png';
-
-const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
-const waSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.664l1.497 2.99a1 1 0 01-.532 1.33l-2.121 1.061a10.01 10.01 0 005.572 5.572l1.061-2.121a1 1 0 011.33-.532l2.99 1.497A1 1 0 0121 18.72V21a2 2 0 01-2 2h-1.28a1 1 0 01-.948-.664l-1.497-2.99a1 1 0 01-1.33.532l-2.121 1.061A10.01 10.01 0 014 18.604V5z" /></svg>;
+import { ArrowRight, MessageCircle } from 'lucide-react';
 
 function scrollToDetail() {
   document.getElementById('detail-bootcamp')?.scrollIntoView({ behavior: 'smooth' });
@@ -39,7 +37,7 @@ function HeroSection({ isLight }) {
             <div className="flex flex-col sm:flex-row gap-4">
               <button onClick={scrollToDetail} className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 {hero.ctaDetail}
-                {arrowSVG}
+                <ArrowRight className="w-5 h-5" />
               </button>
               <a
                 href={waLink}
@@ -48,7 +46,7 @@ function HeroSection({ isLight }) {
                 className="btn-secondary text-text-primary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-3 w-full sm:w-auto"
               >
                 {hero.ctaConsult}
-                {waSVG}
+                <MessageCircle className="w-5 h-5" />
               </a>
             </div>
           </div>

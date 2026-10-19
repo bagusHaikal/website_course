@@ -1,33 +1,22 @@
 import { Link } from 'react-router-dom';
+import { Code2, Smartphone, BrainCircuit, ArrowRight } from 'lucide-react';
 
 const programs = [
   {
     href: '/full-stack-web',
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
+    icon: <Code2 className="w-10 h-10" />,
     title: 'Full-Stack Website Development & UI/UX',
     desc: 'Kuasai front-end, back-end, dan desain UI/UX dalam satu program. Bangun aplikasi web modern dari nol hingga deploy.',
   },
   {
     href: '/mobile-dev',
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-      </svg>
-    ),
+    icon: <Smartphone className="w-10 h-10" />,
     title: 'Mobile Development with Flutter & UI/UX',
     desc: 'Bikin aplikasi Android & iOS dari nol bareng mentor industri. Pakai Flutter & Dart plus desain UI/UX biar aplikasimu keren, gampang dipakai, dan siap rilis ke store.',
   },
   {
     href: '/ai-dev',
-    icon: (
-      <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
+    icon: <BrainCircuit className="w-10 h-10" />,
     title: 'Artificial Intelligence Development',
     desc: 'Pelajari konsep AI, machine learning, deep learning, dan aplikasikan pada proyek nyata dengan dataset dunia sesungguhnya.',
   },
@@ -50,9 +39,7 @@ function ProgramCard({ program }) {
       </p>
       <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-brand-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <span>Lihat detail</span>
-        <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-        </svg>
+        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
       </div>
     </Link>
   );

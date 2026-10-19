@@ -4,6 +4,7 @@ import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
 import { navMenu } from '../data/siteLinks';
+import { ChevronDown, Moon, Sun, Menu } from 'lucide-react';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
@@ -59,7 +60,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
           <>
             <button onClick={() => toggleDropdown(item.label)} className={`font-medium transition-colors text-sm tracking-wide flex items-center gap-1 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-expanded={isOpen}>
               {item.label}
-              <svg className="w-4 h-4 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+              <ChevronDown className="w-4 h-4 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </button>
             {isOpen && (
               <div className="absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default">
@@ -106,13 +107,9 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
           <div className="shrink-0 flex items-center gap-3">
             <button onClick={toggleTheme} className={`transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
               {isLight ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
+                <Moon className="w-5 h-5" />
               ) : (
-                <svg className="w-5 h-5" style={{ color: '#FACC15' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
+                <Sun className="w-5 h-5" style={{ color: '#FACC15' }} />
               )}
             </button>
             {user ? (
@@ -126,7 +123,9 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                   aria-expanded={accountOpen}
                 >
                   <span className="w-7 h-7 rounded-full bg-button-gradient flex items-center justify-center text-white text-xs font-bold">{user.name?.charAt(0).toUpperCase()}</span>
-                  <svg className={`w-4 h-4 transition-transform duration-200 ${accountOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+
+                  <span className={isLight ? 'text-gray-600' : 'text-text-secondary'}>{user.name}</span>
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accountOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {accountOpen && (
                   <div role="menu" className="absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default">
@@ -153,17 +152,13 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
           <div className="md:hidden flex items-center gap-2">
             <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
               {isLight ? (
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-                </svg>
+                <Moon className="w-5 h-5" />
               ) : (
-                <svg className="w-5 h-5" style={{ color: '#FACC15' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707-.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-                </svg>
+                <Sun className="w-5 h-5" style={{ color: '#FACC15' }} />
               )}
             </button>
             <button id="mobile-menu-btn" onClick={toggleMenu} className={`focus:outline-none p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle menu" aria-expanded="false">
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" /></svg>
+              <Menu className="h-6 w-6" />
             </button>
           </div>
         </div>
@@ -176,7 +171,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                 <div key={item.label}>
                   <button onClick={() => toggleDropdown(item.label)} className={`w-full text-left px-3 py-3 text-base font-medium flex items-center justify-between rounded-lg ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`}>
                     {item.label}
-                    <svg className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`} />
                   </button>
                   {isOpen && item.dropdown.map((sub) => {
                     const subClass = `block px-6 py-2 text-sm transition-colors ${isLight ? 'text-gray-500 hover:text-gray-900' : 'text-text-muted hover:text-text-primary'}`;

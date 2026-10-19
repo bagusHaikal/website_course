@@ -1,4 +1,14 @@
 import { prospect, benefits } from '../data';
+import { ChartColumn, BrainCircuit, FolderOpen, MessagesSquare, Wrench, Infinity as InfinityIcon } from 'lucide-react';
+
+const iconMap = {
+  chart: ChartColumn,
+  brain: BrainCircuit,
+  folder: FolderOpen,
+  mentor: MessagesSquare,
+  wrench: Wrench,
+  infinity: InfinityIcon,
+};
 
 function WhySection() {
   return (
@@ -17,13 +27,18 @@ function WhySection() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {benefits.map((b, i) => (
+          {benefits.map((b, i) => {
+            const Icon = iconMap[b.icon] || ChartColumn;
+            return (
             <div key={i} className="border border-border-default bg-bg-surface rounded-2xl p-7 hover:border-border-hover hover:-translate-y-1 hover:shadow-glow-hover transition-all duration-300">
-              <div className="w-11 h-11 bg-brand-violet/20 rounded-lg flex items-center justify-center text-xl mb-5">{b.icon}</div>
+              <div className="w-11 h-11 bg-brand-violet/20 rounded-lg flex items-center justify-center text-brand-accent mb-5">
+                <Icon className="w-6 h-6" />
+              </div>
               <h3 className="font-display font-bold text-lg text-text-primary mb-2">{b.title}</h3>
               <p className="text-text-secondary text-sm leading-relaxed">{b.desc}</p>
             </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

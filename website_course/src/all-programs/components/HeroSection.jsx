@@ -1,7 +1,6 @@
 import { useTheme } from '../../contexts/ThemeContext';
 import { hero } from '../data';
-
-const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
+import { ArrowRight } from 'lucide-react';
 
 function scrollToCourses() {
   document.getElementById('all-programs')?.scrollIntoView({ behavior: 'smooth' });
@@ -40,7 +39,7 @@ function HeroSection() {
 
             <button onClick={scrollToCourses} className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
               {hero.cta}
-              {arrowSVG}
+              <ArrowRight className="w-5 h-5" />
             </button>
           </div>
 

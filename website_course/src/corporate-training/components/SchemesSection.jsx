@@ -1,3 +1,5 @@
+import { Check } from 'lucide-react';
+
 const schemes = [
   {
     title: 'Basic Program',
@@ -37,7 +39,7 @@ function SchemesSection() {
               <ul className="space-y-3 flex-1">
                 {scheme.features.map((feat, fi) => (
                   <li key={fi} className="flex items-start gap-3">
-                    <svg className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                    <Check className="w-5 h-5 text-brand-accent shrink-0 mt-0.5" />
                     <span className="text-text-secondary text-sm leading-relaxed">{feat}</span>
                   </li>
                 ))}

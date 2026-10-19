@@ -1,10 +1,12 @@
+import { Award, FolderOpen, Users, Briefcase, BookOpen, Network } from 'lucide-react';
+
 const benefits = [
-  { icon: '✅', title: '2 Sertifikat Sekaligus', desc: 'Dapatkan Sertifikat Studi Independen & Magang Industri yang diakui perusahaan partner.' },
-  { icon: '📁', title: 'Portfolio Real Project', desc: 'Bangun portofolio nyata dari proyek kolaboratif yang bisa langsung kamu tunjukkan ke recruiter.' },
-  { icon: '👥', title: 'Mentor Industri Ahli', desc: 'Bimbingan langsung dari mentor teknikal dan profesional yang berpengalaman di bidangnya.' },
-  { icon: '💼', title: 'Persiapan Karir', desc: 'Review CV, simulasi interview, dan akses ke jaringan hiring partner kami.' },
-  { icon: '📖', title: 'Konversi hingga 20 SKS', desc: 'Program ini dapat dikonversikan menjadi SKS sesuai kebijakan kampus masing-masing.' },
-  { icon: '🌐', title: 'Jaringan Profesional', desc: 'Kesempatan bekerja di perusahaan internasional dan multinasional melalui koneksi alumni.' },
+  { icon: <Award className="w-6 h-6" />, title: '2 Sertifikat Sekaligus', desc: 'Dapatkan Sertifikat Studi Independen & Magang Industri yang diakui perusahaan partner.' },
+  { icon: <FolderOpen className="w-6 h-6" />, title: 'Portfolio Real Project', desc: 'Bangun portofolio nyata dari proyek kolaboratif yang bisa langsung kamu tunjukkan ke recruiter.' },
+  { icon: <Users className="w-6 h-6" />, title: 'Mentor Industri Ahli', desc: 'Bimbingan langsung dari mentor teknikal dan profesional yang berpengalaman di bidangnya.' },
+  { icon: <Briefcase className="w-6 h-6" />, title: 'Persiapan Karir', desc: 'Review CV, simulasi interview, dan akses ke jaringan hiring partner kami.' },
+  { icon: <BookOpen className="w-6 h-6" />, title: 'Konversi hingga 20 SKS', desc: 'Program ini dapat dikonversikan menjadi SKS sesuai kebijakan kampus masing-masing.' },
+  { icon: <Network className="w-6 h-6" />, title: 'Jaringan Profesional', desc: 'Kesempatan bekerja di perusahaan internasional dan multinasional melalui koneksi alumni.' },
 ];
 
 function BenefitsSection() {
@@ -19,7 +21,7 @@ function BenefitsSection() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {benefits.map((b, i) => (
             <div key={i} className="border border-border-default bg-bg-surface rounded-2xl p-7 hover:border-border-hover hover:-translate-y-1 hover:shadow-glow-hover transition-all duration-300">
-              <div className="w-11 h-11 bg-brand-violet/20 rounded-lg flex items-center justify-center text-brand-accent mb-5 text-xl">{b.icon}</div>
+              <div className="w-11 h-11 bg-brand-violet/20 rounded-lg flex items-center justify-center text-brand-accent mb-5">{b.icon}</div>
               <h3 className="font-display font-bold text-lg text-text-primary mb-2">{b.title}</h3>
               <p className="text-text-secondary text-sm leading-relaxed">{b.desc}</p>
             </div>

@@ -1,15 +1,14 @@
-const paths = {
-  briefcase: (<><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v4"/></>),
-  badge: (<><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 3.74 4 4 0 0 1 4.77 4.78 4 4 0 0 1-4.78 4.74 4 4 0 0 1-6.74-3.74A4 4 0 0 1 3.85 8.62Z"/><path d="m9 12 2 2 4-4"/></>),
-  layers: (<><path d="m12 2 8.5 4.5-8.5 4.5-8.5-4.5L12 2z"/><path d="m3.5 6.5 8.5 4.5 8.5-4.5"/><path d="m3.5 11.5 8.5 4.5 8.5-4.5"/></>),
+import { Briefcase, BadgeCheck, Layers } from 'lucide-react';
+
+const iconMap = {
+  briefcase: Briefcase,
+  badge: BadgeCheck,
+  layers: Layers,
 };
 
 export function LocalIcon({ name, className }) {
-  return (
-    <svg className={className} fill="none" stroke="currentColor" strokeWidth={1.5} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
-      {paths[name] || paths.badge}
-    </svg>
-  );
+  const Icon = iconMap[name] || BadgeCheck;
+  return <Icon className={className} />;
 }
 
 export function DotMesh({ isLight }) {

@@ -1,9 +1,7 @@
 import { WA_LINK, EMAIL_LINK, consultationBenefits } from '../data';
 import { DotMesh } from './icons';
 import modelImg from '../../assets/model-for-corporate-training.webp';
-
-const arrowSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>;
-const mailSVG = <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 8.9 5.5a2 2 0 0 0 2.2 0L22 7"/></svg>;
+import { ArrowRight, Mail, CheckCircle2 } from 'lucide-react';
 
 function CTASection({ isLight }) {
   return (
@@ -35,9 +33,7 @@ function CTASection({ isLight }) {
               {consultationBenefits.map((b) => (
                 <div key={b.id} className="flex items-start gap-4">
                   <div className="w-10 h-10 rounded-xl border border-border-default bg-bg-surface flex items-center justify-center shrink-0 mt-0.5">
-                    <svg className="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <CheckCircle2 className="w-5 h-5 text-brand-accent" strokeWidth={1.5} />
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-text-primary text-base mb-0.5">{b.title}</h4>
@@ -50,10 +46,10 @@ function CTASection({ isLight }) {
             <div className="flex flex-col sm:flex-row gap-4">
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 Jadwalkan Konsultasi
-                {arrowSVG}
+                <ArrowRight className="w-5 h-5" />
               </a>
               <a href={EMAIL_LINK} className={`btn-secondary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2 transition-colors w-full sm:w-auto ${isLight ? 'border border-border-default text-gray-600 hover:bg-bg-section' : 'border border-white/20 text-text-secondary hover:bg-white/5'}`}>
-                {mailSVG}
+                <Mail className="w-5 h-5" />
                 Email Kami
               </a>
             </div>

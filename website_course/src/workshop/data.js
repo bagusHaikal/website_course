@@ -27,12 +27,12 @@ const prospect = {
 };
 
 const benefits = [
-  { icon: '📊', title: 'Pemahaman Mendalam Data & Visualisasi', desc: 'Mempresentasikan hasil temuan dari data secara jelas dan menarik.' },
-  { icon: '📈', title: 'Fundamental Statistik & Machine Learning', desc: 'Membuat analisis data yang lebih cakap dan mendalam.' },
-  { icon: '📁', title: 'Mini Capstone sebagai Portofolio', desc: 'Hands-on project yang bisa ditunjukkan langsung ke recruiter.' },
-  { icon: '👥', title: 'Interaksi Langsung dengan Mentor', desc: 'Berdiskusi langsung dengan mentor yang berpengalaman.' },
-  { icon: '💼', title: 'Skill yang Bisa Langsung Dipraktikkan', desc: 'Semua keterampilan dan teknik bisa diaplikasikan dalam pekerjaan atau project.' },
-  { icon: '♾️', title: 'Akses Materi & Rekaman Seumur Hidup', desc: 'Belajar kapan saja, di mana saja, untuk pendalaman lebih lanjut.' },
+  { icon: 'chart', title: 'Pemahaman Mendalam Data & Visualisasi', desc: 'Mempresentasikan hasil temuan dari data secara jelas dan menarik.' },
+  { icon: 'brain', title: 'Fundamental Statistik & Machine Learning', desc: 'Membuat analisis data yang lebih cakap dan mendalam.' },
+  { icon: 'folder', title: 'Mini Capstone sebagai Portofolio', desc: 'Hands-on project yang bisa ditunjukkan langsung ke recruiter.' },
+  { icon: 'mentor', title: 'Interaksi Langsung dengan Mentor', desc: 'Berdiskusi langsung dengan mentor yang berpengalaman.' },
+  { icon: 'wrench', title: 'Skill yang Bisa Langsung Dipraktikkan', desc: 'Semua keterampilan dan teknik bisa diaplikasikan dalam pekerjaan atau project.' },
+  { icon: 'infinity', title: 'Akses Materi & Rekaman Seumur Hidup', desc: 'Belajar kapan saja, di mana saja, untuk pendalaman lebih lanjut.' },
 ];
 
 const syllabus = [
@@ -69,10 +69,10 @@ const timeline = {
 };
 
 const audiences = [
-  { icon: '🌱', title: 'Pemula', desc: 'Yang ingin memahami dasar-dasar Data Science tanpa harus punya background IT.' },
-  { icon: '🎓', title: 'Fresh Graduate', desc: 'Yang ingin menambah skill baru sebelum memasuki dunia kerja.' },
-  { icon: '🔄', title: 'Career Switcher', desc: 'Yang tertarik berpindah ke bidang data dan ingin mencoba dulu sebelum mengambil program lebih panjang.' },
-  { icon: '🚀', title: 'Sudah Berpengalaman', desc: 'Yang ingin upskill dalam bidang data science.' },
+  { icon: 'sprout', title: 'Pemula', desc: 'Yang ingin memahami dasar-dasar Data Science tanpa harus punya background IT.' },
+  { icon: 'graduate', title: 'Fresh Graduate', desc: 'Yang ingin menambah skill baru sebelum memasuki dunia kerja.' },
+  { icon: 'switch', title: 'Career Switcher', desc: 'Yang tertarik berpindah ke bidang data dan ingin mencoba dulu sebelum mengambil program lebih panjang.' },
+  { icon: 'rocket', title: 'Sudah Berpengalaman', desc: 'Yang ingin upskill dalam bidang data science.' },
 ];
 
 const faqs = [

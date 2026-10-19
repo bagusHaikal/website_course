@@ -1,6 +1,5 @@
 import { installment, waLink } from '../data';
-
-const checkSVG = <svg className="w-4 h-4 shrink-0 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
+import { CheckCircle2 } from 'lucide-react';
 
 function InstallmentSection() {
   return (
@@ -18,7 +17,7 @@ function InstallmentSection() {
             <ul className="space-y-3 mb-8 max-w-lg">
               {installment.points.map((point, i) => (
                 <li key={i} className="flex items-center gap-3 text-text-secondary text-sm">
-                  {checkSVG}
+                  <CheckCircle2 className="w-4 h-4 shrink-0 text-brand-accent" />
                   <span>{point}</span>
                 </li>
               ))}

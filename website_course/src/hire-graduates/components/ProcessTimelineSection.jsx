@@ -1,6 +1,5 @@
 import { processSteps } from '../data';
-
-const checkSVG = <svg className="w-5 h-5 text-brand-accent" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7"/></svg>;
+import { Check } from 'lucide-react';
 
 function Card({ step, title, desc }) {
   return (
@@ -48,7 +47,7 @@ function ProcessTimelineSection() {
           <div className="flex justify-center mt-10">
             <div className="flex flex-col items-center gap-3">
               <div className="w-11 h-11 rounded-full border-2 border-brand-accent/50 bg-bg-base flex items-center justify-center shadow-glow">
-                {checkSVG}
+                <Check className="w-5 h-5 text-brand-accent" />
               </div>
               <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-text-muted">Rekrutmen Selesai</span>
             </div>

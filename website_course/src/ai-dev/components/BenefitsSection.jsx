@@ -1,28 +1,18 @@
+import { Code2, TrendingUp, Zap } from 'lucide-react';
+
 const benefits = [
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    ),
+    icon: <Code2 className="w-6 h-6" />,
     title: 'Belajar dari Nol, Langsung ke Industri',
     desc: 'Mulai dari Python dasar hingga membuat model machine learning dan deep learning. Cocok untuk pemula, diajarkan step by step oleh mentor profesional.',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-      </svg>
-    ),
+    icon: <TrendingUp className="w-6 h-6" />,
     title: 'Skill High Demand, Karier High Return',
     desc: 'AI adalah salah satu skill dengan permintaan paling tinggi di dunia kerja saat ini. Bekal ini akan membuka peluang sebagai AI Engineer, Data Analyst, hingga Researcher.',
   },
   {
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-      </svg>
-    ),
+    icon: <Zap className="w-6 h-6" />,
     title: 'Real-World Projects, Real Impact',
     desc: 'Kamu akan membangun proyek AI berbasis kasus nyata: analisis data, klasifikasi, NLP, hingga image recognition. Proyekmu bisa langsung jadi bagian dari portofolio profesional.',
   },

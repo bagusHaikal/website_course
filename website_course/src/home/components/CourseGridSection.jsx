@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { courses } from '../../data/courses';
 import CourseCard from '../../shared/CourseCard';
+import { SearchX, ArrowRight } from 'lucide-react';
 
 function CourseGridSection({ searchQuery = '' }) {
   const hasSearch = searchQuery.length > 0;
@@ -43,9 +44,7 @@ function CourseGridSection({ searchQuery = '' }) {
           </div>
         ) : (
           <div className="text-center py-16">
-            <svg className="w-12 h-12 text-text-muted mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
+            <SearchX className="w-12 h-12 text-text-muted mx-auto mb-4" strokeWidth={1.5} />
             <p className="text-text-muted text-lg">Tidak ada program yang cocok dengan pencarianmu.</p>
             <p className="text-text-muted/60 text-sm mt-2">Coba kata kunci lain seperti "data", "excel", "portfolio", atau "english".</p>
           </div>
@@ -55,9 +54,7 @@ function CourseGridSection({ searchQuery = '' }) {
           <div className="text-center">
             <Link to="/all-programs" className="inline-flex items-center gap-2 text-brand-accent font-semibold hover:text-text-primary transition-colors border-b border-transparent hover:border-brand-accent pb-1">
               Lihat Semua Program
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
+              <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
         )}
