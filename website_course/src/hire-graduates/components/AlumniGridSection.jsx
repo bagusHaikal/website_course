@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react';
 import { alumniHires } from '../data';
 import { LinkedInIcon } from './icons';
+import aiaLogo from '../../assets/AIA_Logo.jpg';
+import bercaLogo from '../../assets/Logo_PT-Berca-Hardayaperkasa.png';
+import elabramLogo from '../../assets/Elabram-Group.png';
+import kartinisLogo from '../../assets/KARTINIS-LABEL.png';
+import msGlowLogo from '../../assets/MS Glow.png';
+import epsonLogo from '../../assets/epson_logo.png';
+import constellarLogo from '../../assets/Constellar.png';
 import { Check } from 'lucide-react';
 
 function useImageTint(src) {
@@ -40,6 +47,7 @@ function useImageTint(src) {
 const companyColors = {
   'AIA Singapore': 'from-blue-500 to-cyan-500',
   'PT Berca Hardayaperkasa': 'from-emerald-500 to-teal-500',
+  'PT. Berca Hardayaperkasa': 'from-emerald-500 to-teal-500',
   'Elabram Group': 'from-orange-500 to-amber-500',
   "Kartini's Label": 'from-pink-500 to-rose-500',
   'MS Glow Beauty': 'from-purple-500 to-violet-500',
@@ -47,10 +55,47 @@ const companyColors = {
   'Constellar': 'from-indigo-500 to-purple-500',
 };
 
+const companyLogos = {
+  'AIA Singapore': aiaLogo,
+  'PT Berca Hardayaperkasa': bercaLogo,
+  'PT. Berca Hardayaperkasa': bercaLogo,
+  'Elabram Group': elabramLogo,
+  "Kartini's Label": kartinisLogo,
+  'MS Glow Beauty': msGlowLogo,
+  'Seiko Epson Corporation': epsonLogo,
+  'Constellar': constellarLogo,
+};
+
+const companyBadgeColors = {
+  'AIA Singapore': { backgroundColor: '#C40F3C', borderColor: 'rgba(255,255,255,0.25)' },
+  'PT Berca Hardayaperkasa': { backgroundColor: '#CC252D', borderColor: 'rgba(255,255,255,0.25)' },
+  'PT. Berca Hardayaperkasa': { backgroundColor: '#CC252D', borderColor: 'rgba(255,255,255,0.25)' },
+  'Elabram Group': { backgroundColor: '#252460', borderColor: 'rgba(255,255,255,0.25)' },
+  "Kartini's Label": { backgroundColor: '#000000', borderColor: 'rgba(255,255,255,0.25)' },
+  'MS Glow Beauty': { backgroundColor: '#5E5F5A', borderColor: 'rgba(255,255,255,0.25)' },
+  'Seiko Epson Corporation': { backgroundColor: '#172584', borderColor: 'rgba(255,255,255,0.25)' },
+  'Constellar': { backgroundColor: '#7F2A90', borderColor: 'rgba(255,255,255,0.25)' },
+};
+
 function CompanyBadge({ company }) {
+  const logo = companyLogos[company];
+  const brandStyle = companyBadgeColors[company];
   const color = companyColors[company] || 'from-brand-violet to-brand-purple';
+
   return (
-    <span className={`inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r ${color} bg-opacity-15 text-white text-[11px] font-semibold tracking-wide`}>
+    <span
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full ${
+        brandStyle ? 'border' : `bg-gradient-to-r ${color}`
+      } text-white text-[11px] font-semibold tracking-wide`}
+      style={brandStyle}
+    >
+      {logo && (
+        <img
+          src={logo}
+          alt={`${company} logo`}
+          className="w-4 h-4 rounded-full object-contain bg-white shrink-0"
+        />
+      )}
       {company}
     </span>
   );
@@ -79,20 +124,18 @@ function AlumniCard({ alum }) {
       <h3 className="font-display font-bold text-text-primary text-base mb-1">{alum.name}</h3>
       <p className="text-xs text-brand-accent font-medium mb-2">{alum.program}</p>
 
-      <div className="mt-auto w-full">
+      <div className="mt-auto w-full flex flex-col items-center gap-2">
         <CompanyBadge company={alum.company} />
-        <div className="mt-4 flex justify-center">
-          <a
-            href={alum.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-default text-xs font-semibold text-text-muted hover:text-brand-accent hover:border-border-hover transition-all duration-200"
-            aria-label={`LinkedIn profile of ${alum.name}`}
-          >
-            <LinkedInIcon className="w-4 h-4" />
-            LinkedIn
-          </a>
-        </div>
+        <a
+          href={alum.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-default text-xs font-semibold text-text-muted hover:text-brand-accent hover:border-border-hover transition-all duration-200"
+          aria-label={`LinkedIn profile of ${alum.name}`}
+        >
+          <LinkedInIcon className="w-4 h-4" />
+          LinkedIn
+        </a>
       </div>
     </div>
   );
