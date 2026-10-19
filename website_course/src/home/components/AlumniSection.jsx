@@ -1,6 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { alumniData } from '../../data/courses';
 import { LinkedInIcon } from '../../hire-graduates/components/icons';
+import aiaLogo from '../../assets/AIA_Logo.jpg';
+import bercaLogo from '../../assets/Logo_PT-Berca-Hardayaperkasa.png';
+import elabramLogo from '../../assets/Elabram-Group.png';
+import kartinisLogo from '../../assets/KARTINIS-LABEL.png';
+import msGlowLogo from '../../assets/MS Glow.png';
+import epsonLogo from '../../assets/epson_logo.png';
+import constellarLogo from '../../assets/Constellar.png';
 
 const companyColors = {
   'AIA Singapore': 'from-blue-500 to-cyan-500',
@@ -12,10 +19,72 @@ const companyColors = {
   'Constellar': 'from-indigo-500 to-purple-500',
 };
 
+/* Company logos shown inside the badge, left of the company name */
+const companyLogos = {
+  'AIA Singapore': aiaLogo,
+  'PT Berca Hardayaperkasa': bercaLogo,
+  'Elabram Group': elabramLogo,
+  "Kartini's Label": kartinisLogo,
+  'MS Glow Beauty': msGlowLogo,
+  'Seiko Epson Corporation': epsonLogo,
+  'Constellar': constellarLogo,
+};
+
+/* Badge background opted to match each company logo's brand colour.
+   #C40F3C sampled from AIA_Logo.jpg, #CC252D from the Berca logo,
+   #252460 from the Elabram Group logo, #000000 from the Kartini's logo ink,
+   #5E5F5A from the MS Glow logo ink, #172584 from the Epson logo blue,
+   #7F2A90 from the Constellar logo purple. */
+const companyBadgeColors = {
+  'AIA Singapore': {
+    backgroundColor: '#C40F3C',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  'PT Berca Hardayaperkasa': {
+    backgroundColor: '#CC252D',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  'Elabram Group': {
+    backgroundColor: '#252460',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  "Kartini's Label": {
+    backgroundColor: '#000000',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  'MS Glow Beauty': {
+    backgroundColor: '#5E5F5A',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  'Seiko Epson Corporation': {
+    backgroundColor: '#172584',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+  'Constellar': {
+    backgroundColor: '#7F2A90',
+    borderColor: 'rgba(255,255,255,0.25)',
+  },
+};
+
 function CompanyBadge({ company }) {
+  const logo = companyLogos[company];
+  const brandStyle = companyBadgeColors[company];
   const color = companyColors[company] || 'from-brand-violet to-brand-purple';
+
   return (
-    <span className={`inline-flex items-center px-3 py-1.5 rounded-full bg-gradient-to-r ${color} bg-opacity-15 text-white text-[11px] font-semibold tracking-wide`}>
+    <span
+      className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full ${
+        brandStyle ? 'border' : `bg-gradient-to-r ${color}`
+      } text-white text-[11px] font-semibold tracking-wide`}
+      style={brandStyle}
+    >
+      {logo && (
+        <img
+          src={logo}
+          alt={`${company} logo`}
+          className="w-4 h-4 rounded-full object-contain bg-white shrink-0"
+        />
+      )}
       {company}
     </span>
   );

@@ -205,9 +205,9 @@ export default function RegisterPage() {
         </button>
       </div>
 
-      <div className="flex-1 grid lg:grid-cols-2 font-sans selection:bg-brand-purple/20 selection:text-brand-purple">
-        {/* Left image panel — hidden on mobile */}
-        <div className="hidden lg:flex flex-col justify-between relative overflow-hidden px-12 py-10">
+      <div className="flex-1 grid lg:grid-cols-2 lg:items-start font-sans selection:bg-brand-purple/20 selection:text-brand-purple">
+        {/* Left image panel â€” hidden on mobile */}
+        <div className="hidden lg:flex flex-col justify-between relative overflow-hidden px-12 py-10 lg:sticky lg:top-0 lg:h-screen">
           <img src={mentorImage} alt="Mentors and Students" className="absolute inset-0 w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/65"></div>
 
@@ -224,15 +224,15 @@ export default function RegisterPage() {
             </p>
             <div className="pt-4 border-t border-white/15 space-y-2.5 text-xs font-medium text-white/90">
               <div className="flex items-center gap-2.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
                 <span>Materi interaktif dari praktisi industri</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
                 <span>Sertifikat resmi setelah menyelesaikan program</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-yellow"></div>
+                <div className="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
                 <span>Mentoring langsung dari mentor spesialis</span>
               </div>
             </div>
@@ -244,7 +244,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Right form panel */}
-        <div className="flex items-center justify-center p-6 sm:p-12 bg-background relative">
+        <div className="flex items-center justify-center p-6 sm:p-12 bg-bg-base relative">
           <div className="w-full max-w-sm font-sans">
             {/* Mobile logo */}
             <div className="lg:hidden flex justify-center mb-8">
@@ -252,7 +252,7 @@ export default function RegisterPage() {
             </div>
 
             {/* Back link */}
-            <Link to="/" className="inline-flex items-center gap-2 text-xs font-medium text-muted-foreground hover:text-brand-accent transition-colors mb-8">
+            <Link to="/" className="inline-flex items-center gap-2 text-xs font-medium text-text-muted hover:text-brand-accent transition-colors mb-8">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
               Kembali
             </Link>

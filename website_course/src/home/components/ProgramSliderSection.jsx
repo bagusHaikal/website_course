@@ -1,34 +1,78 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const programs = [
-  { title: 'Kampus Merdeka', desc: 'Cocok untuk kamu yang ingin magang, konversi SKS, dibimbing mentor, dapat sertifikat resmi, dan siap terjun ke dunia kerja.', icon: (<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>), image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/919b2232-0ceb-4499-c13c-113ea327b400/public', href: '/program-mandiri' },
-  { title: 'Workshop', tagline: 'Kuasai Skill Baru, Pas Buat Kamu yang Mau Sat Set!', desc: 'Ingin belajar spesifik di bidang tertentu atau mencoba dulu sebelum mendalami suatu tanpa harus berkomitmen jangka panjang.', icon: (<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>), image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/299a854a-069b-4146-7cb3-8ebecd0cce00/public', href: '/workshop' },
-  { title: 'Bootcamp', tagline: 'Kuasai Skill Baru, Pas Buat Kamu yang Mau Sat Set!', desc: 'Sedang mencari pekerjaan atau opportunity baru dan ingin mendalami atau upskill di bidang tertentu dengan pembelajaran dan bimbingan yang intensive.', icon: (<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>), image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/64243dca-6975-4f19-8152-24260fb38700/public', href: '/bootcamp' },
-  { title: 'Belajar Mandiri', tagline: 'Belajar Mandiri? Kami Punya Solusinya!', desc: 'Lebih senang belajar mandiri tanpa tekanan, mengikuti pace dan timeline diri sendiri.', icon: (<svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>), image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/d4efac1d-4618-46a4-cfb3-fecce046f000/public', href: '/belajar-mandiri' }
+  {
+    id: 'kampus-merdeka',
+    tab: 'Kampus Merdeka',
+    title: 'Magang Studi Independen Mandiri Batch 10 Infinite Learning!',
+    desc: 'ingin mendapatkan pengalaman magang, konversi hingga 20 SKS, dibimbing mentor, mendapatkan sertifikat resmi, dan siap terjun ke dunia kerja.',
+    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/919b2232-0ceb-4499-c13c-113ea327b400/public',
+    href: '/program-mandiri',
+    titleWeight: 'font-semibold',
+  },
+  {
+    id: 'workshop',
+    tab: 'Workshop',
+    title: 'Kuasai Skill Baru, Pas Buat Kamu yang Mau Sat Set!',
+    desc: 'Ingin belajar spesifik dibidang tertentu atau mencoba dulu sebelum mendalami suatu tanpa harus berkomitmen jangka panjang.',
+    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/299a854a-069b-4146-7cb3-8ebecd0cce00/public',
+    href: '/workshop',
+    titleWeight: 'font-bold',
+  },
+  {
+    id: 'bootcamp',
+    tab: 'Bootcamp',
+    title: 'Kuasai Skill Baru, Pas Buat Kamu yang Mau Sat Set!',
+    desc: 'sedang mencari pekerjaan atau opportunity baru dan ingin mendalami atau upskill di bidang tertentu dengan pembelajaran dan bimbingan yang intensive.',
+    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/64243dca-6975-4f19-8152-24260fb38700/public',
+    href: '/bootcamp',
+    titleWeight: 'font-bold',
+  },
+  {
+    id: 'belajar-mandiri',
+    tab: 'Belajar Mandiri',
+    title: 'Belajar Mandiri? Kami Punya Solusinya!',
+    desc: 'lebih senang belajar mandiri, mengikuti pace dan timeline diri sendiri.',
+    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/d4efac1d-4618-46a4-cfb3-fecce046f000/public',
+    href: '/belajar-mandiri',
+    titleWeight: 'font-bold',
+  },
 ];
 
-const navIcons = {
-  prev: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>,
-  next: <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-};
+const arrowIcon = (
+  <svg className="w-4 h-4 shrink-0 fill-current" viewBox="0 0 448 512" aria-hidden="true">
+    <path d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4-9.4-24.6-9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
+  </svg>
+);
 
-function ProgramCard({ program }) {
+function ProgramPanel({ program }) {
   return (
-    <div className="rounded-2xl border border-border-default bg-bg-surface flex w-full h-85 shrink-0 transition-all duration-300 hover:border-brand-accent/30 hover:shadow-glow-hover hover:-translate-y-1 overflow-hidden relative">
-      <div className="w-[45%] h-full shrink-0 relative bg-bg-section/50">
-        <img src={program.image} alt={program.title} className="w-full h-full object-contain p-6" />
+    <div className="flex flex-col md:flex-row md:items-stretch w-full md:mt-8 md:mb-8 md:pr-12">
+      {/* Image column */}
+      <div className="flex items-center justify-center w-full md:w-1/2 py-6 md:py-0">
+        <img
+          src={program.image}
+          alt={program.title}
+          className="w-[60%] max-w-full aspect-[4/3] object-contain"
+        />
       </div>
-      <div className="flex-1 p-6 flex flex-col justify-between">
-        <div>
-          <span className="text-[10px] font-semibold text-brand-accent mb-1 block uppercase tracking-wider">{program.tag}</span>
-          <h3 className="font-display font-bold text-xl text-text-primary mb-1 tracking-tight">{program.title}</h3>
-          {program.tagline && (<p className="text-sm font-medium text-brand-light mb-2">{program.tagline}</p>)}
-          <p className="text-text-secondary text-sm leading-[1.6] line-clamp-3">{program.desc}</p>
-        </div>
-        <Link to={program.href} className="btn-premium bg-button-gradient text-white px-5 py-2.5 rounded-full font-semibold text-sm inline-flex items-center justify-center gap-2 self-start">
-          Pelajari Selanjutnya
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
+
+      {/* Text column */}
+      <div className="flex flex-col justify-center items-start w-full md:w-1/2 px-0 pb-8 md:pb-0 md:px-8">
+        <h3 className={`font-display text-text-primary text-xl md:text-2xl leading-[1.3] tracking-tight ${program.titleWeight}`}>
+          {program.title}
+        </h3>
+        <p className="text-text-secondary text-base md:text-lg leading-relaxed mt-2">
+          <span className="font-semibold text-text-primary">Cocok untuk kamu yang : </span>
+          {program.desc}
+        </p>
+        <Link
+          to={program.href}
+          className="mt-6 btn-premium bg-button-gradient text-white shadow-glow rounded-[12px] px-6 py-3 font-semibold text-base md:text-lg leading-[1.6] capitalize inline-flex flex-row-reverse items-center gap-4 transition-all duration-200 ease-out"
+        >
+          <span>Pelajari Selengkapnya</span>
+          {arrowIcon}
         </Link>
       </div>
     </div>
@@ -36,123 +80,102 @@ function ProgramCard({ program }) {
 }
 
 function ProgramSliderSection() {
-  const [current, setCurrent] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const trackRef = useRef(null);
-  const total = programs.length;
-  const slides = [programs[total - 1], ...programs, programs[0]];
+  const [activeTab, setActiveTab] = useState(0);
+  const tabRefs = useRef([]);
 
-  useEffect(() => {
-    if (isPaused) return;
-    const timer = setInterval(() => setCurrent(prev => prev + 1), 3000);
-    return () => clearInterval(timer);
-  }, [isPaused]);
+  const focusTab = (index) => {
+    const next = (index + programs.length) % programs.length;
+    setActiveTab(next);
+    tabRefs.current[next]?.focus();
+  };
 
-  useEffect(() => {
-    if (current === 0) {
-      setTimeout(() => {
-        if (trackRef.current) {
-          trackRef.current.style.transition = 'none';
-          trackRef.current.style.transform = `translateX(-${total * 100}%)`;
-        }
-        setCurrent(total);
-      }, 50);
-    } else if (current === total + 1) {
-      setTimeout(() => {
-        if (trackRef.current) {
-          trackRef.current.style.transition = 'none';
-          trackRef.current.style.transform = 'translateX(-100%)';
-        }
-        setCurrent(1);
-      }, 50);
+  const handleKeyDown = (e, index) => {
+    switch (e.key) {
+      case 'ArrowRight':
+        e.preventDefault();
+        focusTab(index + 1);
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        focusTab(index - 1);
+        break;
+      case 'Home':
+        e.preventDefault();
+        focusTab(0);
+        break;
+      case 'End':
+        e.preventDefault();
+        focusTab(programs.length - 1);
+        break;
+      default:
+        break;
     }
-  }, [current, total]);
-
-  const next = () => {
-    if (current === slides.length - 1) {
-      trackRef.current.style.transition = 'none';
-      trackRef.current.style.transform = 'translateX(-100%)';
-      setIsPaused(true); setCurrent(1); setTimeout(() => setIsPaused(false), 50);
-    } else { setIsPaused(true); setCurrent(prev => prev + 1); setTimeout(() => setIsPaused(false), 500); }
   };
-  const prev = () => {
-    if (current === 0) {
-      trackRef.current.style.transition = 'none';
-      trackRef.current.style.transform = `translateX(-${total * 100}%)`;
-      setIsPaused(true); setCurrent(total); setTimeout(() => setIsPaused(false), 50);
-    } else { setIsPaused(true); setCurrent(prev => prev - 1); setTimeout(() => setIsPaused(false), 500); }
-  };
-
-  // Show only real programs for dots (ignore cloned slides)
-  const visibleIndices = Array.from({ length: total }, (_, i) => i + 1);
-  const dotIndex = visibleIndices.indexOf(current);
 
   return (
     <section className="py-24 relative bg-bg-base overflow-hidden">
-      {/* Subtle glow blob decoration - left side */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] rounded-full bg-brand-purple/8 blur-3xl pointer-events-none" aria-hidden="true" />
-      {/* Subtle glow blob decoration - right side */}
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-brand-violet/6 blur-3xl pointer-events-none" aria-hidden="true" />
-
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading with eyebrow + subtitle */}
-        <div className="text-center mb-14">
-          <span className="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest text-brand-accent" style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)', borderColor: 'rgba(124, 58, 237, 0.2)' }}>
-            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            Program Kami
-          </span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary tracking-tight mb-4">
+        {/* Heading + subtitle */}
+        <div className="text-center mb-12">
+          <h2 className="font-display font-extrabold text-[2rem] md:text-5xl text-text-primary tracking-[-0.03em] mb-4">
             Temukan Program yang Sesuai<br className="hidden md:block" /> dengan Kebutuhanmu
           </h2>
           <p className="text-text-secondary text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
-            Pilih jalur belajar yang paling cocok \u2014 dari intensif bootcamp hingga fleksibel mandiri \u2014 dan mulai wujudkan potensimu hari ini.
+            Pilih jalur belajar yang paling cocok &mdash; dari intensif bootcamp hingga fleksibel mandiri &mdash; dan mulai wujudkan potensimu hari ini.
           </p>
         </div>
+      </div>
 
-        {/* Slider */}
-        <div className="relative" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
-          {/* Prev button */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default bg-bg-surface/80 flex items-center justify-center text-text-primary hover:border-brand-accent/40 hover:text-brand-accent hover:bg-bg-subtle transition-all duration-200"
-            style={{ boxShadow: 'var(--shadow-glass)' }}
-            aria-label="Previous slide"
-          >
-            {navIcons.prev}
-          </button>
-          {/* Next button */}
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full border border-border-default bg-bg-surface/80 flex items-center justify-center text-text-primary hover:border-brand-accent/40 hover:text-brand-accent hover:bg-bg-subtle transition-all duration-200"
-            style={{ boxShadow: 'var(--shadow-glass)' }}
-            aria-label="Next slide"
-          >
-            {navIcons.next}
-          </button>
+      {/* Full-bleed tabs panel — follows theme background */}
+      <div className="relative bg-bg-section border-y border-border-default">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="program-tabs">
+            {/* Tab headings */}
+            <div className="program-tabs__heading" role="tablist" aria-label="Program">
+              {programs.map((program, index) => {
+                const isActive = index === activeTab;
+                return (
+                  <button
+                    key={program.id}
+                    ref={(el) => { tabRefs.current[index] = el; }}
+                    id={`program-tab-${program.id}`}
+                    role="tab"
+                    type="button"
+                    aria-selected={isActive}
+                    aria-controls={`program-panel-${program.id}`}
+                    tabIndex={isActive ? 0 : -1}
+                    onClick={() => setActiveTab(index)}
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    style={{ '--tab-order': index * 2 }}
+                    className={`program-tabs__title ${
+                      isActive
+                        ? 'program-tabs__title--active text-brand-accent'
+                        : 'text-text-secondary hover:bg-bg-subtle hover:text-text-primary'
+                    }`}
+                  >
+                    {program.tab}
+                  </button>
+                );
+              })}
+            </div>
 
-          {/* Slider track */}
-          <div className="overflow-hidden rounded-2xl">
-            <div ref={trackRef} className="flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${current * 100}%)` }}>
-              {slides.map((program, index) => (
-                <div key={index} className="w-full shrink-0 px-4">
-                  <ProgramCard program={program} />
+            {/* Tab contents — mobile: accordion under each tab; desktop: stacked grid so height stays constant */}
+            <div className="program-tabs__content">
+              {programs.map((program, index) => (
+                <div
+                  key={program.id}
+                  id={`program-panel-${program.id}`}
+                  role="tabpanel"
+                  aria-labelledby={`program-tab-${program.id}`}
+                  data-active={index === activeTab}
+                  aria-hidden={index !== activeTab}
+                  style={{ '--tab-order': index * 2 + 1 }}
+                  className="program-tabs__panel"
+                >
+                  <ProgramPanel program={program} />
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Dot indicators */}
-          <div className="flex justify-center gap-2 mt-8" role="tablist" aria-label="Program slides">
-            {visibleIndices.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => { setIsPaused(true); setCurrent(i + 1); setTimeout(() => setIsPaused(false), 500); }}
-                className={`h-2 rounded-full transition-all duration-300 ${i === dotIndex ? 'w-8 bg-brand-violet' : 'w-2 bg-border-default hover:bg-brand-accent/40'}`}
-                role="tab"
-                aria-selected={i === dotIndex}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
           </div>
         </div>
       </div>
