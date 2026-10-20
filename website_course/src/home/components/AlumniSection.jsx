@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { alumniData } from '../../data/courses';
 import { LinkedInIcon } from '../../hire-graduates/components/icons';
 import aiaLogo from '../../assets/AIA_Logo.jpg';
@@ -128,7 +128,7 @@ function useImageTint(src) {
 function AlumniCard({ alum }) {
   const tint = useImageTint(alum.image);
   return (
-    <div className="group relative flex flex-col items-center p-3 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center min-h-[260px]">
+    <div className="group relative flex flex-col items-center p-4 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center h-full min-h-[260px]">
       <div className="relative mb-2">
         <div
           className={`absolute inset-0 rounded-full blur-sm opacity-50 group-hover:opacity-80 transition-opacity duration-300 ${tint ? '' : 'bg-button-gradient'}`}
@@ -165,29 +165,14 @@ function AlumniCard({ alum }) {
 }
 
 function AlumniSection() {
-  const [current, setCurrent] = useState(0);
-  const [perView, setPerView] = useState(4);
+  const scrollContainerRef = useRef(null);
 
-  useEffect(() => {
-    const update = () => {
-      if (window.innerWidth >= 1024) setPerView(3);
-      else if (window.innerWidth >= 768) setPerView(2);
-      else setPerView(1);
-    };
-    update();
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
-
-  const maxIndex = Math.max(0, alumniData.length - perView);
-
-  const next = useCallback(() => {
-    setCurrent(prev => Math.min(prev + 1, maxIndex));
-  }, [maxIndex]);
-
-  const prev = useCallback(() => {
-    setCurrent(prev => Math.max(prev - 1, 0));
-  }, []);
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === 'left' ? -350 : 350;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
 
   return (
     <section id="alumni" className="py-24 bg-bg-section">
@@ -202,57 +187,43 @@ function AlumniSection() {
         </div>
 
         <div className="relative">
-          <div className="">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${current * (100 / perView)}%)` }}
-            >
-              {alumniData.map((alum, index) => (
-                <div
-                  key={index}
-                  className="w-full shrink-0 px-2"
-                  style={{ width: `${100 / perView}%` }}
-                >
-                  <AlumniCard alum={alum} />
-                </div>
-              ))}
-            </div>
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto pb-6 pt-2 px-4 snap-x snap-mandatory scrollbar-none"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+            }}
+          >
+            {alumniData.map((alum, index) => (
+              <div
+                key={index}
+                className="w-[280px] sm:w-[320px] shrink-0 snap-start"
+              >
+                <AlumniCard alum={alum} />
+              </div>
+            ))}
           </div>
 
-          {alumniData.length > perView && (
-            <div className="flex items-center justify-center gap-4 mt-8">
-              <button
-                onClick={prev}
-                disabled={current === 0}
-                className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Previous slide"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={() => scroll('left')}
+              className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary hover:border-brand-accent transition-colors"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
 
-              <div className="flex gap-2">
-                {Array.from({ length: maxIndex + 1 }, (_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setCurrent(i)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      current === i ? 'w-6 bg-brand-accent' : 'bg-border-default hover:bg-brand-accent/50'
-                    }`}
-                    aria-label={`Go to slide ${i + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={next}
-                disabled={current === maxIndex}
-                className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary disabled:opacity-30 disabled:cursor-not-allowed"
-                aria-label="Next slide"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          )}
+            <button
+              onClick={() => scroll('right')}
+              className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary hover:border-brand-accent transition-colors"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

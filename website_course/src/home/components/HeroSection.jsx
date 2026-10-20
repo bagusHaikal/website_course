@@ -1,4 +1,5 @@
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
+import slideHeaderUngu from '../../assets/slide_header_ungu.png';
 
 function HeroSection({ isLight }) {
   return (
@@ -39,20 +40,12 @@ function HeroSection({ isLight }) {
           </div>
 
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
-            <div className="relative z-10 w-full aspect-square rounded-3xl overflow-hidden border border-border-default">
+            <div className="relative z-10 w-full flex items-center justify-center">
               <img
-                src="https://lms.infinitelearningstudent.id/pluginfile.php/1/theme_trema/loginbackgroundimage/1768987444/Mentors%20and%20students3.JPG"
-                alt="Students collaborating"
-                className="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity duration-500"
+                src={slideHeaderUngu}
+                alt="Slide Header Ungu"
+                className="w-full h-auto object-contain drop-shadow-2xl"
               />
-              <div className="absolute bottom-8 left-8 right-8 glass-panel p-5 rounded-2xl flex items-center gap-4">
-                <div className="bg-green-500/20 p-3 rounded-full text-green-400">
-                  <CheckCircle className="h-6 w-6" />
-                </div>
-                <div>
-                  <p className="text-sm font-bold text-text-primary">Sertifikat Resmi Terakreditasi</p>
-                </div>
-              </div>
             </div>
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>
           </div>
