@@ -9,6 +9,7 @@ import msGlowLogo from '../../assets/MS Glow.png';
 import epsonLogo from '../../assets/epson_logo.png';
 import constellarLogo from '../../assets/Constellar.png';
 import { Check } from 'lucide-react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 function useImageTint(src) {
   const [tint, setTint] = useState(null);
@@ -103,6 +104,8 @@ function CompanyBadge({ company }) {
 
 function AlumniCard({ alum }) {
   const tint = useImageTint(alum.image);
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   return (
     <div className="group relative flex flex-col items-center p-3 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center min-h-[260px]">
       {/* Avatar ring */}
@@ -121,7 +124,7 @@ function AlumniCard({ alum }) {
         </div>
       </div>
 
-      <h3 className="font-display font-bold text-text-primary text-base mb-1">{alum.name}</h3>
+      <h3 className={`font-display font-bold text-base mb-1 ${isLight ? 'text-text-primary' : 'text-white'}`}>{alum.name}</h3>
       <p className="text-xs text-brand-accent font-medium mb-2">{alum.program}</p>
 
       <div className="mt-auto w-full flex flex-col items-center gap-2">
@@ -130,7 +133,7 @@ function AlumniCard({ alum }) {
           href={alum.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-default text-xs font-semibold text-text-muted hover:text-brand-accent hover:border-border-hover transition-all duration-200"
+          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold transition-all duration-200 ${isLight ? 'border-border-default text-text-muted hover:text-brand-accent hover:border-border-hover' : 'border-white/15 text-gray-300 hover:text-white hover:border-brand-accent/50'}`}
           aria-label={`LinkedIn profile of ${alum.name}`}
         >
           <LinkedInIcon className="w-4 h-4" />

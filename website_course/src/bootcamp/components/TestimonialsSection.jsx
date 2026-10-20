@@ -9,6 +9,7 @@ import msGlowLogo from '../../assets/MS Glow.png';
 import epsonLogo from '../../assets/epson_logo.png';
 import constellarLogo from '../../assets/Constellar.png';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 const companyColors = {
   'AIA Singapore': 'from-blue-500 to-cyan-500',
@@ -103,6 +104,8 @@ function useImageTint(src) {
 
 function TestimonialCard({ person }) {
   const tint = useImageTint(person.image);
+  const { theme } = useTheme();
+  const isLight = theme === 'light';
   return (
     <div className="group relative flex flex-col items-center p-4 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center h-full min-h-[260px]">
       <div className="relative mb-2">
@@ -120,7 +123,7 @@ function TestimonialCard({ person }) {
         </div>
       </div>
 
-      <h3 className="font-display font-bold text-text-primary text-base mb-1">{person.name}</h3>
+      <h3 className={`font-display font-bold text-base mb-1 ${isLight ? 'text-text-primary' : 'text-white'}`}>{person.name}</h3>
       <p className="text-xs text-brand-accent font-medium mb-2">{person.program}</p>
 
       <div className="mt-auto w-full flex flex-col items-center gap-2">
@@ -130,14 +133,14 @@ function TestimonialCard({ person }) {
             href={person.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border-default text-xs font-semibold text-text-muted hover:text-brand-accent hover:border-border-hover transition-all duration-200"
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold transition-all duration-200 ${isLight ? 'border-border-default text-text-muted hover:text-brand-accent hover:border-border-hover' : 'border-white/15 text-gray-300 hover:text-white hover:border-brand-accent/50'}`}
             aria-label={`LinkedIn profile of ${person.name}`}
           >
             <LinkedInIcon className="w-4 h-4" />
             LinkedIn
           </a>
         ) : (
-          <span className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-text-muted opacity-50">
+          <span className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold opacity-50 ${isLight ? 'text-text-muted' : 'text-gray-400'}`}>
             <LinkedInIcon className="w-4 h-4" />
             LinkedIn
           </span>
