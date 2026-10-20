@@ -11,6 +11,9 @@ function CourseCard({ course, showDetails = false, baseSurface = false }) {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-linear-to-t via-transparent to-transparent from-white/60 dark:from-bg-base"></div>
+        <span className="absolute top-3 left-3 z-10 bg-brand-purple text-white px-3 py-1 rounded-full text-xs font-semibold tracking-wide shadow-md">
+          Kelas Mandiri
+        </span>
       </div>
 
       <div className="p-5 flex-1 flex flex-col relative z-10">
