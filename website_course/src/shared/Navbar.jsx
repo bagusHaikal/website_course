@@ -45,9 +45,9 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
   const isLight = theme === 'light';
 
   /* Navbar background follows the active theme tokens (design.md §7.5, §15) */
-  const navClass = scrolled
-    ? 'bg-bg-base/80 backdrop-blur-xl shadow-glass'
-    : 'bg-bg-base/90 backdrop-blur-md';
+  const navClass = isLight
+    ? (scrolled ? 'bg-white/80 backdrop-blur-xl shadow-glass' : 'bg-white/90 backdrop-blur-md')
+    : (scrolled ? 'bg-[#000000]/85 backdrop-blur-xl shadow-glass' : 'bg-[#000000]/90 backdrop-blur-md');
 
   const translateClass = navVisible ? "translate-y-0" : "-translate-y-full";
 
@@ -63,7 +63,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
               <ChevronDown className="w-4 h-4 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }} />
             </button>
             {isOpen && (
-              <div className="absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default">
+              <div className={`absolute top-full left-0 mt-2 w-52 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white/95' : 'bg-[#000000]/95'} border-border-default`}>
                 {item.dropdown.map((sub) => {
                   const subClass = `block px-4 py-2.5 text-sm transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900 hover:bg-bg-section' : 'text-text-secondary hover:text-text-primary hover:bg-bg-subtle'}`;
                   return sub.href.startsWith('/') ? (
@@ -128,7 +128,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
                   <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accountOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {accountOpen && (
-                  <div role="menu" className="absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border bg-bg-base/95 border-border-default">
+                  <div role="menu" className={`absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white/95' : 'bg-[#000000]/95'} border-border-default`}>
                     <button
                       type="button"
                       role="menuitem"
@@ -164,7 +164,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             </button>
           </div>
         </div>
-        <div id="mobile-menu" className={`md:hidden absolute w-full border-t bg-bg-base/95 border-border-default backdrop-blur-xl ${menuOpen ? "" : "hidden"}`}>
+        <div id="mobile-menu" className={`md:hidden absolute w-full border-t ${isLight ? 'bg-white/95' : 'bg-[#000000]/95'} border-border-default backdrop-blur-xl ${menuOpen ? "" : "hidden"}`}>
           <div className="px-4 pt-2 pb-6 space-y-2">
             {navMenu.map((item) => {
               const hasDropdown = item.dropdown && item.dropdown.length > 0;

@@ -46,7 +46,7 @@ function Footer() {
     )}
   ];
   return (
-    <footer className="py-12 border-t bg-[#08060F] text-text-muted" style={{ borderColor: 'var(--color-divider)' }}>
+    <footer className="py-12 border-t bg-bg-footer text-text-muted" style={{ borderColor: 'var(--color-divider)' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-5 gap-10">
         <div>
           <div className="mb-10">

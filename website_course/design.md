@@ -16,7 +16,7 @@
 | `--color-bg-section` | `#0E0A1A` | `rgb(14, 10, 26)` | Alternating section bg (dark) |
 | `--color-bg-surface` | `rgba(30,27,75,0.4)` | — | Card/panel background (glass) |
 | `--color-bg-subtle` | `rgba(255,255,255,0.03)` | — | Hover states, subtle backgrounds |
-| `--color-bg-footer` | `#08060F` | `rgb(8, 6, 15)` | Footer background |
+| `--color-bg-footer` | `#000000` | `rgb(0, 0, 0)` | Footer background (true dark) |
 | `--color-bg-input` | `rgba(30,27,75,0.5)` | — | Input fields |
 | `--color-brand-purple` | `#4C1D95` | `rgb(76, 29, 149)` | Primary brand color |
 | `--color-brand-violet` | `#7C3AED` | `rgb(124, 58, 237)` | Accent / CTA gradient start |
@@ -79,7 +79,7 @@
 | `--color-bg-section` | `#F8F7FF` |
 | `--color-bg-surface` | `rgba(248,245,255,0.8)` |
 | `--color-bg-subtle` | `rgba(0,0,0,0.03)` |
-| `--color-bg-footer` | `#F3F0FF` |
+| `--color-bg-footer` | `#000000` |
 | `--color-text-primary` | `#0B0F19` |
 | `--color-text-secondary` | `#374151` |
 | `--color-text-muted` | `#6B7280` |
@@ -90,7 +90,7 @@
 - Glassmorphism berubah menjadi putih transparan dengan shadow halus
 - Purple accent tetap dipakai untuk CTA dan highlight
 - Blob gradient tidak muncul di light mode
-- Footer background: `#F3F0FF` (ungu sangat tipis)
+- Footer background tetap hitam pekat (`#000000`), tidak berubah saat light mode
 
 ### Theme Toggle
 - Simpan preferensi di `localStorage` key: `theme`
@@ -256,11 +256,12 @@ transition: background-color 0.3s ease, border-color 0.3s ease;
 
 ### 7.2. Cards
 
-Tanpa glass — solid semi-transparent:
+Solid (putih solid di light mode, permukaan gelap di dark mode):
 ```css
 border: 1px solid var(--color-border-default);
 background: var(--color-bg-surface);
 border-radius: var(--radius-lg);
+box-shadow: var(--shadow-card);
 transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 ```
 **Hover:** `border-color: var(--color-border-hover); transform: translateY(-2px); box-shadow: var(--shadow-glow-hover);`
@@ -300,7 +301,7 @@ text-transform: uppercase;
 
 ### 7.5. Navigation Bar
 ```css
-background: rgba(11, 15, 25, 0.8);
+background: rgba(0, 0, 0, 0.85); /* True dark / black glass, tanpa campuran ungu */
 backdrop-filter: blur(16px);
 border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 position: fixed;
@@ -335,7 +336,7 @@ border-radius: var(--radius-md);
 | Alumni | `bg-bg-section` | `bg-bg-section` |
 | FAQ | `bg-bg-base` | `bg-bg-base` |
 | CTA | `bg-hero-gradient` (highlight) | `bg-hero-gradient` (highlight) |
-| Footer | `bg-bg-footer` (#08060F) | `bg-bg-footer` (#F3F0FF) |
+| Footer | `bg-bg-footer` (#000000 true dark) | `bg-bg-footer` (#000000, tetap gelap) |
 
 ---
 
@@ -447,7 +448,7 @@ transition: all 200ms ease-out;
 - Komponen interaktif harus memiliki hover, focus, dan active state
 - Glassmorphism hanya untuk navbar dan floating elements
 - Hero dan CTA selalu pakai gradient ungu (baik dark maupun light mode)
-- Section alternating pakai `bg-section` untuk rhythm visual
+- Navbar dan Footer dalam dark mode wajib menggunakan warna hitam pekat (true dark/black, misal `#000000`) tanpa campuran atau gradien ungu
 
 ### Don'ts
 - Jangan gunakan hardcoded hex di JSX — gunakan token Tailwind
