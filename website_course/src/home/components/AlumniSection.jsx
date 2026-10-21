@@ -192,18 +192,18 @@ function AlumniSection() {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-6 pt-2 px-4 snap-x snap-mandatory scrollbar-none"
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 snap-x snap-mandatory scrollbar-none"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
-              WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-              maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 3%, black 97%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 3%, black 97%, transparent)',
             }}
           >
             {alumniData.map((alum, index) => (
               <div
                 key={index}
-                className="w-[280px] sm:w-[320px] shrink-0 snap-start"
+                className="w-[85vw] sm:w-[320px] shrink-0 snap-center sm:snap-start"
               >
                 <AlumniCard alum={alum} />
               </div>

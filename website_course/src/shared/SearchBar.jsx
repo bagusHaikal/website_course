@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { courses } from '../data/courses';
 import { X, Search } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 function SearchResultCard({ course }) {
   return (
@@ -29,6 +30,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   const [open, setOpen] = useState(false);
   const wrapperRef = useRef(null);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const filtered = courses.filter(c =>
     c.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -47,8 +49,9 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   }, []);
 
   const handleInputChange = (e) => {
-    setQuery(e.target.value);
-    if (e.target.value.length > 0 && !open && navVisible) {
+    const val = e.target.value;
+    setQuery(val);
+    if (val.length > 0 && !open) {
       setOpen(true);
     }
   };
@@ -62,7 +65,11 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   const handleSelect = (course) => {
     setOpen(false);
     setQuery('');
-    if (onResultClick) onResultClick(course);
+    if (onResultClick) {
+      onResultClick(course);
+    } else {
+      navigate(`/courses/${course.slug}`);
+    }
   };
 
   if (!navVisible) return null;
@@ -78,13 +85,10 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
           value={query}
           onChange={handleInputChange}
           onFocus={() => {
-            if (query.length > 0 && navVisible) setOpen(true);
+            if (query.length > 0) setOpen(true);
           }}
           placeholder="Cari program..."
           className="bg-bg-input text-text-primary text-sm placeholder-text-muted px-4 py-2 w-full outline-none"
-          onBlur={() => {
-            if (query.length === 0) setOpen(false);
-          }}
         />
         {query ? (
           <button onClick={handleClear} className="px-2.5 text-text-muted hover:text-text-primary transition-colors shrink-0" aria-label="Clear">
@@ -99,7 +103,7 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
 
       {open && (
         <div
-          className="absolute top-full left-0 mt-2 min-w-[500px] w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-300"
+          className="absolute top-full left-0 mt-2 sm:min-w-[500px] w-full bg-bg-base border border-border-default rounded-xl overflow-hidden shadow-glass z-300"
         >
           {filtered.length > 0 ? (
             <div className="py-2 max-h-90 overflow-y-auto">
