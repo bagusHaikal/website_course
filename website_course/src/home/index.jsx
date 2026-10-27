@@ -4,7 +4,6 @@ import CourseGridSection from './components/CourseGridSection';
 import ProgramSliderSection from './components/ProgramSliderSection';
 import AlumniSection from './components/AlumniSection';
 import FAQSection from './components/FAQSection';
-import CTASection from './components/CTASection';
 
 function HomePage() {
   const { theme } = useTheme();
@@ -17,7 +16,6 @@ function HomePage() {
       <ProgramSliderSection />
       <AlumniSection />
       <FAQSection />
-      <CTASection />
     </div>
   );
 }

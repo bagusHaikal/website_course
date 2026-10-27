@@ -1,5 +1,5 @@
 import { useTheme } from '../../contexts/ThemeContext';
-import { CheckCircle2, MessageCircle } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 const consultationBenefits = [
   { title: 'Analisis Kebutuhan', desc: 'Memahami tantangan dan target atau goals yang ingin dicapai.' },
@@ -43,24 +43,6 @@ function CTASection() {
                   </div>
                 </div>
               ))}
-            </div>
-            <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <button className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow">
-                Jadwalkan Konsultasi
-              </button>
-              <a
-                href="https://wa.me/6282387597266"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn-secondary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2 transition-colors ${
-                  isLight
-                    ? 'border border-border-default text-gray-600 hover:bg-bg-section'
-                    : 'border border-white/20 text-text-secondary hover:bg-white/5'
-                }`}
-              >
-                <MessageCircle className="w-5 h-5" />
-                WhatsApp Kami
-              </a>
             </div>
           </div>
 

@@ -1,7 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState, createContext, useContext } from 'react';
 
-const AuthContext = createContext({ user: null, login: () => {}, register: () => {}, logout: () => {} });
+const AuthContext = createContext({ user: null, login: () => {}, register: () => {}, logout: () => {}, updateProfile: () => {} });
 
 function getStoredUser() {
   try {
@@ -16,18 +16,35 @@ function getStoredUser() {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(getStoredUser);
 
-  const login = (email, name) => {
-    const userData = { email, name, loggedInAt: Date.now() };
+  const login = (email, name, role = 'student') => {
+    const userData = { email, name, role, loggedInAt: Date.now() };
     setUser(userData);
     localStorage.setItem('il_user_session', JSON.stringify(userData));
     return userData;
   };
 
   const register = (name, email) => {
-    const userData = { email, name, loggedInAt: Date.now() };
+    const userData = { email, name, role: 'student', loggedInAt: Date.now() };
     setUser(userData);
     localStorage.setItem('il_user_session', JSON.stringify(userData));
     return userData;
+  };
+
+  const switchRole = (role) => {
+    setUser((prev) => {
+      if (!prev) return null;
+      const updated = { ...prev, role };
+      localStorage.setItem('il_user_session', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const updateProfile = (updates) => {
+    setUser((prev) => {
+      const updated = { ...prev, ...updates };
+      localStorage.setItem('il_user_session', JSON.stringify(updated));
+      return updated;
+    });
   };
 
   const logout = () => {
@@ -36,7 +53,7 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout, updateProfile, switchRole }}>
       {children}
     </AuthContext.Provider>
   );

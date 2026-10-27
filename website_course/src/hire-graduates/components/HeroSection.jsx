@@ -1,7 +1,7 @@
 import { WA_LINK } from '../data';
 import partnershipImg from '../../assets/partnership.webp';
 import { DotMesh } from './icons';
-import { ArrowRight, ArrowDown, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 
 function HeroSection({ isLight }) {
   return (
@@ -40,20 +40,12 @@ function HeroSection({ isLight }) {
           </div>
 
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
-            <img src={partnershipImg} alt="Partnership" className="w-full h-auto rounded-3xl shadow-2xl border border-border-default" />
-            <div className="absolute top-6 right-4 rounded-full px-5 py-2.5 flex items-center gap-2.5 animate-float z-20" style={{ background: isLight ? 'rgba(255,255,255,0.9)' : 'rgba(30,27,75,0.8)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.15)'}` }}>
-              <span className="font-display font-extrabold text-lg" style={{ color: isLight ? '#1a1a2e' : '#f0f0f0' }}>5.000+</span>
-              <span className="text-xs font-medium leading-tight" style={{ color: isLight ? '#555' : '#ccc' }}>Talent Pool<br />Terhubung</span>
-            </div>
-            <div className="absolute bottom-6 left-6 rounded-2xl px-4 py-3 flex items-center gap-3 animate-float z-20" style={{ background: isLight ? 'rgba(255,255,255,0.9)' : 'rgba(30,27,75,0.8)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', border: `1px solid ${isLight ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.15)'}`, animationDelay: '4s' }}>
-              <div className="w-10 h-10 rounded-xl bg-button-gradient text-white flex items-center justify-center shadow-glow shrink-0">
-                <CheckCircle2 className="w-5 h-5" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p className="text-sm font-display font-bold" style={{ color: isLight ? '#1a1a2e' : '#f0f0f0' }}>Diserap Perusahaan Global</p>
-                <p className="text-xs" style={{ color: isLight ? '#666' : '#aaa' }}>AIA Singapore · Seiko Epson · Airbus</p>
-              </div>
-            </div>
+            <img
+              src={partnershipImg}
+              alt="Partnership"
+              className="w-full h-auto object-cover rounded-3xl"
+            />
+            <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>
           </div>
 
         </div>

@@ -1,19 +1,18 @@
 import { useState } from 'react';
-import { 
-  Code2, 
-  Cpu, 
-  ShieldCheck, 
-  Gamepad2, 
-  Smartphone, 
-  Boxes, 
-  Palette, 
-  Video, 
-  Layers, 
-  Target, 
-  Briefcase, 
-  MessageSquare, 
-  Users, 
-  Compass 
+import {
+  Code2,
+  Cpu,
+  ShieldCheck,
+  Gamepad2,
+  Smartphone,
+  Boxes,
+  Palette,
+  Video,
+  Target,
+  Briefcase,
+  MessageSquare,
+  Users,
+  Compass
 } from 'lucide-react';
 
 const programData = {
@@ -51,26 +50,21 @@ const programData = {
   },
 };
 
-const getSkillIcon = (title) => {
-  const t = title.toLowerCase();
-  if (t.includes('ai') || t.includes('artificial')) return Cpu;
-  if (t.includes('cyber') || t.includes('security')) return ShieldCheck;
-  if (t.includes('game')) return Gamepad2;
-  if (t.includes('mobile') || t.includes('ios') || t.includes('android')) return Smartphone;
-  if (t.includes('ar/vr') || t.includes('3d') || t.includes('product')) return Boxes;
-  if (t.includes('animation') || t.includes('motion')) return Palette;
-  if (t.includes('visualization')) return Video;
-  if (t.includes('design thinking') || t.includes('problem')) return Compass;
-  if (t.includes('project management') || t.includes('agile')) return Target;
-  if (t.includes('public speaking') || t.includes('presentation')) return MessageSquare;
-  if (t.includes('teamwork') || t.includes('building')) return Users;
-  if (t.includes('communication') || t.includes('adaptive')) return Briefcase;
-  return Code2;
-};
-
 const SkillIcon = ({ title }) => {
-  const Icon = getSkillIcon(title);
-  return <Icon className="w-5 h-5" />;
+  const t = title.toLowerCase();
+  if (t.includes('ai') || t.includes('artificial')) return <Cpu className="w-5 h-5" />;
+  if (t.includes('cyber') || t.includes('security')) return <ShieldCheck className="w-5 h-5" />;
+  if (t.includes('game')) return <Gamepad2 className="w-5 h-5" />;
+  if (t.includes('mobile') || t.includes('ios') || t.includes('android')) return <Smartphone className="w-5 h-5" />;
+  if (t.includes('ar/vr') || t.includes('3d') || t.includes('product')) return <Boxes className="w-5 h-5" />;
+  if (t.includes('animation') || t.includes('motion')) return <Palette className="w-5 h-5" />;
+  if (t.includes('visualization')) return <Video className="w-5 h-5" />;
+  if (t.includes('design thinking') || t.includes('problem')) return <Compass className="w-5 h-5" />;
+  if (t.includes('project management') || t.includes('agile')) return <Target className="w-5 h-5" />;
+  if (t.includes('public speaking') || t.includes('presentation')) return <MessageSquare className="w-5 h-5" />;
+  if (t.includes('teamwork') || t.includes('building')) return <Users className="w-5 h-5" />;
+  if (t.includes('communication') || t.includes('adaptive')) return <Briefcase className="w-5 h-5" />;
+  return <Code2 className="w-5 h-5" />;
 };
 
 function ProgramsSection() {

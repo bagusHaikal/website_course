@@ -6,7 +6,6 @@ import ProgramChoiceSection from './components/ProgramChoiceSection';
 import StepsTimelineSection from './components/StepsTimelineSection';
 import PricingSection from './components/PricingSection';
 import FAQSection from './components/FAQSection';
-import CTASection from './components/CTASection';
 
 function ProgramMandiri() {
   const { theme } = useTheme();
@@ -21,7 +20,6 @@ function ProgramMandiri() {
       <StepsTimelineSection />
       <PricingSection />
       <FAQSection />
-      <CTASection />
     </div>
   );
 }

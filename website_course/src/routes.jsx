@@ -14,6 +14,7 @@ import Register from './register';
 import FullStackWeb from './fullstack-web';
 import MobileDev from './mobile-dev';
 import AIDev from './ai-dev';
+import ProfilePage from './profile';
 
 export const routes = [
   { path: '/', element: <PageLayout><Home /></PageLayout> },
@@ -26,6 +27,7 @@ export const routes = [
   { path: '/corporate-training', element: <CorporateTrainingLayout /> },
   { path: '/partnership', element: <PageLayout><Partnership /></PageLayout> },
   { path: '/hire-our-graduates', element: <PageLayout><HireOurGraduates /></PageLayout> },
+  { path: '/profile', element: <PageLayout><ProfilePage /></PageLayout> },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   { path: '/full-stack-web', element: <PageLayout><FullStackWeb /></PageLayout> },
