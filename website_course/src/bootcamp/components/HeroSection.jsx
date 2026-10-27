@@ -23,18 +23,18 @@ function HeroSection({ isLight }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="max-w-xl animate-fade-slide-up">
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
-              {hero.titlePre}<br />
+          <div className="max-w-xl animate-fade-slide-up text-center lg:text-left mx-auto lg:mx-0">
+            <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-6xl leading-[1.2] mb-6 tracking-tight text-text-primary">
+              {hero.titlePre}{' '}
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>
                 {hero.titleHighlight}
               </span>
             </h1>
 
-            <p className="text-text-secondary text-base lg:text-lg mb-4 leading-relaxed max-w-lg">{hero.desc}</p>
-            <p className="text-text-secondary text-base lg:text-lg mb-8 leading-relaxed max-w-lg border-l-2 border-brand-violet pl-5">{hero.descDetail}</p>
+            <p className="text-text-secondary text-sm sm:text-base lg:text-lg mb-4 leading-relaxed max-w-lg mx-auto lg:mx-0">{hero.desc}</p>
+            <p className="text-text-secondary text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 border-l-0 lg:border-l-2 lg:border-brand-violet lg:pl-5">{hero.descDetail}</p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <button onClick={scrollToDetail} className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 {hero.ctaDetail}
                 <ArrowRight className="w-5 h-5" />

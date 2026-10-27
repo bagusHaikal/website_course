@@ -4,7 +4,7 @@ import SearchBar from './SearchBar';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
 import { navMenu } from '../data/siteLinks';
-import { ChevronDown, Moon, Sun, Menu, X } from 'lucide-react';
+import { ChevronDown, Moon, Sun, Menu, X, Search } from 'lucide-react';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
@@ -13,6 +13,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [accountOpen, setAccountOpen] = useState(false);
+  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { user, logout } = useAuth();
 
@@ -167,13 +168,20 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             )}
           </div>
         </div>
-        <div className="flex justify-between items-center h-20 md:hidden">
+        <div className="flex justify-between items-center h-16 md:hidden">
           <div className="shrink-0 cursor-pointer -ml-2">
             <Link to="/" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>
-              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-10 w-auto object-contain" />
+              <img src={isLight ? LOGO_LIGHT : LOGO_DARK} alt="Infinite Learning Logo" className="h-7 sm:h-8 w-auto object-contain" />
             </Link>
           </div>
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-1 sm:gap-2">
+            <button
+              onClick={() => setMobileSearchOpen(prev => !prev)}
+              className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`}
+              aria-label="Toggle mobile search"
+            >
+              <Search className="w-5 h-5" />
+            </button>
             <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
               {isLight ? (
                 <Moon className="w-5 h-5" />
@@ -186,6 +194,34 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             </button>
           </div>
         </div>
+
+        {/* Mobile search modal overlay */}
+        {mobileSearchOpen && (
+          <div className={`md:hidden fixed inset-0 z-1000 ${isLight ? 'bg-white/98' : 'bg-[#000000]/98'} backdrop-blur-2xl flex flex-col p-4 animate-in fade-in duration-200`}>
+            <div className="flex items-center justify-between gap-3 pb-4 border-b border-border-default">
+              <div className="flex-1">
+                <SearchBar
+                  onResultClick={(course) => {
+                    setMobileSearchOpen(false);
+                    if (onResultClick) onResultClick(course);
+                  }}
+                  navVisible={true}
+                  fullWidth={true}
+                />
+              </div>
+              <button
+                onClick={() => setMobileSearchOpen(false)}
+                className={`p-2 rounded-xl border border-border-default shrink-0 ${isLight ? 'text-gray-700 hover:bg-gray-100' : 'text-text-primary hover:bg-bg-subtle'}`}
+                aria-label="Tutup pencarian"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto pt-4 text-center">
+              <p className="text-sm text-text-muted">Ketik kata kunci untuk mencari program atau kursus impianmu...</p>
+            </div>
+          </div>
+        )}
         <div id="mobile-menu" className={`md:hidden absolute top-full left-0 w-full border-t ${isLight ? 'bg-white/98' : 'bg-[#000000]/98'} border-border-default backdrop-blur-2xl shadow-glass transition-all duration-300 ease-out overflow-hidden ${menuOpen ? "max-h-screen opacity-100 py-4" : "max-h-0 opacity-0 py-0 border-t-0 pointer-events-none"}`}>
           <div className="px-4 space-y-2">
             {navMenu.map((item) => {

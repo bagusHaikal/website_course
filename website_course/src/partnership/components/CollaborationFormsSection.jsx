@@ -35,7 +35,7 @@ function CollaborationFormsSection() {
         <div key={active.id} id={`panel-${active.id}`} className="animate-fade-slide-up">
           <div className={`grid gap-5 ${active.programs.length === 1 ? 'grid-cols-1 sm:max-w-2xl sm:mx-auto' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'}`}>
             {active.programs.map((p) => (
-              <div key={p.id} className="group flex gap-4 sm:gap-5 border border-border-default bg-bg-surface rounded-2xl p-5 sm:p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-border-hover hover:shadow-glow-hover">
+              <div key={p.id} className="group flex gap-4 sm:gap-5 border border-border-default bg-bg-surface rounded-2xl p-5 sm:p-6 transition-colors duration-300 hover:border-border-hover">
                 <div className="shrink-0 w-11 h-11 rounded-xl bg-brand-violet/15 border border-brand-violet/20 text-brand-accent flex items-center justify-center">
                   <PartnerIcon name={p.icon} className="w-5 h-5" />
                 </div>

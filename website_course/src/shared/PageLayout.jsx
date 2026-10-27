@@ -25,7 +25,7 @@ function PageLayout({ children }) {
   return (
     <>
       <SharedNavbar navVisible={navVisible} scrolled={scrolled} />
-      <main className="pt-20 md:pt-16">
+      <main className="pt-16">
         {children}
       </main>
       <Footer />

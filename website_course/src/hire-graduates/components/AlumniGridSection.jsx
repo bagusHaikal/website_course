@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { alumniHires } from '../data';
 import { LinkedInIcon } from './icons';
 import aiaLogo from '../../assets/AIA_Logo.jpg';
@@ -8,7 +8,7 @@ import kartinisLogo from '../../assets/KARTINIS-LABEL.png';
 import msGlowLogo from '../../assets/MS Glow.png';
 import epsonLogo from '../../assets/epson_logo.png';
 import constellarLogo from '../../assets/Constellar.png';
-import { Check } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
 function useImageTint(src) {
@@ -107,7 +107,7 @@ function AlumniCard({ alum }) {
   const { theme } = useTheme();
   const isLight = theme === 'light';
   return (
-    <div className="group relative flex flex-col items-center p-3 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center min-h-[260px]">
+    <div className="group relative flex flex-col items-center p-4 rounded-2xl border border-border-default bg-bg-surface transition-all duration-300 hover:border-border-hover hover:shadow-glow-hover hover:-translate-y-1 text-center h-full min-h-[260px]">
       {/* Avatar ring */}
       <div className="relative mb-2">
         <div
@@ -119,7 +119,7 @@ function AlumniCard({ alum }) {
           alt={alum.name}
           className="relative w-20 h-20 rounded-full object-cover border-[3px] border-bg-section shadow-md"
         />
-        <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-brand-violet/90 flex items-center justify-center border-2 border-bg-surface opacity-90" title="Verified Hire">
+        <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-brand-violet/90 flex items-center justify-center border-2 border-bg-section opacity-90" title="Verified Hire">
           <Check className="w-2.5 h-2.5 text-white" strokeWidth={3} />
         </div>
       </div>
@@ -129,32 +129,89 @@ function AlumniCard({ alum }) {
 
       <div className="mt-auto w-full flex flex-col items-center gap-2">
         <CompanyBadge company={alum.company} />
-        <a
-          href={alum.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold transition-all duration-200 ${isLight ? 'border-border-default text-text-muted hover:text-brand-accent hover:border-border-hover' : 'border-white/15 text-gray-300 hover:text-white hover:border-brand-accent/50'}`}
-          aria-label={`LinkedIn profile of ${alum.name}`}
-        >
-          <LinkedInIcon className="w-4 h-4" />
-          LinkedIn
-        </a>
+        {alum.linkedin ? (
+          <a
+            href={alum.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border text-xs font-semibold transition-all duration-200 ${isLight ? 'border-border-default text-text-muted hover:text-brand-accent hover:border-border-hover' : 'border-white/15 text-gray-300 hover:text-white hover:border-brand-accent/50'}`}
+            aria-label={`LinkedIn profile of ${alum.name}`}
+          >
+            <LinkedInIcon className="w-4 h-4" />
+            LinkedIn
+          </a>
+        ) : (
+          <span className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold opacity-50 ${isLight ? 'text-text-muted' : 'text-gray-400'}`}>
+            <LinkedInIcon className="w-4 h-4" />
+            LinkedIn
+          </span>
+        )}
       </div>
     </div>
   );
 }
 
 function AlumniGridSection() {
+  const scrollContainerRef = useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = direction === 'left' ? -350 : 350;
+      scrollContainerRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="py-20 lg:py-28 bg-bg-base">
+    <section className="py-24 bg-bg-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-3.5 py-1.5 rounded-full bg-brand-violet/15 text-brand-accent text-xs font-bold uppercase tracking-wider mb-5">Jejak Karir</span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-text-primary tracking-tight mb-5">Talent Infinite Learning Sudah Diserap oleh</h2>
-          <p className="text-text-secondary text-base md:text-lg">Lulusan program kami telah berkarir di berbagai perusahaan terkemuka di Indonesia dan Asia Tenggara.</p>
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-text-primary tracking-tight mb-5">
+            Talent Infinite Learning Sudah Diserap oleh
+          </h2>
+          <p className="text-text-secondary text-base md:text-lg leading-[1.6]">
+            Lulusan program kami telah berkarir di berbagai perusahaan terkemuka di Indonesia dan Asia Tenggara.
+          </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
-          {alumniHires.map((a) => (<AlumniCard key={a.id} alum={a} />))}
+
+        <div className="relative">
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 snap-x snap-mandatory scrollbar-none"
+            style={{
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              WebkitMaskImage: 'linear-gradient(to right, transparent, black 3%, black 97%, transparent)',
+              maskImage: 'linear-gradient(to right, transparent, black 3%, black 97%, transparent)',
+            }}
+          >
+            {alumniHires.map((a) => (
+              <div
+                key={a.id}
+                className="w-[85vw] sm:w-[320px] shrink-0 snap-center sm:snap-start"
+              >
+                <AlumniCard alum={a} />
+              </div>
+            ))}
+          </div>
+
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <button
+              onClick={() => scroll('left')}
+              className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary hover:border-brand-accent transition-colors"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <button
+              onClick={() => scroll('right')}
+              className="btn-secondary w-10 h-10 rounded-full flex items-center justify-center text-text-primary hover:border-brand-accent transition-colors"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

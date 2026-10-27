@@ -163,12 +163,11 @@ function TestimonialsSection() {
   return (
     <section id="testimonials" className="py-24 bg-bg-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="text-brand-accent font-bold tracking-widest uppercase text-xs mb-2 block">Testimonials</span>
-          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary tracking-tight">
+        <div className="text-center mb-16">
+          <h2 className="font-display font-extrabold text-3xl md:text-4xl text-text-primary mt-2 tracking-tight">
             Suara Nyata dari Alumni Kami
           </h2>
-          <p className="text-text-secondary text-base leading-[1.6] mt-4">
+          <p className="text-text-secondary mt-4 leading-[1.6] max-w-2xl mx-auto">
             Mereka telah merasakan manfaat bootcamp Infinite Learning dan kini berkarir di berbagai perusahaan terkemuka.
           </p>
         </div>
@@ -176,7 +175,7 @@ function TestimonialsSection() {
         <div className="relative">
           <div
             ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto pb-6 pt-2 px-4 snap-x snap-mandatory scrollbar-none"
+            className="flex gap-4 sm:gap-6 overflow-x-auto pb-6 pt-2 px-4 sm:px-6 snap-x snap-mandatory scrollbar-none"
             style={{
               scrollbarWidth: 'none',
               msOverflowStyle: 'none',
@@ -187,7 +186,7 @@ function TestimonialsSection() {
             {testimonials.map((person) => (
               <div
                 key={person.name}
-                className="w-[280px] sm:w-[320px] shrink-0 snap-start"
+                className="w-[85vw] sm:w-[320px] shrink-0 snap-center sm:snap-start"
               >
                 <TestimonialCard person={person} />
               </div>
