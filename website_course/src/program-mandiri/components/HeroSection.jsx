@@ -20,19 +20,19 @@ function HeroSection({ isLight }) {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left – Text */}
-          <div className="max-w-xl animate-fade-slide-up">
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
+          <div className="max-w-xl animate-fade-slide-up text-center lg:text-left mx-auto lg:mx-0">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-[1.2] lg:leading-[1.1] mb-6 tracking-tight text-text-primary">
               Mulai dari nol,<br />
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>
                 Siap Kerja di Industri Digital.
               </span>
             </h1>
 
-            <p className="text-text-secondary text-base lg:text-lg mb-8 leading-relaxed max-w-lg border-l-2 border-brand-violet pl-5">
+            <p className="text-text-secondary text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 border-l-0 lg:border-l-2 lg:border-brand-violet pl-0 lg:pl-5">
               Di Infinite Learning, kamu nggak cuma diajarin coding atau desain. Kamu akan dibimbing langsung ngerjain project dan membangun produk digital, berkolaborasi bareng tim, dan menyelesaikan tantangan dunia nyata.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <button className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 Daftar Sekarang
                 <ArrowRight className="w-5 h-5" />

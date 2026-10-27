@@ -3,8 +3,8 @@ import { faqs } from '../data';
 import { ChevronDown } from 'lucide-react';
 
 function FAQSection() {
-  const [openIndex, setOpenIndex] = useState(0);
-  const toggle = (i) => setOpenIndex(openIndex === i ? -1 : i);
+  const [openIndex, setOpenIndex] = useState(null);
+  const toggle = (i) => setOpenIndex(prev => prev === i ? null : i);
 
   return (
     <section className="py-20 lg:py-28 bg-bg-section">
