@@ -367,37 +367,72 @@ body {
 }
 
 @media (max-width: 767px) {
-  /* Accordion behaviour: each panel renders directly beneath its own tab */
-  .program-tabs__heading,
-  .program-tabs__content {
-    display: contents;
+  /* Horizontal scrollable chips on mobile */
+  .program-tabs__heading {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 12px 4px 16px 4px;
+    margin: 0 -1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .program-tabs__heading::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
   }
 
   .program-tabs__title {
-    order: var(--tab-order);
-    width: 100%;
+    flex: 0 0 auto;
+    width: auto;
+    padding: 10px 18px;
+    font-size: 13px;
+    border-radius: 9999px;
+    background-color: var(--color-bg-subtle, rgba(255, 255, 255, 0.05));
+    border: 1px solid var(--color-border-default, rgba(255, 255, 255, 0.1));
+    margin-top: 0 !important;
   }
 
   .program-tabs__title:not(:first-child) {
-    margin-top: 48px;
+    margin-top: 0 !important;
   }
 
-  /* Mobile keeps the accordion: only the active panel is laid out */
+  .program-tabs__title--active {
+    background-color: var(--color-brand-accent, #6366f1) !important;
+    color: #ffffff !important;
+    border-color: transparent !important;
+  }
+
+  .program-tabs__title--active::after {
+    display: none;
+  }
+
+  /* Stacked grid / standard active panel toggle on mobile */
+  .program-tabs__content {
+    display: grid;
+    margin-top: 8px;
+  }
+
   .program-tabs__panel {
-    grid-area: auto;
+    grid-area: 1 / 1;
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
-    transition: none;
+    transition: opacity 200ms ease-out;
   }
 
   .program-tabs__panel[data-active="false"] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
     display: none;
   }
 
   .program-tabs__panel[data-active="true"] {
     display: block;
-    order: var(--tab-order);
   }
 }
 

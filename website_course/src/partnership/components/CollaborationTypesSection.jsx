@@ -10,16 +10,26 @@ function CollaborationTypesSection() {
           <h2 className="font-display font-extrabold text-3xl md:text-4xl lg:text-5xl text-text-primary tracking-tight mb-5">Apa yang Bisa Dikolaborasikan?</h2>
           <p className="text-text-secondary text-base md:text-lg">Dari CSR pendidikan hingga rekrutmen talenta, temukan area kolaborasi yang paling relevan untuk perusahaan Anda.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        {/* Mobile: Horizontal scrollable snap carousel; Desktop: Grid */}
+        <div 
+          className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 overflow-x-auto sm:overflow-x-visible pb-6 sm:pb-0 px-2 sm:px-0 -mx-4 sm:mx-0 snap-x snap-mandatory scrollbar-none"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
           {collaborationTypes.map((item) => (
-            <div key={item.id} className="group relative border border-border-default bg-bg-surface rounded-2xl p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-border-hover hover:shadow-glow-hover">
-              <div className="flex justify-center mb-5">
-                <div className="w-12 h-12 rounded-xl bg-button-gradient text-white flex items-center justify-center shadow-glow">
-                  <PartnerIcon name={item.icon} className="w-6 h-6" />
+            <div 
+              key={item.id} 
+              className="group relative border border-border-default bg-bg-surface rounded-2xl p-5 sm:p-6 transition-colors duration-300 hover:border-border-hover shrink-0 w-[82vw] sm:w-auto snap-center sm:snap-start flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex justify-center sm:justify-start mb-4 sm:mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-button-gradient text-white flex items-center justify-center shadow-glow">
+                    <PartnerIcon name={item.icon} className="w-6 h-6" />
+                  </div>
                 </div>
+                <h3 className="font-display font-bold text-base sm:text-lg text-text-primary mb-2 text-center sm:text-left">{item.title}</h3>
+                <p className="text-xs sm:text-sm text-text-muted leading-relaxed text-center sm:text-left">{item.description}</p>
               </div>
-              <h3 className="font-display font-bold text-lg text-text-primary mb-2">{item.title}</h3>
-              <p className="text-sm text-text-muted leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>

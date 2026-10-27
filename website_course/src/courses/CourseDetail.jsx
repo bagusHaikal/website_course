@@ -27,15 +27,15 @@ function CurriculumSection({ detail }) {
   return (
     <section className="bg-bg-base py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <h2 className="font-display font-extrabold text-2xl md:text-3xl text-text-primary tracking-tight">
             Curriculum
           </h2>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <button
               type="button"
               onClick={expandAll}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border-default bg-bg-surface text-xs font-semibold text-text-secondary hover:border-brand-accent/40 hover:text-brand-accent transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-border-default bg-bg-surface text-xs font-semibold text-text-secondary hover:border-brand-accent/40 hover:text-brand-accent transition-colors"
             >
               <ChevronDown className="w-3.5 h-3.5" />
               Buka Semua
@@ -43,7 +43,7 @@ function CurriculumSection({ detail }) {
             <button
               type="button"
               onClick={collapseAll}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-border-default bg-bg-surface text-xs font-semibold text-text-secondary hover:border-brand-accent/40 hover:text-brand-accent transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full border border-border-default bg-bg-surface text-xs font-semibold text-text-secondary hover:border-brand-accent/40 hover:text-brand-accent transition-colors"
             >
               <ChevronUp className="w-3.5 h-3.5" />
               Tutup Semua
@@ -51,39 +51,39 @@ function CurriculumSection({ detail }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 mb-8 max-w-md">
-          <div className="rounded-xl border border-border-default bg-bg-surface px-4 py-3 text-center">
-            <p className="font-display font-bold text-xl text-text-primary">{detail.curriculumSummary.sections}</p>
-            <p className="text-text-muted text-[10px] font-medium uppercase tracking-wider">Sections</p>
+        <div className="grid grid-cols-3 gap-3 mb-8 max-w-lg">
+          <div className="rounded-2xl border border-border-default bg-bg-surface p-3 sm:p-4 text-center shadow-xs">
+            <p className="font-display font-extrabold text-lg sm:text-xl text-text-primary">{detail.curriculumSummary.sections}</p>
+            <p className="text-text-muted text-[10px] font-bold uppercase tracking-wider mt-1">Sections</p>
           </div>
-          <div className="rounded-xl border border-border-default bg-bg-surface px-4 py-3 text-center">
-            <p className="font-display font-bold text-xl text-text-primary">{detail.curriculumSummary.lessons}</p>
-            <p className="text-text-muted text-[10px] font-medium uppercase tracking-wider">Lessons</p>
+          <div className="rounded-2xl border border-border-default bg-bg-surface p-3 sm:p-4 text-center shadow-xs">
+            <p className="font-display font-extrabold text-lg sm:text-xl text-text-primary">{detail.curriculumSummary.lessons}</p>
+            <p className="text-text-muted text-[10px] font-bold uppercase tracking-wider mt-1">Lessons</p>
           </div>
-          <div className="rounded-xl border border-border-default bg-bg-surface px-4 py-3 text-center">
-            <p className="font-display font-bold text-xl text-text-primary">{detail.curriculumSummary.duration}</p>
-            <p className="text-text-muted text-[10px] font-medium uppercase tracking-wider">Duration</p>
+          <div className="rounded-2xl border border-border-default bg-bg-surface p-3 sm:p-4 text-center shadow-xs">
+            <p className="font-display font-extrabold text-lg sm:text-xl text-text-primary">{detail.curriculumSummary.duration}</p>
+            <p className="text-text-muted text-[10px] font-bold uppercase tracking-wider mt-1">Duration</p>
           </div>
         </div>
 
         <div className="space-y-4">
           {detail.curriculum.map((chapter, ci) => (
-            <div key={ci} className="rounded-2xl border border-border-default bg-bg-surface overflow-hidden">
+            <div key={ci} className="rounded-2xl border border-border-default bg-bg-surface overflow-hidden shadow-xs transition-all duration-200 hover:border-border-hover">
               <button
                 type="button"
                 onClick={() => toggleChapter(ci)}
-                className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left hover:bg-bg-base/50 transition-colors"
+                className="w-full flex items-center justify-between gap-3 px-4 sm:px-6 py-4 text-left hover:bg-bg-subtle/50 transition-colors"
               >
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="w-7 h-7 shrink-0 rounded-full bg-button-gradient text-white text-xs font-bold flex items-center justify-center">
+                  <span className="w-8 h-8 shrink-0 rounded-xl bg-brand-violet/15 text-brand-accent text-xs font-extrabold flex items-center justify-center">
                     {ci + 1}
                   </span>
-                  <span className="font-display font-bold text-sm text-text-primary truncate">
+                  <span className="font-display font-bold text-sm sm:text-base text-text-primary leading-snug">
                     Chapter {ci + 1}: {chapter.title}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 shrink-0">
-                  <span className="text-[10px] font-semibold text-text-muted bg-bg-base/80 border border-border-default rounded px-2 py-0.5">
+                <div className="flex items-center gap-2.5 shrink-0">
+                  <span className="text-[10px] font-bold text-brand-accent bg-brand-violet/10 rounded-lg px-2.5 py-1">
                     {chapter.lessons.length} Lesson{chapter.lessons.length !== 1 ? 's' : ''}
                   </span>
                   <span className={`text-text-muted transition-transform duration-300 ${openChapters[ci] ? 'rotate-180' : ''}`}>
@@ -92,23 +92,25 @@ function CurriculumSection({ detail }) {
                 </div>
               </button>
               {openChapters[ci] && (
-                <div className="px-5 pb-4">
+                <div className="px-4 sm:px-6 pb-4 pt-1">
                   {chapter.lessons.length > 0 ? (
-                    <ul className="divide-y divide-divider border-t border-divider">
+                    <ul className="divide-y divide-divider border-t border-divider/60">
                       {chapter.lessons.map((lesson, li) => (
-                        <li key={li} className="flex items-center justify-between gap-4 py-3">
-                          <div className="flex items-center gap-3 min-w-0">
-                            <span className="text-xs font-bold text-brand-accent w-6 shrink-0">
+                        <li key={li} className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 py-3 px-1">
+                          <div className="flex items-start sm:items-center gap-3 min-w-0">
+                            <span className="text-xs font-bold text-brand-accent bg-bg-subtle px-2 py-0.5 rounded shrink-0 mt-0.5 sm:mt-0">
                               {ci + 1}.{li + 1}
                             </span>
-                            <span className="text-sm text-text-secondary truncate">{lesson.title}</span>
+                            <span className="text-xs sm:text-sm text-text-secondary leading-normal">{lesson.title}</span>
                           </div>
-                          <span className="text-[10px] font-medium text-text-muted shrink-0">{lesson.duration}</span>
+                          <span className="text-[10px] font-medium text-text-muted self-end sm:self-auto shrink-0 bg-bg-subtle/60 px-2 py-0.5 rounded">
+                            {lesson.duration}
+                          </span>
                         </li>
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-xs text-text-muted py-2">Materi segera hadir.</p>
+                    <p className="text-xs text-text-muted py-3 px-1 italic">Materi segera hadir.</p>
                   )}
                 </div>
               )}

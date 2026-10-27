@@ -1,5 +1,20 @@
 import { useState } from 'react';
-import { Code2, Sparkles, Rocket, GraduationCap } from 'lucide-react';
+import { 
+  Code2, 
+  Cpu, 
+  ShieldCheck, 
+  Gamepad2, 
+  Smartphone, 
+  Boxes, 
+  Palette, 
+  Video, 
+  Layers, 
+  Target, 
+  Briefcase, 
+  MessageSquare, 
+  Users, 
+  Compass 
+} from 'lucide-react';
 
 const programData = {
   tech: {
@@ -36,10 +51,25 @@ const programData = {
   },
 };
 
-const skillIcons = [Code2, Sparkles, Rocket, GraduationCap];
+const getSkillIcon = (title) => {
+  const t = title.toLowerCase();
+  if (t.includes('ai') || t.includes('artificial')) return Cpu;
+  if (t.includes('cyber') || t.includes('security')) return ShieldCheck;
+  if (t.includes('game')) return Gamepad2;
+  if (t.includes('mobile') || t.includes('ios') || t.includes('android')) return Smartphone;
+  if (t.includes('ar/vr') || t.includes('3d') || t.includes('product')) return Boxes;
+  if (t.includes('animation') || t.includes('motion')) return Palette;
+  if (t.includes('visualization')) return Video;
+  if (t.includes('design thinking') || t.includes('problem')) return Compass;
+  if (t.includes('project management') || t.includes('agile')) return Target;
+  if (t.includes('public speaking') || t.includes('presentation')) return MessageSquare;
+  if (t.includes('teamwork') || t.includes('building')) return Users;
+  if (t.includes('communication') || t.includes('adaptive')) return Briefcase;
+  return Code2;
+};
 
-const SkillIcon = ({ index }) => {
-  const Icon = skillIcons[index % skillIcons.length];
+const SkillIcon = ({ title }) => {
+  const Icon = getSkillIcon(title);
   return <Icon className="w-5 h-5" />;
 };
 
@@ -56,36 +86,35 @@ function ProgramsSection() {
           <p className="text-text-secondary mt-4 text-base">Kurikulum yang selalu diperbarui mengikuti kebutuhan industri terkini.</p>
         </div>
 
-        <div className="flex justify-center gap-1 mb-14">
+        <div className="flex overflow-x-auto justify-start sm:justify-center gap-2 mb-12 pb-2 px-2 -mx-4 sm:mx-0 sm:px-0 scrollbar-none" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
           {Object.entries(programData).map(([id, data]) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
-              className={`relative px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
-                activeTab === id ? 'text-brand-violet' : 'text-text-muted hover:text-text-primary'
+              className={`shrink-0 px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                activeTab === id
+                  ? 'bg-brand-violet text-white shadow-glow'
+                  : 'bg-bg-subtle text-text-secondary hover:text-text-primary hover:bg-bg-surface border border-border-default'
               }`}
             >
               {data.label}
-              {activeTab === id && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-brand-violet rounded-full" />
-              )}
             </button>
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fade-slide-up" style={{ animationDuration: '400ms' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 animate-fade-slide-up" style={{ animationDuration: '400ms' }}>
           {active.items.map((item, i) => (
             <div
               key={i}
-              className="group border border-border-default bg-bg-surface rounded-xl p-5 hover:border-border-hover hover:-translate-y-0.5 hover:shadow-glow-hover transition-all duration-300 cursor-default"
+              className="group border border-border-default bg-bg-surface rounded-xl p-4 sm:p-5 hover:border-border-hover hover:-translate-y-0.5 hover:shadow-glow-hover transition-all duration-300 cursor-default"
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-3.5">
                 <div className="w-9 h-9 rounded-lg bg-brand-violet/10 text-brand-accent flex items-center justify-center shrink-0 group-hover:bg-brand-violet/20 transition-colors duration-300">
-                  <SkillIcon index={i} />
+                  <SkillIcon title={item.title} />
                 </div>
-                <div>
-                  <h3 className="font-display font-bold text-sm text-text-primary mb-1 group-hover:text-text-primary transition-colors">{item.title}</h3>
-                  <p className="text-text-muted text-xs leading-relaxed">{item.desc}</p>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-display font-bold text-xs sm:text-sm text-text-primary mb-1 group-hover:text-text-primary transition-colors">{item.title}</h3>
+                  <p className="text-text-muted text-[11px] sm:text-xs leading-relaxed">{item.desc}</p>
                 </div>
               </div>
             </div>

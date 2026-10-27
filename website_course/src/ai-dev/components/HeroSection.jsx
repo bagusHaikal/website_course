@@ -11,22 +11,22 @@ function HeroSection({ isLight }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="max-w-xl animate-fade-slide-up">
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.1] mb-6 tracking-tight text-text-primary">
+          <div className="max-w-xl animate-fade-slide-up text-center lg:text-left mx-auto lg:mx-0">
+            <h1 className="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl leading-[1.2] lg:leading-[1.1] mb-6 tracking-tight text-text-primary">
               Artificial Intelligence<br />
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>
                 ML &amp; NLP
               </span>
             </h1>
 
-            <p className="text-text-secondary text-base lg:text-lg mb-4 leading-relaxed max-w-lg">
+            <p className="text-text-secondary text-sm sm:text-base lg:text-lg mb-4 leading-relaxed max-w-lg mx-auto lg:mx-0">
               Pelajari machine learning, deep learning, dan NLP dari nol hingga bisa membangun proyek AI sendiri.
             </p>
-            <p className="text-text-secondary text-base lg:text-lg mb-8 leading-relaxed max-w-lg border-l-2 border-brand-violet pl-6">
+            <p className="text-text-secondary text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 border-l-0 lg:border-l-2 lg:border-brand-violet pl-0 lg:pl-6">
               Mulai dari Python dasar hingga model deployment — dikuasai langsung oleh mentor industri dengan pendekatan hands-on project-based learning.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <a
                 href="#"
                 className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto"

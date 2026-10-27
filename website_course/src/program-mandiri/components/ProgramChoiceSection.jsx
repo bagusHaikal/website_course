@@ -24,24 +24,29 @@ const programs = [
 
 function ProgramCard({ program }) {
   return (
-    <Link
-      to={program.href}
-      className="group flex flex-col items-center text-center p-8 rounded-2xl border border-border-default bg-bg-surface hover:border-brand-accent/40 hover:shadow-glow-hover transition-all duration-300 hover:-translate-y-1"
-    >
-      <div className="w-16 h-16 rounded-2xl bg-brand-violet/15 text-brand-accent flex items-center justify-center mb-6 group-hover:bg-brand-violet/25 transition-colors duration-300">
-        {program.icon}
+    <div className="group flex flex-col justify-between p-8 rounded-2xl border border-border-default bg-bg-surface hover:border-brand-accent/40 hover:shadow-glow-hover transition-all duration-300 hover:-translate-y-1">
+      <div>
+        <div className="w-16 h-16 rounded-2xl bg-brand-violet/15 text-brand-accent flex items-center justify-center mb-6 group-hover:bg-brand-violet/25 transition-colors duration-300">
+          {program.icon}
+        </div>
+        <h3 className="font-display font-bold text-text-primary text-lg leading-snug mb-3">
+          {program.title}
+        </h3>
+        <p className="text-text-secondary text-sm leading-relaxed mb-8">
+          {program.desc}
+        </p>
       </div>
-      <h3 className="font-display font-bold text-text-primary text-base leading-snug mb-3">
-        {program.title}
-      </h3>
-      <p className="text-text-secondary text-sm leading-relaxed">
-        {program.desc}
-      </p>
-      <div className="mt-6 flex items-center gap-2 text-xs font-semibold text-brand-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <span>Lihat detail</span>
-        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+
+      <div>
+        <Link
+          to={program.href}
+          className="btn-premium bg-button-gradient text-white w-full py-3.5 px-6 rounded-xl font-semibold text-sm shadow-glow flex items-center justify-center gap-2 transition-all duration-300 group-hover:scale-[1.02]"
+        >
+          <span>Pilih Program Ini</span>
+          <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+        </Link>
       </div>
-    </Link>
+    </div>
   );
 }
 

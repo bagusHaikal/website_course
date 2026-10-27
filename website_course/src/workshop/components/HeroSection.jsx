@@ -11,37 +11,37 @@ function HeroSection({ isLight }) {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div className="max-w-xl animate-fade-slide-up">
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl leading-[1.1] mb-6 tracking-tight text-text-primary">
-              {hero.titlePre}<br />
+          <div className="max-w-xl animate-fade-slide-up text-center lg:text-left">
+            <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.2] mb-6 tracking-tight text-text-primary">
+              {hero.titlePre}{' '}
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>{hero.titleHighlight}</span>
             </h1>
 
-            <p className="text-text-secondary text-base lg:text-lg mb-8 leading-relaxed max-w-lg border-l-2 border-brand-violet pl-5">
+            <p className="text-text-secondary text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0 border-l-0 lg:border-l-2 lg:border-brand-violet lg:pl-5">
               {hero.subtitle}
             </p>
 
-            <div className="flex items-end gap-10 mb-8">
+            <div className="flex items-center justify-center lg:justify-start gap-10 mb-8">
               <div>
-                <div className="font-display font-extrabold text-3xl text-text-primary">{hero.duration}</div>
+                <div className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">{hero.duration}</div>
                 <p className="text-xs text-text-muted mt-1">Durasi Program</p>
               </div>
               <div>
-                <div className="font-display font-extrabold text-3xl text-text-primary">{hero.time}</div>
+                <div className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">{hero.time}</div>
                 <p className="text-xs text-text-muted mt-1">Jadwal Sesi</p>
               </div>
             </div>
 
-            <ul className="space-y-2.5 mb-8">
+            <ul className="space-y-3 mb-8 max-w-md mx-auto lg:mx-0 text-left">
               {hero.highlights.map((item, i) => (
-                <li key={i} className="flex items-center gap-2 text-sm text-text-secondary">
-                  <Check className="w-4 h-4 text-brand-accent shrink-0" />
-                  {item}
+                <li key={i} className="flex items-start gap-2.5 text-sm text-text-secondary">
+                  <Check className="w-4 h-4 text-brand-accent shrink-0 mt-0.5" />
+                  <span>{item}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
               <a href="#" className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
                 {hero.ctaRegister}
                 <ArrowRight className="w-5 h-5" />
@@ -53,7 +53,7 @@ function HeroSection({ isLight }) {
             </div>
           </div>
 
-          <div className="relative animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
+          <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
             <img
               src={hero.image}
               alt="Workshop Data Science"
