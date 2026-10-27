@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { User, Mail, Lock, Check, X, Moon, Sun, ArrowLeft } from 'lucide-react';
+import { User, Mail, Lock, Check, X, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
+import ThemeButton from '../shared/ThemeButton';
 import mentorImage from '../assets/Mentors and students3.JPG';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
@@ -181,17 +182,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex flex-col bg-bg-base">
       {/* Theme toggle */}
       <div className="absolute top-5 right-6 z-10">
-        <button
-          onClick={toggleTheme}
-          className={`transition-colors p-2 rounded-lg ${isLight ? 'text-gray-500 hover:text-gray-800' : 'text-gray-400 hover:text-white'}`}
-          aria-label="Toggle theme"
-        >
-          {isLight ? (
-            <Moon className="w-5 h-5" />
-          ) : (
-            <Sun className="w-5 h-5" style={{ color: '#FACC15' }} />
-          )}
-        </button>
+        <ThemeButton />
       </div>
 
       <div className="flex-1 grid lg:grid-cols-2 lg:items-start font-sans selection:bg-brand-purple/20 selection:text-brand-purple">

@@ -1,7 +1,7 @@
-import { WA_LINK, EMAIL_LINK, consultationBenefits } from '../data';
+import { consultationBenefits } from '../data';
 import { DotMesh } from './icons';
 import modelImg from '../../assets/model-for-corporate-training.webp';
-import { ArrowRight, Mail, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 function CTASection({ isLight }) {
   return (
@@ -43,16 +43,6 @@ function CTASection({ isLight }) {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
-                Jadwalkan Konsultasi
-                <ArrowRight className="w-5 h-5" />
-              </a>
-              <a href={EMAIL_LINK} className={`btn-secondary px-8 py-4 rounded-full font-bold text-base flex items-center justify-center gap-2 transition-colors w-full sm:w-auto ${isLight ? 'border border-border-default text-gray-600 hover:bg-bg-section' : 'border border-white/20 text-text-secondary hover:bg-white/5'}`}>
-                <Mail className="w-5 h-5" />
-                Email Kami
-              </a>
-            </div>
           </div>
 
         </div>

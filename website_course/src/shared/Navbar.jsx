@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SearchBar from './SearchBar';
+import ThemeButton from './ThemeButton';
 import { useTheme } from '../contexts/ThemeContext';
 import { useAuth } from '../contexts/AuthContext';
 import { navMenu } from '../data/siteLinks';
-import { ChevronDown, Moon, Sun, Menu, X } from 'lucide-react';
+import { ChevronDown, Menu, X } from 'lucide-react';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
 const LOGO_DARK = 'https://lms-v2.infinitelearningstudent.id/logo-white.png';
@@ -13,8 +14,22 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
   const [accountOpen, setAccountOpen] = useState(false);
+  const accountTimeoutRef = useRef(null);
   const { theme, toggleTheme } = useTheme();
-  const { user, logout } = useAuth();
+  const { user, logout, switchRole } = useAuth();
+
+  const handleAccountMouseEnter = () => {
+    if (accountTimeoutRef.current) clearTimeout(accountTimeoutRef.current);
+    setAccountOpen(true);
+  };
+
+  const handleAccountMouseLeave = () => {
+    accountTimeoutRef.current = setTimeout(() => {
+      setAccountOpen(false);
+    }, 150);
+  };
+
+  const isInstructor = user?.role === 'instructor' || user?.role === 'admin';
 
   const leftMenuItems = navMenu.filter((item) => !item.sideRight);
   const rightMenuItem = navMenu.find((item) => item.sideRight);
@@ -127,40 +142,172 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             {rightMenuItem && renderMenuItem(rightMenuItem)}
           </div>
           <div className="shrink-0 flex items-center gap-3">
-            <button onClick={toggleTheme} className={`transition-colors ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
-              {isLight ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" style={{ color: '#FACC15' }} />
-              )}
-            </button>
+            <ThemeButton />
             {user ? (
-              <div className="relative account-trigger">
-                <button
-                  type="button"
-                  onClick={() => setAccountOpen(prev => !prev)}
-                  className="flex items-center gap-1.5 font-semibold text-sm transition-colors hover:text-brand-accent"
+              <div 
+                className="relative account-trigger"
+                onMouseEnter={handleAccountMouseEnter}
+                onMouseLeave={handleAccountMouseLeave}
+              >
+                <Link
+                  to="/profile"
+                  className="flex items-center justify-center w-9 h-9 rounded-full bg-button-gradient text-white font-bold text-sm shadow-glow transition-all duration-300 hover:scale-105 active:scale-95 overflow-hidden ring-2 ring-transparent hover:ring-brand-accent/50"
                   aria-label={`Menu akun ${user.name}`}
-                  aria-haspopup="menu"
-                  aria-expanded={accountOpen}
                 >
-                  <span className="w-7 h-7 rounded-full bg-button-gradient flex items-center justify-center text-white text-xs font-bold">{user.name?.charAt(0).toUpperCase()}</span>
+                  {user.avatar ? (
+                    <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                  ) : (
+                    user.name?.charAt(0).toUpperCase()
+                  )}
+                </Link>
 
-                  <span className={isLight ? 'text-gray-600' : 'text-text-secondary'}>{user.name}</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${accountOpen ? 'rotate-180' : ''}`} />
-                </button>
-                {accountOpen && (
-                  <div role="menu" className={`absolute right-0 top-full mt-2 w-40 py-2 z-200 shadow-glass rounded-xl overflow-hidden border ${isLight ? 'bg-white/95' : 'bg-[#000000]/95'} border-border-default`}>
-                    <button
-                      type="button"
-                      role="menuitem"
-                      onClick={() => { setAccountOpen(false); logout(); }}
-                      className="w-full text-left px-4 py-2.5 text-sm text-red-400 hover:bg-red-500/10 transition-colors"
-                    >
-                      Keluar
-                    </button>
+                {/* Dropdown container dengan hover-bridge (pt-2) & CSS transitions */}
+                <div 
+                  role="menu" 
+                  className={`absolute right-0 top-full pt-2 z-200 transition-all duration-200 ease-out origin-top-right ${
+                    accountOpen 
+                      ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto' 
+                      : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
+                  }`}
+                >
+                  <div className={`w-64 py-3 shadow-2xl rounded-2xl border ${isLight ? 'bg-white border-gray-200' : 'bg-[#121212] border-border-default'}`}>
+                    {/* User Info Header */}
+                    <div className="px-4 pb-3 mb-2 border-b border-border-default flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-button-gradient flex items-center justify-center text-white font-bold overflow-hidden shrink-0">
+                        {user.avatar ? (
+                          <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                        ) : (
+                          user.name?.charAt(0).toUpperCase()
+                        )}
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-bold text-sm truncate">{user.name}</p>
+                        <p className="text-xs opacity-70 truncate">{user.email}</p>
+                      </div>
+                    </div>
+
+                    {/* Udemy Style Menu Links */}
+                    <div className="px-2 space-y-0.5 text-sm">
+                      <Link 
+                        to="/profile?tab=my-courses" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        My Courses
+                      </Link>
+                      <Link 
+                        to="/profile?tab=wishlist" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        Wishlist
+                      </Link>
+                      <Link 
+                        to="/profile?tab=quizzes" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        Quizzes
+                      </Link>
+                      <Link 
+                        to="/profile?tab=notes" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        Notes
+                      </Link>
+                    </div>
+
+                    <div className="my-2 border-t border-border-default" />
+
+                    <div className="px-2 space-y-0.5 text-sm">
+                      {/* Instructor-only menus: hidden for students */}
+                      {isInstructor && (
+                        <>
+                          <Link 
+                            to="/profile?tab=courses" 
+                            onClick={() => setAccountOpen(false)}
+                            className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                          >
+                            Instructor Courses
+                          </Link>
+                          <Link 
+                            to="/profile?tab=students" 
+                            onClick={() => setAccountOpen(false)}
+                            className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                          >
+                            Students
+                          </Link>
+                        </>
+                      )}
+                      <Link 
+                        to="/profile?tab=orders" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        Orders
+                      </Link>
+                    </div>
+
+                    <div className="my-2 border-t border-border-default" />
+
+                    <div className="px-2 space-y-0.5 text-sm">
+                      <Link 
+                        to="/profile?tab=settings&sub=general" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        Account Settings
+                      </Link>
+                      <Link 
+                        to="/profile?tab=settings&sub=avatar" 
+                        onClick={() => setAccountOpen(false)}
+                        className={`block px-3 py-2 rounded-xl transition-colors ${isLight ? 'hover:bg-gray-100 text-gray-700' : 'hover:bg-white/5 text-text-secondary hover:text-white'}`}
+                      >
+                        Edit Avatar
+                      </Link>
+                    </div>
+
+                    <div className="my-2 border-t border-border-default" />
+
+                    {/* TODO(backend): HAPUS tombol simulasi role ini setelah backend siap.
+                        Role akan dikirim dari API login/register (user.role). */}
+                    <div className="px-2 pb-2">
+                      <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-wider opacity-50">
+                        Simulasi Role (dev)
+                      </p>
+                      <div className="flex gap-1.5 px-1">
+                        <button
+                          type="button"
+                          onClick={() => switchRole('student')}
+                          className={`flex-1 px-2 py-1.5 rounded-lg text-[11px] font-semibold transition-colors ${user.role === 'student' ? 'bg-button-gradient text-white' : isLight ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-white/5 text-text-secondary hover:bg-white/10'}`}
+                        >
+                          Student
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => switchRole('instructor')}
+                          className={`flex-1 px-2 py-1.5 rounded-lg text-[11px] font-semibold transition-colors ${isInstructor ? 'bg-button-gradient text-white' : isLight ? 'bg-gray-100 text-gray-600 hover:bg-gray-200' : 'bg-white/5 text-text-secondary hover:bg-white/10'}`}
+                        >
+                          Instructor
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className="my-2 border-t border-border-default" />
+
+                    <div className="px-2">
+                      <button
+                        type="button"
+                        role="menuitem"
+                        onClick={() => { setAccountOpen(false); logout(); }}
+                        className="w-full text-left px-3 py-2 rounded-xl text-sm text-red-400 hover:bg-red-500/10 transition-colors font-medium"
+                      >
+                        Logout
+                      </button>
+                    </div>
                   </div>
-                )}
+                </div>
               </div>
             ) : (
               <Link to="/login" className="btn-premium bg-button-gradient text-white px-5 py-2 rounded-full font-semibold shadow-glow text-sm whitespace-nowrap">Masuk</Link>
@@ -174,13 +321,7 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             </Link>
           </div>
           <div className="md:hidden flex items-center gap-2">
-            <button onClick={toggleTheme} className={`transition-colors p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle theme">
-              {isLight ? (
-                <Moon className="w-5 h-5" />
-              ) : (
-                <Sun className="w-5 h-5" style={{ color: '#FACC15' }} />
-              )}
-            </button>
+            <ThemeButton />
             <button id="mobile-menu-btn" onClick={toggleMenu} className={`focus:outline-none p-2 ${isLight ? 'text-gray-600 hover:text-gray-900' : 'text-text-secondary hover:text-text-primary'}`} aria-label="Toggle menu" aria-expanded={menuOpen}>
               {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -221,13 +362,46 @@ function Navbar({ onResultClick, navVisible, scrolled }) {
             })}
             <div className="pt-3 flex flex-col gap-3">
               {user ? (
-                <div className="flex items-center justify-between px-3 py-3 rounded-lg bg-bg-subtle">
-                  <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-full bg-button-gradient flex items-center justify-center text-white text-sm font-bold">{user.name?.charAt(0).toUpperCase()}</span>
-                    <span className="text-sm font-semibold text-text-primary">{user.name}</span>
+                <>
+                  <Link
+                    to="/profile"
+                    onClick={() => setMenuOpen(false)}
+                    className="flex items-center gap-3 px-3 py-3 rounded-lg bg-bg-subtle hover:bg-bg-section transition-colors"
+                  >
+                    <span className="w-8 h-8 rounded-full bg-button-gradient flex items-center justify-center text-white text-sm font-bold overflow-hidden shrink-0">
+                      {user.avatar ? (
+                        <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                      ) : (
+                        user.name?.charAt(0).toUpperCase()
+                      )}
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-sm font-semibold text-text-primary truncate">{user.name}</span>
+                      <span className="block text-[11px] uppercase tracking-wider text-brand-accent font-semibold">{user.role || 'student'}</span>
+                    </span>
+                    <ChevronDown className="w-4 h-4 -rotate-90 opacity-50" />
+                  </Link>
+
+                  {/* TODO(backend): HAPUS tombol simulasi role ini setelah backend siap. */}
+                  <div className="flex gap-1.5 px-3">
+                    <button
+                      type="button"
+                      onClick={() => switchRole('student')}
+                      className={`flex-1 py-1.5 rounded-lg text-[11px] font-semibold transition-colors ${user.role === 'student' ? 'bg-button-gradient text-white' : isLight ? 'bg-gray-100 text-gray-600' : 'bg-white/5 text-text-secondary'}`}
+                    >
+                      Student
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => switchRole('instructor')}
+                      className={`flex-1 py-1.5 rounded-lg text-[11px] font-semibold transition-colors ${isInstructor ? 'bg-button-gradient text-white' : isLight ? 'bg-gray-100 text-gray-600' : 'bg-white/5 text-text-secondary'}`}
+                    >
+                      Instructor
+                    </button>
                   </div>
-                  <button onClick={() => { logout(); setMenuOpen(false); }} className="text-sm text-red-400 hover:text-red-300 px-3 py-1.5 transition-colors">Keluar</button>
-                </div>
+
+                  <button onClick={() => { logout(); setMenuOpen(false); }} className="mx-3 text-sm text-red-400 hover:text-red-300 px-3 py-2 transition-colors border border-red-500/20 rounded-lg">Keluar</button>
+                </>
               ) : (
                 <Link to="/login" onClick={() => setMenuOpen(false)} className="w-full text-center py-3 bg-button-gradient text-white rounded-xl font-semibold shadow-glow btn-premium">Masuk</Link>
               )}

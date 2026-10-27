@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Mail, Lock, Check, X, Moon, Sun, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, Check, X, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { useTheme } from '../contexts/ThemeContext';
+import ThemeButton from '../shared/ThemeButton';
 import mentorImage from '../assets/Mentors and students3.JPG';
 
 const LOGO_LIGHT = 'https://lms-v2.infinitelearningstudent.id/logo-black.png';
@@ -76,6 +77,9 @@ export default function LoginPage() {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [emailStatus, setEmailStatus] = useState('neutral');
   const [passwordStatus, setPasswordStatus] = useState('neutral');
+  // TODO(backend): HAPUS state simulasi role ini setelah backend siap.
+  // Role akan ditentukan oleh backend berdasarkan akun (bukan dipilih user).
+  const [loginRole, setLoginRole] = useState('student');
   const { login } = useAuth();
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
@@ -105,7 +109,7 @@ export default function LoginPage() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setLoading(true);
     setTimeout(() => {
-      login(form.email, form.email.split('@')[0]);
+      login(form.email, form.email.split('@')[0], loginRole);
       setMessage({ type: 'success', text: 'Berhasil masuk!' });
       setErrors({});
       setTimeout(() => navigate('/'), 600);
@@ -116,17 +120,7 @@ export default function LoginPage() {
     <div className="min-h-screen flex flex-col bg-bg-base">
       {/* Theme toggle */}
       <div className="absolute top-5 right-6 z-10">
-        <button
-          onClick={toggleTheme}
-          className={`transition-colors p-2 rounded-lg ${isLight ? 'text-gray-500 hover:text-gray-800' : 'text-gray-400 hover:text-white'}`}
-          aria-label="Toggle theme"
-        >
-          {isLight ? (
-            <Moon className="w-5 h-5" />
-          ) : (
-            <Sun className="w-5 h-5" style={{ color: '#FACC15' }} />
-          )}
-        </button>
+        <ThemeButton />
       </div>
 
       <div className="flex-1 grid lg:grid-cols-2 font-sans selection:bg-brand-purple/20 selection:text-brand-purple">
@@ -196,6 +190,29 @@ export default function LoginPage() {
 
             {/* Form */}
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* TODO(backend): HAPUS pemilih role ini setelah backend siap. */}
+              <div>
+                <label className={`block text-xs font-semibold mb-1.5 ${isLight ? 'text-[#374151]' : 'text-[#D1D5DB]'}`}>
+                  Masuk Sebagai
+                </label>
+                <div className={`grid grid-cols-2 gap-1.5 p-1 rounded-lg ${isLight ? 'bg-gray-100' : 'bg-white/5'}`}>
+                  <button
+                    type="button"
+                    onClick={() => setLoginRole('student')}
+                    className={`py-2 rounded-md text-xs font-semibold transition-all ${loginRole === 'student' ? 'bg-button-gradient text-white shadow-glow' : isLight ? 'text-gray-600 hover:text-gray-900' : 'text-gray-400 hover:text-white'}`}
+                  >
+                    Student
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setLoginRole('instructor')}
+                    className={`py-2 rounded-md text-xs font-semibold transition-all ${loginRole === 'instructor' ? 'bg-button-gradient text-white shadow-glow' : isLight ? 'text-gray-600 hover:text-gray-900' : 'text-gray-400 hover:text-white'}`}
+                  >
+                    Instructor
+                  </button>
+                </div>
+              </div>
+
               <Field
                 isLight={isLight}
                 label="Email"
