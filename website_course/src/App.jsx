@@ -1,13 +1,14 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
-import { AuthProvider } from './contexts/AuthContext';
 import { routes } from './routes';
 import ScrollToTop from './shared/ScrollToTop';
+import PageMeta from './shared/PageMeta';
 
 function AppRoutes() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <PageMeta />
       <Routes>
         {routes.map((route) => (
           <Route key={route.path} path={route.path} element={route.element} />
@@ -19,11 +20,9 @@ function AppRoutes() {
 
 function App() {
   return (
-    <AuthProvider>
-      <ThemeProvider>
-        <AppRoutes />
-      </ThemeProvider>
-    </AuthProvider>
+    <ThemeProvider>
+      <AppRoutes />
+    </ThemeProvider>
   );
 }
 

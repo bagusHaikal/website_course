@@ -1,5 +1,6 @@
-import bannerAIImg from '../../assets/BannerAI.png';
-import { ArrowRight, FileText } from 'lucide-react';
+import bannerAIImg from '../../assets/BannerAI.webp';
+import { FileText } from 'lucide-react';
+import ProgramCta from '../../shared/ProgramCta';
 
 function HeroSection({ isLight }) {
   return (
@@ -27,13 +28,10 @@ function HeroSection({ isLight }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a
-                href="#"
-                className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto"
-              >
-                Daftar Sekarang
-                <ArrowRight className="w-5 h-5" />
-              </a>
+              <ProgramCta
+                program="ai-dev"
+                className="px-8 py-4 text-base w-full sm:w-auto"
+              />
               <a
                 href="https://docs.google.com/document/d/1zcJYuY3DBM4SaWl4oc6geMudJ6ajWOSEYrn6nBIUMr0/edit?usp=sharing"
                 target="_blank"

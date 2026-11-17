@@ -116,7 +116,13 @@ function ProgramsSection() {
         </div>
 
         <div className="text-center mt-12">
-          <button className="btn-premium bg-button-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-glow">
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="Konsultasi belum tersedia"
+            className="border border-border-default text-text-muted px-8 py-3.5 rounded-full font-bold text-sm cursor-not-allowed bg-bg-subtle"
+          >
             Konsultasi Gratis
           </button>
         </div>

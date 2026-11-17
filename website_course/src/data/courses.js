@@ -2,8 +2,8 @@ import portfolioImg from '../assets/bootcamp-portfolio.webp';
 import dataDrivenImg from '../assets/bootcamp-datadriven.webp';
 import englishImg from '../assets/bootcamp-english.webp';
 import excelImg from '../assets/bootcamp-excel.webp';
-import agistiraImg from '../assets/testi-agistira.png';
-import apridoImg from '../assets/testi-aprido.png';
+import agistiraImg from '../assets/testi-agistira.webp';
+import apridoImg from '../assets/testi-aprido.webp';
 import attaImg from '../assets/testi-atta.webp';
 import pupuImg from '../assets/testi-pupu.webp';
 import sariImg from '../assets/testi-sari.webp';
@@ -19,6 +19,7 @@ export const courses = [
     type: "Satuan",
     priceOriginal: "Rp 249.000",
     priceDiscount: "Rp 59.000",
+    price: 59000,
     lessons: 4,
     image: portfolioImg,
     slug: "professional-portfolio"
@@ -31,6 +32,7 @@ export const courses = [
     type: "Satuan",
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
+    price: 69000,
     lessons: 2,
     image: dataDrivenImg,
     slug: "data-driven"
@@ -43,6 +45,7 @@ export const courses = [
     type: "Paketan",
     priceOriginal: "Rp 299.000",
     priceDiscount: "Rp 69.000",
+    price: 69000,
     lessons: 6,
     image: englishImg,
     slug: "english-for-industrial"
@@ -55,6 +58,7 @@ export const courses = [
     type: "Satuan",
     priceOriginal: "Rp 199.000",
     priceDiscount: "Rp 49.000",
+    price: 49000,
     lessons: 3,
     image: excelImg,
     slug: "excel-made-easy"

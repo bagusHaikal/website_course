@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# TODO §5.7: baris `Sitemap:` menunggu domain produksi — sitemap butuh URL absolut.

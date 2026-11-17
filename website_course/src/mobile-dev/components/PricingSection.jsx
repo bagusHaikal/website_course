@@ -1,4 +1,5 @@
 import { tiers } from '../data';
+import ProgramCta from '../../shared/ProgramCta';
 
 function PricingSection() {
   return (
@@ -48,18 +49,18 @@ function PricingSection() {
                     {tier.price}
                   </span>
                 </div>
-                <a
-                  href={tier.active ? 'https://s.id/Pre-RegistrationBatch10IL3' : '#'}
-                  target={tier.active ? '_blank' : undefined}
-                  rel={tier.active ? 'noopener noreferrer' : undefined}
-                  className={`w-full block text-center py-3 rounded-full font-bold text-sm transition-all ${
-                    tier.active
-                      ? 'bg-button-gradient text-white shadow-glow btn-premium'
-                      : 'bg-gray-800 text-text-muted cursor-not-allowed border border-gray-700'
-                  }`}
-                >
-                  {tier.soldOut ? 'Habis Terjual' : 'Daftar Sekarang'}
-                </a>
+                {tier.soldOut ? (
+                  <button
+                    type="button"
+                    disabled
+                    aria-disabled="true"
+                    className="w-full block text-center py-3 rounded-full font-bold text-sm bg-bg-subtle text-text-muted border border-border-default cursor-not-allowed"
+                  >
+                    Habis Terjual
+                  </button>
+                ) : (
+                  <ProgramCta program="mobile-dev" className="w-full py-3 text-sm" />
+                )}
               </div>
             </div>
           ))}

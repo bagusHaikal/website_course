@@ -45,6 +45,8 @@ function HeroSection({ isLight }) {
             <img
               src={hero.image}
               alt="Belajar Mandiri Infinite Learning"
+              width={768}
+              height={448}
               className="w-full h-auto object-cover rounded-3xl opacity-90 hover:opacity-100 transition-opacity duration-500"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>

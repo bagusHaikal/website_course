@@ -1,4 +1,5 @@
 import { ArrowRight, FileText } from 'lucide-react';
+import heroImage from '../../assets/fullstack-web-hero.png';
 
 function HeroSection({ isLight }) {
   return (
@@ -54,7 +55,7 @@ function HeroSection({ isLight }) {
           <div className="relative hidden lg:block animate-fade-slide-up" style={{ animationDelay: '150ms' }}>
             <div className="relative z-10 w-full aspect-square rounded-3xl overflow-hidden border border-border-default shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-700">
               <img
-                src="https://course.infinitelearning.id/wp-content/uploads/2025/12/web-1.png"
+                src={heroImage}
                 alt="Full-Stack Web Development"
                 className="object-cover w-full h-full"
               />

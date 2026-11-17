@@ -1,5 +1,5 @@
-import { ArrowRight } from 'lucide-react';
 import heroProgramMandiriImg from '../../assets/hero-program-mandiri.webp';
+import ProgramCta from '../../shared/ProgramCta';
 
 function HeroSection({ isLight }) {
   return (
@@ -33,10 +33,10 @@ function HeroSection({ isLight }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <button className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
-                Daftar Sekarang
-                <ArrowRight className="w-5 h-5" />
-              </button>
+              <ProgramCta
+                program="program-mandiri"
+                className="px-8 py-4 text-base w-full sm:w-auto"
+              />
             </div>
           </div>
 
@@ -45,6 +45,8 @@ function HeroSection({ isLight }) {
             <img
               src={heroProgramMandiriImg}
               alt="Students collaborating on real projects"
+              width={400}
+              height={400}
               className="w-full h-auto object-cover rounded-3xl opacity-90 hover:opacity-100 transition-opacity duration-500"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>
