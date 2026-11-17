@@ -16,6 +16,10 @@ function CTASection({ isLight }) {
             <img
               src={modelImg}
               alt="Konsultasi Partnership"
+              width={363}
+              height={424}
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto object-cover rounded-3xl"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>

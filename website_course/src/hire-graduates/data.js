@@ -1,5 +1,5 @@
-﻿import agistiraImg from '../assets/testi-agistira.png';
-import apridoImg from '../assets/testi-aprido.png';
+﻿import agistiraImg from '../assets/testi-agistira.webp';
+import apridoImg from '../assets/testi-aprido.webp';
 import attaImg from '../assets/testi-atta.webp';
 import pupuImg from '../assets/testi-pupu.webp';
 import sariImg from '../assets/testi-sari.webp';

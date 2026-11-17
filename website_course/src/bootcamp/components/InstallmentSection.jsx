@@ -37,6 +37,10 @@ function InstallmentSection() {
               <img
                 src={installment.image}
                 alt="Skema cicilan program bootcamp"
+                width={587}
+                height={343}
+                loading="lazy"
+                decoding="async"
                 className="w-full object-cover"
               />
             </div>

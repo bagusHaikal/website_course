@@ -1,6 +1,10 @@
 import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import imgKampusMerdeka from '../../assets/program-mandiri.webp';
+import imgWorkshop from '../../assets/workshops.webp';
+import imgBootcamp from '../../assets/bootcamp.webp';
+import imgBelajarMandiri from '../../assets/BannerBelajarMandiri.webp';
 
 const programs = [
   {
@@ -8,7 +12,7 @@ const programs = [
     tab: 'Kampus Merdeka',
     title: 'Magang Studi Independen Mandiri Batch 10 Infinite Learning!',
     desc: 'ingin mendapatkan pengalaman magang, konversi hingga 20 SKS, dibimbing mentor, mendapatkan sertifikat resmi, dan siap terjun ke dunia kerja.',
-    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/919b2232-0ceb-4499-c13c-113ea327b400/public',
+    image: imgKampusMerdeka,
     href: '/program-mandiri',
     titleWeight: 'font-semibold',
   },
@@ -17,7 +21,7 @@ const programs = [
     tab: 'Workshop',
     title: 'Kuasai Skill Baru, Pas Buat Kamu yang Mau Sat Set!',
     desc: 'Ingin belajar spesifik dibidang tertentu atau mencoba dulu sebelum mendalami suatu tanpa harus berkomitmen jangka panjang.',
-    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/299a854a-069b-4146-7cb3-8ebecd0cce00/public',
+    image: imgWorkshop,
     href: '/workshop',
     titleWeight: 'font-bold',
   },
@@ -26,7 +30,7 @@ const programs = [
     tab: 'Bootcamp',
     title: 'Kuasai Skill Baru, Pas Buat Kamu yang Mau Sat Set!',
     desc: 'sedang mencari pekerjaan atau opportunity baru dan ingin mendalami atau upskill di bidang tertentu dengan pembelajaran dan bimbingan yang intensive.',
-    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/64243dca-6975-4f19-8152-24260fb38700/public',
+    image: imgBootcamp,
     href: '/bootcamp',
     titleWeight: 'font-bold',
   },
@@ -35,7 +39,7 @@ const programs = [
     tab: 'Belajar Mandiri',
     title: 'Belajar Mandiri? Kami Punya Solusinya!',
     desc: 'lebih senang belajar mandiri, mengikuti pace dan timeline diri sendiri.',
-    image: 'https://imagedelivery.net/qdLiW86MyPLsWMif2v42gg/d4efac1d-4618-46a4-cfb3-fecce046f000/public',
+    image: imgBelajarMandiri,
     href: '/belajar-mandiri',
     titleWeight: 'font-bold',
   },
@@ -50,6 +54,8 @@ function ProgramPanel({ program }) {
         <img
           src={program.image}
           alt={program.title}
+          loading="lazy"
+          decoding="async"
           className="w-[75%] sm:w-[65%] md:w-[60%] max-w-full aspect-[4/3] object-contain"
         />
       </div>

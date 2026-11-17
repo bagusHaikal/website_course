@@ -30,7 +30,13 @@ function HeroSection({ isLight }) {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <button className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                title="Konsultasi belum tersedia"
+                className="border border-border-default text-text-muted px-8 py-4 rounded-full font-bold text-base cursor-not-allowed bg-bg-subtle flex items-center justify-center gap-3 w-full sm:w-auto"
+              >
                 Konsultasi Gratis
                 <ArrowRight className="w-5 h-5" />
               </button>
@@ -41,6 +47,8 @@ function HeroSection({ isLight }) {
             <img
               src="/corporate-training.png"
               alt="Corporate Training"
+              width={566}
+              height={369}
               className="w-full h-auto object-cover rounded-3xl"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>

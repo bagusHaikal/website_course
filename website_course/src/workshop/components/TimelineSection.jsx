@@ -1,4 +1,5 @@
 import { timeline } from '../data';
+import ProgramCta from '../../shared/ProgramCta';
 
 function TimelineSection() {
   return (
@@ -25,10 +26,18 @@ function TimelineSection() {
         </div>
 
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10">
-          <a href="#" className="btn-premium bg-button-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-glow">Daftar Sekarang</a>
+          <ProgramCta program="workshop" className="px-8 py-3.5 text-sm" />
           <div className="flex items-center gap-3">
             <span className="text-xs text-text-muted">atau</span>
-            <a href="#" className="border border-border-default text-text-primary px-6 py-3.5 rounded-full font-semibold text-sm hover:border-border-hover hover:bg-bg-subtle transition-all">Konsultasi Gratis</a>
+            <button
+              type="button"
+              disabled
+              aria-disabled="true"
+              title="Konsultasi belum tersedia"
+              className="border border-border-default text-text-muted px-6 py-3.5 rounded-full font-semibold text-sm cursor-not-allowed bg-bg-subtle"
+            >
+              Konsultasi Gratis
+            </button>
           </div>
         </div>
       </div>

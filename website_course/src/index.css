@@ -1,6 +1,11 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
-/* â”€â”€â”€ Design Tokens â”€â”€â”€ */
+/* Tailwind v4 default `dark:` mengikuti prefers-color-scheme (OS), bukan
+   toggle tema aplikasi. Override agar `dark:` membaca atribut data-theme
+   yang dipasang ThemeContext di <html>. */
+@custom-variant dark (&:where([data-theme="dark"] *));
+
+/* --- Design Tokens --- */
 :root {
   /* Background */
   --color-bg-base: #0B0F19;
@@ -62,7 +67,7 @@
   --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.06), 0 2px 6px -1px rgba(124, 58, 237, 0.04);
 }
 
-/* â”€â”€â”€ Tailwind Theme â”€â”€â”€ */
+/* --- Tailwind Theme --- */
 /* css-languageserver-disable */
 @theme {
   --color-bg-base: var(--color-bg-base);
@@ -99,10 +104,11 @@
 }
 /* css-languageserver-enable */
 
-/* â”€â”€â”€ Custom Utility Classes â”€â”€â”€ */
-.bg-bg-surface {
-  box-shadow: var(--shadow-card);
-}
+/* --- Custom Utility Classes ---
+   Catatan: JANGAN menulis ulang `.bg-bg-surface { box-shadow: ... }` di sini.
+   Nama itu sudah dipakai utility Tailwind (`background-color`), sehingga
+   override-nya menimpa utility tersebut DAN menelan `shadow-glow`/`shadow-glass`
+   di elemen yang memakai keduanya. Pakai `shadow-card` eksplisit bila perlu. */
 
 .bg-button-gradient {
   background-image: linear-gradient(to right, #7C3AED, #6D28D9);
@@ -124,7 +130,7 @@
   background-image: linear-gradient(to right, #E9D5FF, #FFFFFF);
 }
 
-/* â”€â”€â”€ Base â”€â”€â”€ */
+/* --- Base --- */
 body {
   background-color: var(--color-bg-base);
   color: var(--color-text-secondary);
@@ -138,13 +144,13 @@ body {
 ::-webkit-scrollbar-track { background: var(--color-bg-base); }
 ::-webkit-scrollbar-thumb { background: var(--color-brand-purple); border-radius: 4px; }
 
-/* â”€â”€â”€ Focus Ring â”€â”€â”€ */
+/* --- Focus Ring --- */
 *:focus-visible {
   outline: 2px solid var(--color-brand-accent);
   outline-offset: 2px;
 }
 
-/* â”€â”€â”€ Glassmorphism â€” navbar only â”€â”€â”€ */
+/* --- Glassmorphism: navbar only --- */
 .glass-panel {
   background: rgba(30, 27, 75, 0.4);
   backdrop-filter: blur(12px);
@@ -159,7 +165,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
-/* â”€â”€â”€ Text Gradient â”€â”€â”€ */
+/* --- Text Gradient --- */
 .text-gradient-gold {
   background: linear-gradient(to right, #E9D5FF, #FFFFFF);
   -webkit-background-clip: text;
@@ -181,7 +187,7 @@ body {
   background-clip: text;
 }
 
-/* â”€â”€â”€ Mesh / Blob â”€â”€â”€ */
+/* --- Mesh / Blob --- */
 .mesh-bg {
   position: absolute;
   inset: 0;
@@ -196,7 +202,7 @@ body {
   animation: float 10s infinite ease-in-out alternate;
 }
 
-/* â”€â”€â”€ Button Shine â”€â”€â”€ */
+/* --- Button Shine --- */
 .btn-premium {
   position: relative;
   overflow: hidden;
@@ -247,7 +253,7 @@ body {
   border-color: rgba(0, 0, 0, 0.3);
 }
 
-/* â”€â”€â”€ Animations â”€â”€â”€ */
+/* --- Animations --- */
 @keyframes float {
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(20px, -20px) scale(1.1); }
@@ -268,21 +274,10 @@ body {
   animation: fadeSlideUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* â”€â”€â”€ Auth Modal â”€â”€â”€ */
-.auth-modal-card {
-  background: rgba(30, 27, 75, 0.6);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1.5rem;
-  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.6), 0 0 50px -10px rgba(124, 58, 237, 0.2);
-}
-
-[data-theme="light"] .auth-modal-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 25px 60px -12px rgba(0, 0, 0, 0.15);
-}
+/* --- Auth Modal --- */
+/* .auth-modal-card dihapus bersama shared/AuthModal.jsx (Fase 3).
+   @keyframes popIn + .animate-pop-in DI PERTAHANKAN — masih dipakai
+   login/index.jsx, register/index.jsx, dll. */
 
 @keyframes popIn {
   0% { transform: scale(0.5); opacity: 0; }
@@ -294,17 +289,10 @@ body {
   animation: popIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-/* â”€â”€â”€ Hidden Scrollbar (Auth Modal) â”€â”€â”€ */
-.auth-modal-card {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
+/* --- Hidden Scrollbar (Auth Modal) --- */
+/* .auth-modal-card scrollbar rules dihapus bersama AuthModal.jsx. */
 
-.auth-modal-card::-webkit-scrollbar {
-  display: none;
-}
-
-/* ─── Program Tabs (Home) ─── */
+/* --- Program Tabs (Home) --- */
 .program-tabs {
   display: flex;
   flex-direction: column;
@@ -436,7 +424,7 @@ body {
   }
 }
 
-/* â”€â”€â”€ Reduced Motion â”€â”€â”€ */
+/* --- Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -444,5 +432,3 @@ body {
     transition-duration: 0.01ms !important;
   }
 }
-
-

@@ -1,5 +1,6 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight, Compass } from 'lucide-react';
-import slideHeaderUngu from '../../assets/slide_header_ungu.png';
+import slideHeaderUngu from '../../assets/slide_header_ungu.webp';
 
 function HeroSection({ isLight }) {
   return (
@@ -40,10 +41,13 @@ function HeroSection({ isLight }) {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <a href="/all-programs" className="btn-premium bg-button-gradient text-white px-7 py-3.5 sm:py-4 rounded-full font-semibold text-sm sm:text-lg shadow-glow flex items-center justify-center gap-2.5 w-full sm:w-auto">
+              {/* Tautan internal WAJIB <Link to>, bukan <a href>. Router-nya
+                  BrowserRouter, jadi <a href="/..."> memicu full page reload
+                  (bundle diunduh ulang, state React hilang). */}
+              <Link to="/all-programs" className="btn-premium bg-button-gradient text-white px-7 py-3.5 sm:py-4 rounded-full font-semibold text-sm sm:text-lg shadow-glow flex items-center justify-center gap-2.5 w-full sm:w-auto">
                 Temukan Programmu
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
 
           </div>
@@ -54,6 +58,8 @@ function HeroSection({ isLight }) {
               <img
                 src={slideHeaderUngu}
                 alt="Slide Header Ungu"
+                width={764}
+                height={583}
                 className="w-full h-auto object-contain drop-shadow-2xl"
               />
             </div>

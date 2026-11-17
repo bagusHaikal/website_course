@@ -1,4 +1,4 @@
-import bannerMobileDevImg from '../../assets/BannerMobiledev.png';
+import bannerMobileDevImg from '../../assets/BannerMobiledev.webp';
 import { ArrowRight, FileText } from 'lucide-react';
 
 function HeroSection({ isLight }) {

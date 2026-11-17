@@ -1,3 +1,10 @@
+import mentorHasan from '../assets/mentor-Hasan.webp';
+import mentorPeja from '../assets/mentor-Peja.webp';
+import mentorLuqy from '../assets/mentor-Luqy.webp';
+import mentorArifian from '../assets/mentor-Arifian.webp';
+import mentorRiyanda from '../assets/mentor-Riyanda.webp';
+import mentorReza from '../assets/mentor-Reza.webp';
+
 const curriculum = [
   { title: 'Dart Programming', output: 'Peserta mampu menulis kode Dart yang efisien, memahami konsep asynchronous, serta mengelola proyek menggunakan Git secara kolaboratif.' },
   { title: 'Basic Flutter', output: 'Peserta mampu membuat tampilan antarmuka interaktif dan memahami logika kerja aplikasi Flutter dari awal.' },
@@ -10,12 +17,12 @@ const curriculum = [
 ];
 
 const mentors = [
-  { name: 'Hasan Harahap', role: 'UI/UX Design Mentor', image: 'https://course.infinitelearning.id/wp-content/uploads/2025/12/Hasan-169x300.png' },
-  { name: 'Hafara Putri', role: 'UI/UX Design Mentor', image: 'https://course.infinitelearning.id/wp-content/uploads/2025/12/Peja-169x300.png' },
-  { name: 'Luqyana', role: 'Professional Mentor', image: 'https://course.infinitelearning.id/wp-content/uploads/2025/12/Luqy-169x300.png' },
-  { name: 'Arifian Saputra', role: 'Technical Mentor', image: 'https://course.infinitelearning.id/wp-content/uploads/2025/12/Arifian-169x300.png' },
-  { name: 'Riyanda Azis', role: 'Technical Mentor', image: 'https://course.infinitelearning.id/wp-content/uploads/2025/12/Riyanda-169x300.png' },
-  { name: 'Reza Kurniawan', role: 'Technical Mentor', image: 'https://course.infinitelearning.id/wp-content/uploads/2025/12/Reza-169x300.png' },
+  { name: 'Hasan Harahap', role: 'UI/UX Design Mentor', image: mentorHasan },
+  { name: 'Hafara Putri', role: 'UI/UX Design Mentor', image: mentorPeja },
+  { name: 'Luqyana', role: 'Professional Mentor', image: mentorLuqy },
+  { name: 'Arifian Saputra', role: 'Technical Mentor', image: mentorArifian },
+  { name: 'Riyanda Azis', role: 'Technical Mentor', image: mentorRiyanda },
+  { name: 'Reza Kurniawan', role: 'Technical Mentor', image: mentorReza },
 ];
 
 const tiers = [

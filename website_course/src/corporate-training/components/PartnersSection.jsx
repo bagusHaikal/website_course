@@ -45,6 +45,8 @@ function PartnersSection() {
                 <img
                   src="/partner.webp"
                   alt={partner.name}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-bg-base/60 via-transparent to-transparent" />
@@ -56,9 +58,9 @@ function PartnersSection() {
               </div>
               <div className="p-5 pt-4">
                 <p className="text-text-secondary text-sm leading-relaxed mb-4">{partner.description}</p>
-                <button className="text-sm font-semibold text-text-muted hover:text-brand-accent transition-colors inline-flex items-center gap-1.5 group">
+                <button type="button" disabled aria-disabled="true" title="Detail partner belum tersedia" className="text-sm font-semibold text-text-muted cursor-not-allowed inline-flex items-center gap-1.5">
                   Read More
-                  <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+                  <ChevronRight className="w-4 h-4 opacity-50" />
                 </button>
               </div>
             </div>

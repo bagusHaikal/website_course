@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { courses } from '../data/courses';
 import { courseDetails } from '../data/courseDetails';
 import CourseCard from '../shared/CourseCard';
+import ProgramCta from '../shared/ProgramCta';
 import { ArrowLeft, CheckCircle2, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 
 function MetaChip({ label, value }) {
@@ -128,7 +129,7 @@ function CourseSidebar({ course, detail }) {
       <div className="lg:sticky lg:top-24 space-y-6">
         <div className="rounded-2xl border border-border-default bg-bg-surface overflow-hidden shadow-glow-hover">
           <div className="relative h-52 overflow-hidden">
-            <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
+            <img src={course.image} alt={course.title} loading="lazy" decoding="async" className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-linear-to-t via-transparent to-transparent from-white/60 dark:from-bg-base"></div>
           </div>
           <div className="p-5">
@@ -137,14 +138,7 @@ function CourseSidebar({ course, detail }) {
               <span className="text-brand-accent font-display font-extrabold text-2xl">{course.priceDiscount}</span>
             </div>
             <p className="text-text-muted text-xs mb-3">Pendaftaran segera hadir.</p>
-            {/* TODO: ganti href="#" dengan link checkout LMS live */}
-            <a
-              href="#"
-              className="btn-premium bg-button-gradient text-white px-5 py-3 rounded-full font-semibold text-sm shadow-glow inline-flex items-center justify-center gap-2 w-full"
-            >
-              Daftar Sekarang
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <ProgramCta program="courses" className="w-full px-5 py-3 text-sm" />
           </div>
           {detail && (
             <div className="border-t border-divider p-5 grid grid-cols-2 gap-4">

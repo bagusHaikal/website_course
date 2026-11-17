@@ -1,5 +1,6 @@
 import { pricing, tiers } from '../data';
 import { Check } from 'lucide-react';
+import ProgramCta from '../../shared/ProgramCta';
 
 function PricingSection() {
   return (
@@ -43,16 +44,16 @@ function PricingSection() {
                   </ul>
                 )}
 
-                <a
-                  href="#"
-                  className={`block w-full text-center py-3 rounded-full font-bold text-sm transition-all ${
-                    tier.active
-                      ? 'bg-button-gradient text-white shadow-glow btn-premium'
-                      : 'border border-border-default text-text-secondary hover:border-border-hover'
-                  }`}
-                >
-                  {tier.bestDeal ? 'Daftar Sekarang' : 'Pelajari Selengkapnya'}
-                </a>
+                {tier.bestDeal ? (
+                  <ProgramCta program="workshop" className="w-full py-3 text-sm" />
+                ) : (
+                  <a
+                    href="#syllabus"
+                    className="block w-full text-center py-3 rounded-full font-bold text-sm transition-all border border-border-default text-text-secondary hover:border-border-hover"
+                  >
+                    Pelajari Selengkapnya
+                  </a>
+                )}
               </div>
             </div>
           ))}

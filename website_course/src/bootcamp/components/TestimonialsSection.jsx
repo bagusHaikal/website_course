@@ -1,13 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { testimonials } from '../data';
 import { LinkedInIcon } from '../../hire-graduates/components/icons';
-import aiaLogo from '../../assets/AIA_Logo.jpg';
-import bercaLogo from '../../assets/Logo_PT-Berca-Hardayaperkasa.png';
-import elabramLogo from '../../assets/Elabram-Group.png';
-import kartinisLogo from '../../assets/KARTINIS-LABEL.png';
-import msGlowLogo from '../../assets/MS Glow.png';
-import epsonLogo from '../../assets/epson_logo.png';
-import constellarLogo from '../../assets/Constellar.png';
+import aiaLogo from '../../assets/AIA_Logo.svg';
+import bercaLogo from '../../assets/Logo_PT-Berca-Hardayaperkasa.svg';
+import elabramLogo from '../../assets/Elabram-Group.svg';
+import kartinisLogo from '../../assets/KARTINIS-LABEL.svg';
+import msGlowLogo from '../../assets/MS_Glow.svg';
+import epsonLogo from '../../assets/epson_logo.svg';
+import constellarLogo from '../../assets/Constellar.svg';
 import { Check, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -60,6 +60,8 @@ function CompanyBadge({ company }) {
         <img
           src={logo}
           alt={`${company} logo`}
+          loading="lazy"
+          decoding="async"
           className="w-4 h-4 rounded-full object-contain bg-white shrink-0"
         />
       )}
@@ -116,6 +118,8 @@ function TestimonialCard({ person }) {
         <img
           src={person.image}
           alt={person.name}
+          loading="lazy"
+          decoding="async"
           className="relative w-20 h-20 rounded-full object-cover border-[3px] border-bg-section shadow-md"
         />
         <div className="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-brand-violet/90 flex items-center justify-center border-2 border-bg-section opacity-90" title="Verified Hire">
