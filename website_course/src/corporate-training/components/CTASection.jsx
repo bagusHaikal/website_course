@@ -50,6 +50,10 @@ function CTASection() {
             <img
               src="/model-for-corporate-training.webp"
               alt="Consultation"
+              width={363}
+              height={424}
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto object-cover rounded-3xl"
             />
             <div className="absolute -inset-4 bg-brand-violet/20 blur-[80px] -z-10 rounded-full"></div>

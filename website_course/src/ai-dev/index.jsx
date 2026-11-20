@@ -1,10 +1,11 @@
 import { useTheme } from '../contexts/ThemeContext';
+import { mentors, steps } from './data';
 import HeroSection from './components/HeroSection';
 import BenefitsSection from './components/BenefitsSection';
 import CurriculumSection from './components/CurriculumSection';
 import RequirementsSection from './components/RequirementsSection';
-import MentorsSection from './components/MentorsSection';
-import StepsSection from './components/StepsSection';
+import MentorsSection from '../shared/MentorsSection';
+import StepsSection from '../shared/StepsSection';
 import PricingSection from './components/PricingSection';
 import FAQSection from './components/FAQSection';
 
@@ -18,8 +19,8 @@ function AIDevPage() {
       <BenefitsSection />
       <CurriculumSection />
       <RequirementsSection />
-      <MentorsSection />
-      <StepsSection />
+      <MentorsSection mentors={mentors} />
+      <StepsSection steps={steps} />
       <PricingSection />
       <FAQSection />
     </div>

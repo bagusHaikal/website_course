@@ -1,4 +1,4 @@
-import imageProgram from '../assets/image-program.png';
+import imageProgram from '../assets/image-program.webp';
 
 const hero = {
   titlePre: 'Build Your Skill to Advance Your Career Path',

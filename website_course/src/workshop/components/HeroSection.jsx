@@ -1,5 +1,10 @@
 import { hero } from '../data';
+<<<<<<< HEAD
 import { Check, ArrowRight, Clock, CalendarClock } from 'lucide-react';
+=======
+import { Check } from 'lucide-react';
+import ProgramCta from '../../shared/ProgramCta';
+>>>>>>> 7ec4cb1dbb1f1cd3f65165fefe05983f598d54de
 
 function HeroSection({ isLight }) {
   return (
@@ -61,13 +66,18 @@ function HeroSection({ isLight }) {
             </ul>
 
             <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-              <a href="#" className="btn-premium bg-button-gradient text-white px-8 py-4 rounded-full font-bold text-base shadow-glow flex items-center justify-center gap-3 w-full sm:w-auto">
-                {hero.ctaRegister}
-                <ArrowRight className="w-5 h-5" />
-              </a>
+              <ProgramCta program="workshop" label={hero.ctaRegister} className="px-8 py-4 text-base w-full sm:w-auto" />
               <div className="flex items-center gap-3">
                 <span className="text-xs text-text-muted hidden sm:block">atau</span>
-                <a href="#" className="border border-border-default text-text-primary px-6 py-4 rounded-full font-semibold text-sm hover:border-border-hover hover:bg-bg-subtle transition-all">{hero.ctaConsult}</a>
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  title="Konsultasi belum tersedia"
+                  className="border border-border-default text-text-muted px-6 py-4 rounded-full font-semibold text-sm cursor-not-allowed bg-bg-subtle"
+                >
+                  {hero.ctaConsult}
+                </button>
               </div>
             </div>
           </div>
@@ -76,6 +86,8 @@ function HeroSection({ isLight }) {
             <img
               src={hero.image}
               alt="Workshop Data Science"
+              width={679}
+              height={396}
               className="w-full h-auto object-cover rounded-3xl opacity-90 hover:opacity-100 transition-opacity duration-500"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>

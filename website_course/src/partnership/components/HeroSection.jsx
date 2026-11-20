@@ -43,6 +43,8 @@ function HeroSection({ isLight }) {
             <img
               src={partnershipImg}
               alt="Partnership"
+              width={601}
+              height={412}
               className="w-full h-auto object-cover rounded-3xl"
             />
             <div className="absolute inset-0 bg-brand-violet/20 blur-[100px] -z-10 rounded-full"></div>

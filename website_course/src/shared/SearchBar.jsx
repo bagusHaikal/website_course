@@ -1,24 +1,38 @@
 import { useState, useEffect, useRef } from 'react';
-import { courses } from '../data/courses';
+import { searchIndex } from '../data/searchIndex';
 import { X, Search } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-function SearchResultCard({ course }) {
+// Entri halaman program tidak punya gambar/harga/category — semuanya
+// dirender kondisional. Jangan asumsikan bentuk objek `courses`.
+function SearchResultCard({ item }) {
   return (
     <div className="border-l-2 border-transparent hover:border-brand-violet pl-4 py-2.5 transition-colors cursor-pointer">
       <div className="flex items-start gap-3">
-        <img
-          src={course.image}
-          alt={course.title}
-          className="w-16 h-12 object-cover rounded shrink-0"
-        />
+        {item.image && (
+          <img
+            src={item.image}
+            alt={item.title}
+            loading="lazy"
+            decoding="async"
+            className="w-16 h-12 object-cover rounded shrink-0"
+          />
+        )}
         <div className="min-w-0 flex-1">
-          <p className="text-text-primary text-sm font-medium line-clamp-1">{course.title}</p>
-          <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-[10px] text-text-muted bg-bg-subtle px-1.5 py-0.5 rounded">{course.category}</span>
-            <span className="text-[10px] text-text-muted bg-bg-subtle px-1.5 py-0.5 rounded">{course.type}</span>
-          </div>
-          <p className="text-brand-accent text-xs font-semibold mt-1">{course.priceDiscount}</p>
+          <p className="text-text-primary text-sm font-medium line-clamp-1">{item.title}</p>
+          {(item.category || item.type) && (
+            <div className="flex items-center gap-2 mt-0.5">
+              {item.category && (
+                <span className="text-[10px] text-text-muted bg-bg-subtle px-1.5 py-0.5 rounded">{item.category}</span>
+              )}
+              {item.type && (
+                <span className="text-[10px] text-text-muted bg-bg-subtle px-1.5 py-0.5 rounded">{item.type}</span>
+              )}
+            </div>
+          )}
+          {item.priceDiscount && (
+            <p className="text-brand-accent text-xs font-semibold mt-1">{item.priceDiscount}</p>
+          )}
         </div>
       </div>
     </div>
@@ -32,10 +46,12 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
   const inputRef = useRef(null);
   const navigate = useNavigate();
 
-  const filtered = courses.filter(c =>
-    c.title.toLowerCase().includes(query.toLowerCase()) ||
-    c.category.toLowerCase().includes(query.toLowerCase()) ||
-    (c.type && c.type.toLowerCase().includes(query.toLowerCase()))
+  const q = query.toLowerCase();
+  const filtered = searchIndex.filter(item =>
+    item.title.toLowerCase().includes(q) ||
+    (item.category && item.category.toLowerCase().includes(q)) ||
+    (item.type && item.type.toLowerCase().includes(q)) ||
+    (item.keywords && item.keywords.toLowerCase().includes(q))
   ).slice(0, 6);
 
   useEffect(() => {
@@ -62,20 +78,30 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
     inputRef.current?.focus();
   };
 
-  const handleSelect = (course) => {
+  const handleSelect = (item) => {
     setOpen(false);
     setQuery('');
     if (onResultClick) {
-      onResultClick(course);
+      onResultClick(item);
     } else {
-      navigate(`/courses/${course.slug}`);
+      navigate(item.href);
     }
   };
 
-  if (!navVisible) return null;
+  // Jangan lepas dari DOM saat navbar turun — itu membuat layout melompat.
+  // Cukup redupkan + matikan interaksi, sehingga ruangnya tetap terjaga.
+  // `inert` mencabut elemen dari tab-order agar aria-hidden tidak berbohong.
+  const hiddenClass = navVisible
+    ? 'opacity-100'
+    : 'opacity-0 pointer-events-none';
 
   return (
-    <div ref={wrapperRef} className={`relative flex items-center z-1000 ${className}`}>
+    <div
+      ref={wrapperRef}
+      inert={!navVisible ? true : undefined}
+      aria-hidden={!navVisible}
+      className={`relative flex items-center z-1000 transition-opacity duration-300 ${hiddenClass} ${className}`}
+    >
       <div className={`flex items-center border rounded-full overflow-hidden transition-colors ${
         open ? 'border-brand-violet/50' : 'border-border-default'
       } ${fullWidth ? 'w-full' : 'w-48 sm:w-60'}`}>
@@ -107,13 +133,13 @@ function SearchBar({ onResultClick, navVisible, className = '', fullWidth = fals
         >
           {filtered.length > 0 ? (
             <div className="py-2 max-h-90 overflow-y-auto">
-              {filtered.map(course => (
+              {filtered.map(item => (
                 <button
-                  key={course.id}
-                  onClick={() => handleSelect(course)}
+                  key={item.id}
+                  onClick={() => handleSelect(item)}
                   className="w-full text-left block"
                 >
-                  <SearchResultCard course={course} />
+                  <SearchResultCard item={item} />
                 </button>
               ))}
             </div>

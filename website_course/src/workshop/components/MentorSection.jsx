@@ -10,6 +10,10 @@ function MentorSection() {
             <img
               src={mentor.image}
               alt={mentor.name}
+              width={193}
+              height={344}
+              loading="lazy"
+              decoding="async"
               className="w-48 sm:w-56 lg:w-64 max-w-full h-auto object-cover rounded-2xl shadow-glass border border-border-default"
             />
           </div>

@@ -17,9 +17,9 @@ function CaseCard({ cs }) {
             <span className="px-2.5 py-1 rounded-full bg-brand-violet/15 text-brand-accent text-xs font-bold uppercase tracking-wider whitespace-nowrap shrink-0">{cs.role}</span>
           </div>
           <p className="text-sm text-text-muted leading-relaxed">{cs.description}</p>
-          <button className="self-start mt-auto text-sm font-semibold text-text-muted hover:text-brand-accent transition-colors inline-flex items-center gap-1.5 group-btn">
+          <button type="button" disabled aria-disabled="true" title="Studi kasus lengkap belum tersedia" className="self-start mt-auto text-sm font-semibold text-text-muted cursor-not-allowed inline-flex items-center gap-1.5">
             Read More
-            <ChevronRight className="w-4 h-4 transition-transform group-hover-btn:translate-x-0.5" />
+            <ChevronRight className="w-4 h-4 opacity-50" />
           </button>
         </div>
       </div>

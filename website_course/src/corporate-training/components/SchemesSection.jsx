@@ -44,7 +44,7 @@ function SchemesSection() {
                   </li>
                 ))}
               </ul>
-              <button className="mt-8 btn-secondary w-full py-3 rounded-xl font-semibold text-sm border border-border-default text-text-primary hover:border-border-hover transition-colors">
+              <button type="button" disabled aria-disabled="true" title="Konsultasi belum tersedia" className="mt-8 w-full py-3 rounded-xl font-semibold text-sm border border-border-default bg-bg-subtle text-text-muted cursor-not-allowed">
                 Konsultasi dengan kami
               </button>
             </div>

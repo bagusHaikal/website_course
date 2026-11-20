@@ -30,10 +30,16 @@ function SyllabusSection() {
 
         <div className="text-center mt-14">
           <p className="text-text-muted text-sm mb-6">Untuk detail lebih lanjut mengenai Syllabus Data Science, download versi lengkap di sini</p>
-          <a href="#" className="btn-premium bg-button-gradient text-white px-8 py-3.5 rounded-full font-bold text-sm shadow-glow inline-flex items-center gap-3">
-            Unduh Syllabus
+          <button
+            type="button"
+            disabled
+            aria-disabled="true"
+            title="File syllabus belum tersedia"
+            className="btn-premium px-8 py-3.5 rounded-full font-bold text-sm inline-flex items-center gap-3 bg-bg-subtle text-text-muted border border-border-default cursor-not-allowed"
+          >
+            Segera Hadir
             <Download className="w-5 h-5" />
-          </a>
+          </button>
         </div>
       </div>
     </section>

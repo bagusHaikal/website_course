@@ -1,5 +1,5 @@
-import skillBuilderImg from '../assets/Skill-Builder.png';
-import mentorImg from '../assets/bootcamp-mentor-arifian.png';
+import skillBuilderImg from '../assets/Skill-Builder.webp';
+import mentorImg from '../assets/bootcamp-mentor-arifian.webp';
 
 const hero = {
   badge: 'Beginner Friendly',

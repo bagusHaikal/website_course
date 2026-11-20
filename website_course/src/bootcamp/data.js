@@ -1,11 +1,11 @@
-import bootcampImg from '../assets/bootcamp.png';
+import bootcampImg from '../assets/bootcamp.webp';
 import portfolioImg from '../assets/bootcamp-portfolio.webp';
 import dataDrivenImg from '../assets/bootcamp-datadriven.webp';
 import englishImg from '../assets/bootcamp-english.webp';
 import excelImg from '../assets/bootcamp-excel.webp';
-import mentorImg from '../assets/bootcamp-mentor-arifian.png';
-import testiAgistira from '../assets/testi-agistira.png';
-import testiAprido from '../assets/testi-aprido.png';
+import mentorImg from '../assets/bootcamp-mentor-arifian.webp';
+import testiAgistira from '../assets/testi-agistira.webp';
+import testiAprido from '../assets/testi-aprido.webp';
 import testiAtta from '../assets/testi-atta.webp';
 import testiPupu from '../assets/testi-pupu.webp';
 import testiSari from '../assets/testi-sari.webp';
@@ -27,46 +27,58 @@ const hero = {
 const courses = [
   {
     id: 'professional-portfolio',
+    slug: 'professional-portfolio',
     title: 'Build Your First Professional Portfolio (Even If You Have 0 Experience)',
     desc: 'Banyak orang merasa minder bikin portofolio karena belum punya pengalaman. Di sini kamu dibimbing dari nol sampai punya portofolio profesional yang dilirik recruiter.',
     category: 'Non Technical',
+    type: 'Satuan',
     tag: 'kelas mandiri',
     lessons: 4,
     priceOriginal: 'Rp 249.000',
     priceDiscount: 'Rp 59.000',
+    price: 59000,
     image: portfolioImg,
   },
   {
     id: 'data-driven',
+    slug: 'data-driven',
     title: 'Data Driven Decision Making with AI Assistance',
     desc: 'Modul ini tidak hanya mengasah kemampuan analisis data, tapi juga membiasakanmu mengambil keputusan bisnis yang tepat dengan bantuan AI.',
     category: 'Data Analysts',
+    type: 'Satuan',
     tag: 'kelas mandiri',
     lessons: 2,
     priceOriginal: 'Rp 299.000',
     priceDiscount: 'Rp 69.000',
+    price: 69000,
     image: dataDrivenImg,
   },
   {
     id: 'english-for-industrial',
+    slug: 'english-for-industrial',
     title: 'English for Industrial Job Applications: Stand Out & Get Hired',
     desc: 'Kelas ini fokus pada Bahasa Inggris yang dibutuhkan untuk melamar kerja di lingkungan industri, supaya kamu menonjol dan terpilih.',
     category: 'Non Technical',
+    type: 'Satuan',
     tag: 'kelas mandiri',
     lessons: 6,
     priceOriginal: 'Rp 299.000',
     priceDiscount: 'Rp 69.000',
+    price: 69000,
     image: englishImg,
   },
   {
     id: 'excel-made-easy',
+    slug: 'excel-made-easy',
     title: 'Excel Made Easy',
     desc: 'Pernah menerima data mentah yang berantakan? Pelajari cara merapikan, memformat, dan menganalisis data di Excel dengan teknik yang praktis.',
     category: 'Data Analysts',
+    type: 'Satuan',
     tag: 'kelas mandiri',
     lessons: 3,
     priceOriginal: 'Rp 199.000',
     priceDiscount: 'Rp 49.000',
+    price: 49000,
     image: excelImg,
   },
 ];
