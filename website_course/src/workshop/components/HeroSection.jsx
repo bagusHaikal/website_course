@@ -1,5 +1,5 @@
 import { hero } from '../data';
-import { Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight, Clock, CalendarClock } from 'lucide-react';
 
 function HeroSection({ isLight }) {
   return (
@@ -12,7 +12,7 @@ function HeroSection({ isLight }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="max-w-xl animate-fade-slide-up text-center lg:text-left">
-            <h1 className="font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl leading-[1.2] mb-6 tracking-tight text-text-primary">
+            <h1 className="font-display font-extrabold text-[1.65rem] leading-[1.15] min-[400px]:text-3xl min-[400px]:leading-[1.2] sm:text-4xl lg:text-5xl mb-6 tracking-tight text-text-primary">
               {hero.titlePre}{' '}
               <span className={isLight ? 'text-gradient-dark' : 'text-gradient-gold'}>{hero.titleHighlight}</span>
             </h1>
@@ -21,7 +21,26 @@ function HeroSection({ isLight }) {
               {hero.subtitle}
             </p>
 
-            <div className="flex items-center justify-center lg:justify-start gap-10 mb-8">
+            {/* Mobile: card 2 kolom */}
+            <div className="grid grid-cols-2 gap-3 max-w-md mx-auto mb-8 lg:hidden">
+              <div className="rounded-2xl border border-border-default bg-bg-surface p-3.5 text-left">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Clock className="w-4 h-4 text-brand-accent shrink-0" />
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">Durasi Program</span>
+                </div>
+                <p className="font-display font-extrabold text-base text-text-primary whitespace-nowrap">{hero.duration}</p>
+              </div>
+              <div className="rounded-2xl border border-border-default bg-bg-surface p-3.5 text-left">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <CalendarClock className="w-4 h-4 text-brand-accent shrink-0" />
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-text-muted">Jadwal Sesi</span>
+                </div>
+                <p className="font-display font-extrabold text-base text-text-primary whitespace-nowrap">{hero.time}</p>
+              </div>
+            </div>
+
+            {/* Desktop: layout asli */}
+            <div className="hidden lg:flex items-center justify-start gap-10 mb-8">
               <div>
                 <div className="font-display font-extrabold text-2xl sm:text-3xl text-text-primary">{hero.duration}</div>
                 <p className="text-xs text-text-muted mt-1">Durasi Program</p>
